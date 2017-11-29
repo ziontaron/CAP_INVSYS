@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="CAPA_INV_SYS">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=rsserver;Initial Catalog=CAPA_INV</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>ef79f0c6-74b5-4323-93a1-1860b6458271</DataSourceID>
+</RptDataSource>

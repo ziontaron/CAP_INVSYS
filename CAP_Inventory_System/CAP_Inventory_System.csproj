@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F0B55D39-6B02-4F31-940C-4210237E8582}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CAP_Inventory_System</RootNamespace>
+    <AssemblyName>CAP_Inventory_System</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="API\FS_Item.cs" />
+    <Compile Include="API\FS_ItemMaster API.cs" />
+    <Compile Include="API\InventoryEvent API.cs" />
+    <Compile Include="API\MOTag.cs" />
+    <Compile Include="API\MOTagCount API.cs" />
+    <Compile Include="API\MOTagHeader API.cs" />
+    <Compile Include="API\MOTagLine.cs" />
+    <Compile Include="API\Ticket API.cs" />
+    <Compile Include="API\TicketTag API.cs" />
+    <Compile Include="API\TicketType API.cs" />
+    <Compile Include="API\User API.cs" />
+    <Compile Include="API\UserRole API.cs" />
+    <Compile Include="EF\CAPA_INVModel.cs" />
+    <Compile Include="EF\cat_TicketType.cs" />
+    <Compile Include="EF\cat_UserRole.cs" />
+    <Compile Include="EF\FS_ItemMaster.cs" />
+    <Compile Include="EF\InventoryEvent.cs" />
+    <Compile Include="EF\MOTagCount.cs" />
+    <Compile Include="EF\MOTagHeader.cs" />
+    <Compile Include="EF\sysdiagram.cs" />
+    <Compile Include="EF\FSTI_Transactions.cs" />
+    <Compile Include="EF\Ticket.cs" />
+    <Compile Include="EF\TicketCount.cs" />
+    <Compile Include="EF\User.cs" />
+    <Compile Include="Entities\CAPA_INVModel.cs" />
+    <Compile Include="Entities\cat_TicketType.cs" />
+    <Compile Include="Entities\cat_UserRole.cs" />
+    <Compile Include="Entities\FSTI_Transactions.cs" />
+    <Compile Include="Entities\FS_ItemMaster.cs" />
+    <Compile Include="Entities\InventoryEvent.cs" />
+    <Compile Include="Entities\MOTagCount.cs" />
+    <Compile Include="Entities\MOTagHeader.cs" />
+    <Compile Include="Entities\Stadisticts.cs" />
+    <Compile Include="Entities\Ticket.cs" />
+    <Compile Include="Entities\TicketCount.cs" />
+    <Compile Include="API\Inventory System API.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Logic\cat_TicketTypeLogic.cs" />
+    <Compile Include="Logic\cat_UserRoleLogic.cs" />
+    <Compile Include="Logic\FSTI_TransactionLogic.cs" />
+    <Compile Include="Logic\FS_ItemMasterLogic.cs" />
+    <Compile Include="Logic\InventoryEventLogic.cs" />
+    <Compile Include="Logic\MOTagCountLogic.cs" />
+    <Compile Include="Logic\MOTagHeaderLogic.cs" />
+    <Compile Include="Logic\TicketCountLogic.cs" />
+    <Compile Include="Logic\TicketLogic.cs" />
+    <Compile Include="Logic\UserLogic.cs" />
+    <Compile Include="Migrations\201709120249361_LastDB_ver.cs" />
+    <Compile Include="Migrations\201709120249361_LastDB_ver.Designer.cs">
+      <DependentUpon>201709120249361_LastDB_ver.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709150221464_VoidField_added.cs" />
+    <Compile Include="Migrations\201709150221464_VoidField_added.Designer.cs">
+      <DependentUpon>201709150221464_VoidField_added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709152158099_Index added to TicketCount.TicketKey.cs" />
+    <Compile Include="Migrations\201709152158099_Index added to TicketCount.TicketKey.Designer.cs">
+      <DependentUpon>201709152158099_Index added to TicketCount.TicketKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709232053021_User Tables added.cs" />
+    <Compile Include="Migrations\201709232053021_User Tables added.Designer.cs">
+      <DependentUpon>201709232053021_User Tables added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709261806148_Added User and User Roll Function.cs" />
+    <Compile Include="Migrations\201709261806148_Added User and User Roll Function.Designer.cs">
+      <DependentUpon>201709261806148_Added User and User Roll Function.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709271959482_MO tag Fields.cs" />
+    <Compile Include="Migrations\201709271959482_MO tag Fields.Designer.cs">
+      <DependentUpon>201709271959482_MO tag Fields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709290138468_fg in wip field add to MO Tag header.cs" />
+    <Compile Include="Migrations\201709290138468_fg in wip field add to MO Tag header.Designer.cs">
+      <DependentUpon>201709290138468_fg in wip field add to MO Tag header.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710012318111_MOtag header Parent_Item_Desc length 50 to 100.cs" />
+    <Compile Include="Migrations\201710012318111_MOtag header Parent_Item_Desc length 50 to 100.Designer.cs">
+      <DependentUpon>201710012318111_MOtag header Parent_Item_Desc length 50 to 100.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710021544257_Ticket delete in cascade.cs" />
+    <Compile Include="Migrations\201710021544257_Ticket delete in cascade.Designer.cs">
+      <DependentUpon>201710021544257_Ticket delete in cascade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710061733137_MO Tag Count Fields.cs" />
+    <Compile Include="Migrations\201710061733137_MO Tag Count Fields.Designer.cs">
+      <DependentUpon>201710061733137_MO Tag Count Fields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710070741435_Roll to Role Correction.cs" />
+    <Compile Include="Migrations\201710070741435_Roll to Role Correction.Designer.cs">
+      <DependentUpon>201710070741435_Roll to Role Correction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710091702314_Mo tag count comp desc 50 to 150.cs" />
+    <Compile Include="Migrations\201710091702314_Mo tag count comp desc 50 to 150.Designer.cs">
+      <DependentUpon>201710091702314_Mo tag count comp desc 50 to 150.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710102051469_fix bad migration.cs" />
+    <Compile Include="Migrations\201710102051469_fix bad migration.Designer.cs">
+      <DependentUpon>201710102051469_fix bad migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710261909129_FS Item Key Field.cs" />
+    <Compile Include="Migrations\201710261909129_FS Item Key Field.Designer.cs">
+      <DependentUpon>201710261909129_FS Item Key Field.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711061942357_FS Item Master support.cs" />
+    <Compile Include="Migrations\201711061942357_FS Item Master support.Designer.cs">
+      <DependentUpon>201711061942357_FS Item Master support.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711071613594_FS_ItemMaster Constructor.cs" />
+    <Compile Include="Migrations\201711071613594_FS_ItemMaster Constructor.Designer.cs">
+      <DependentUpon>201711071613594_FS_ItemMaster Constructor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711101927277_Count Status removed and FS Item Master Support Added.cs" />
+    <Compile Include="Migrations\201711101927277_Count Status removed and FS Item Master Support Added.Designer.cs">
+      <DependentUpon>201711101927277_Count Status removed and FS Item Master Support Added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711141912276_Minor Fixes.cs" />
+    <Compile Include="Migrations\201711141912276_Minor Fixes.Designer.cs">
+      <DependentUpon>201711141912276_Minor Fixes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711272152576_FSTI Transaction key added to Ticket count table.cs" />
+    <Compile Include="Migrations\201711272152576_FSTI Transaction key added to Ticket count table.Designer.cs">
+      <DependentUpon>201711272152576_FSTI Transaction key added to Ticket count table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711272251546_FSTI Table added.cs" />
+    <Compile Include="Migrations\201711272251546_FSTI Table added.Designer.cs">
+      <DependentUpon>201711272251546_FSTI Table added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711272255420_FSTI Table added 2.cs" />
+    <Compile Include="Migrations\201711272255420_FSTI Table added 2.Designer.cs">
+      <DependentUpon>201711272255420_FSTI Table added 2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711281836141_add part no field to FSTI transaction table.cs" />
+    <Compile Include="Migrations\201711281836141_add part no field to FSTI transaction table.Designer.cs">
+      <DependentUpon>201711281836141_add part no field to FSTI transaction table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711292307003_TagCountKey added to FSTI_Transactions table.cs" />
+    <Compile Include="Migrations\201711292307003_TagCountKey added to FSTI_Transactions table.Designer.cs">
+      <DependentUpon>201711292307003_TagCountKey added to FSTI_Transactions table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Reusable\BaseEntity.cs" />
+    <Compile Include="Reusable\CommonResponse.cs" />
+    <Compile Include="Reusable\ICRUD.cs" />
+    <Compile Include="Reusable\IEntity.cs" />
+    <Compile Include="test.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201709120249361_LastDB_ver.resx">
+      <DependentUpon>201709120249361_LastDB_ver.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709150221464_VoidField_added.resx">
+      <DependentUpon>201709150221464_VoidField_added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709152158099_Index added to TicketCount.TicketKey.resx">
+      <DependentUpon>201709152158099_Index added to TicketCount.TicketKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709232053021_User Tables added.resx">
+      <DependentUpon>201709232053021_User Tables added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709261806148_Added User and User Roll Function.resx">
+      <DependentUpon>201709261806148_Added User and User Roll Function.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709271959482_MO tag Fields.resx">
+      <DependentUpon>201709271959482_MO tag Fields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709290138468_fg in wip field add to MO Tag header.resx">
+      <DependentUpon>201709290138468_fg in wip field add to MO Tag header.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710012318111_MOtag header Parent_Item_Desc length 50 to 100.resx">
+      <DependentUpon>201710012318111_MOtag header Parent_Item_Desc length 50 to 100.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710021544257_Ticket delete in cascade.resx">
+      <DependentUpon>201710021544257_Ticket delete in cascade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710061733137_MO Tag Count Fields.resx">
+      <DependentUpon>201710061733137_MO Tag Count Fields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710070741435_Roll to Role Correction.resx">
+      <DependentUpon>201710070741435_Roll to Role Correction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710091702314_Mo tag count comp desc 50 to 150.resx">
+      <DependentUpon>201710091702314_Mo tag count comp desc 50 to 150.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710102051469_fix bad migration.resx">
+      <DependentUpon>201710102051469_fix bad migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710261909129_FS Item Key Field.resx">
+      <DependentUpon>201710261909129_FS Item Key Field.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711061942357_FS Item Master support.resx">
+      <DependentUpon>201711061942357_FS Item Master support.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711071613594_FS_ItemMaster Constructor.resx">
+      <DependentUpon>201711071613594_FS_ItemMaster Constructor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711101927277_Count Status removed and FS Item Master Support Added.resx">
+      <DependentUpon>201711101927277_Count Status removed and FS Item Master Support Added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711141912276_Minor Fixes.resx">
+      <DependentUpon>201711141912276_Minor Fixes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711272152576_FSTI Transaction key added to Ticket count table.resx">
+      <DependentUpon>201711272152576_FSTI Transaction key added to Ticket count table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711272251546_FSTI Table added.resx">
+      <DependentUpon>201711272251546_FSTI Table added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711272255420_FSTI Table added 2.resx">
+      <DependentUpon>201711272255420_FSTI Table added 2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711281836141_add part no field to FSTI transaction table.resx">
+      <DependentUpon>201711281836141_add part no field to FSTI transaction table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711292307003_TagCountKey added to FSTI_Transactions table.resx">
+      <DependentUpon>201711292307003_TagCountKey added to FSTI_Transactions table.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BD_MNG\BD_MNG.csproj">
+      <Project>{60a1cb55-faf7-4672-b8fb-4fed0fb447dc}</Project>
+      <Name>BD_MNG</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
