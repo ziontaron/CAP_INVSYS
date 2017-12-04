@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
 using CAP_Inventory_System;
 using Data_Base_MNG;
 using PANDA_TOOLS;
-using CAP_Inventory_System;
-using CAP_Inventory_System.Logic;
 
 namespace ConsoleImplementation
 {
@@ -21,6 +17,7 @@ namespace ConsoleImplementation
             //Inventory_System_API x = new Inventory_System_API();
             //x.CreateInventoryEvent("TEST", "Test");
 
+            
             DateTime start = DateTime.Now;
 
             MOTagLine T = new MOTagLine
