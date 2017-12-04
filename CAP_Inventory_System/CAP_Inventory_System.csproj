@@ -195,6 +195,10 @@
     <Compile Include="Migrations\201711292307003_TagCountKey added to FSTI_Transactions table.Designer.cs">
       <DependentUpon>201711292307003_TagCountKey added to FSTI_Transactions table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712042014121_SKT to STK.cs" />
+    <Compile Include="Migrations\201712042014121_SKT to STK.Designer.cs">
+      <DependentUpon>201712042014121_SKT to STK.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Reusable\BaseEntity.cs" />
     <Compile Include="Reusable\CommonResponse.cs" />
@@ -281,6 +285,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711292307003_TagCountKey added to FSTI_Transactions table.resx">
       <DependentUpon>201711292307003_TagCountKey added to FSTI_Transactions table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712042014121_SKT to STK.resx">
+      <DependentUpon>201712042014121_SKT to STK.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
