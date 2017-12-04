@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\FSTI_Transactions API.cs" />
     <Compile Include="API\FS_Item.cs" />
     <Compile Include="API\FS_ItemMaster API.cs" />
     <Compile Include="API\InventoryEvent API.cs" />

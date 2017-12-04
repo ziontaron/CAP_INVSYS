@@ -174,7 +174,7 @@ namespace CAP_Inventory_System.Logic
                     CE.ItemRef = E.ItemRef;
                     CE.UM = E.UM;
                     CE.BIN = E.BIN;
-                    CE.SKT = E.SKT;
+                    CE.STK = E.STK;
                     CE.IC = E.IC;
                     CE.InventoryQty = E.InventoryQty;
                     CE.LotNumber = E.LotNumber;

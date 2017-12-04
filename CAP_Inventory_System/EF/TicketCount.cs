@@ -42,7 +42,7 @@ namespace CAP_Inventory_System
         public float InventoryQty { get; set; }
 
         [StringLength(15)]
-        public string SKT { get; set; }
+        public string STK { get; set; }
 
         [StringLength(15)]
         public string BIN { get; set; }

@@ -116,6 +116,7 @@ namespace CAP_Inventory_System
         MOTagHeaderLogic _moTagHeaderLogic = new MOTagHeaderLogic();
         MOTagCountLogic _moTagCountLogic = new MOTagCountLogic();
         FS_ItemMasterLogic _FS_ItemMasterLogic = new FS_ItemMasterLogic();
+        FSTI_TransactionLogic _FSTI_TransactionLogic = new FSTI_TransactionLogic();
         #endregion
 
         #region Private Properties
@@ -146,7 +147,7 @@ namespace CAP_Inventory_System
             _tag.ItemReference1 = T.ItemRef;
             _tag.ItemUM = T.UM;
             _tag.Bin = T.BIN;
-            _tag.Stockroom = T.SKT;
+            _tag.Stockroom = T.STK;
             _tag.InventoryCategory = T.IC;
             _tag.InventoryQuantity = T.InventoryQty;
             _tag.LotNumber = T.LotNumber;
@@ -239,7 +240,7 @@ namespace CAP_Inventory_System
             T.ItemRef = _tag.ItemReference1;
             T.UM = _tag.ItemUM;
             T.BIN = _tag.Bin;
-            T.SKT = _tag.Stockroom;
+            T.STK = _tag.Stockroom;
             T.IC = _tag.InventoryCategory;
             T.InventoryQty = _tag.InventoryQuantity;
             T.LotNumber = _tag.LotNumber;

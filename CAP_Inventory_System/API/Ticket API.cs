@@ -34,7 +34,7 @@ namespace CAP_Inventory_System
                 _tag.ItemDescription = "";
                 _tag.ItemRef = "";
                 _tag.UM = "";
-                _tag.SKT = "";
+                _tag.STK = "";
                 _tag.BIN = "";
                 _tag.IC = "";
                 _tag.InventoryQty = 0;
@@ -79,7 +79,7 @@ namespace CAP_Inventory_System
                     _tag.ItemDescription = "";
                     _tag.ItemRef = "";
                     _tag.UM = "";
-                    _tag.SKT = "";
+                    _tag.STK = "";
                     _tag.BIN = "";
                     _tag.IC = "";
                     _tag.InventoryQty = 0;
@@ -110,7 +110,7 @@ namespace CAP_Inventory_System
                 _tag.ItemDescription = T.ItemDescription;
                 _tag.ItemRef = T.ItemReference1;
                 _tag.UM = T.ItemUM;
-                _tag.SKT = T.Stockroom;
+                _tag.STK = T.Stockroom;
                 _tag.BIN = T.Bin;
                 _tag.IC = T.InventoryCategory;
                 _tag.InventoryQty = T.InventoryQuantity;
