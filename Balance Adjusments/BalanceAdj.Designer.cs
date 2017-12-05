@@ -31,6 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(f_BalanceAdj));
             this.tc_InvBalanceAdj = new System.Windows.Forms.TabControl();
             this.tp_FSCfg = new System.Windows.Forms.TabPage();
+            this.rtb_Log = new System.Windows.Forms.RichTextBox();
+            this.b_CloseConnection = new System.Windows.Forms.Button();
+            this.b_Connec2FS = new System.Windows.Forms.Button();
             this.gb_FSCredentials = new System.Windows.Forms.GroupBox();
             this.b_CFGBrowse = new System.Windows.Forms.Button();
             this.tb_FSCFGFile = new System.Windows.Forms.TextBox();
@@ -40,9 +43,6 @@
             this.tb_FSUser = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.rtb_Log = new System.Windows.Forms.RichTextBox();
             this.tc_InvBalanceAdj.SuspendLayout();
             this.tp_FSCfg.SuspendLayout();
             this.gb_FSCredentials.SuspendLayout();
@@ -62,8 +62,8 @@
             // tp_FSCfg
             // 
             this.tp_FSCfg.Controls.Add(this.rtb_Log);
-            this.tp_FSCfg.Controls.Add(this.button2);
-            this.tp_FSCfg.Controls.Add(this.button1);
+            this.tp_FSCfg.Controls.Add(this.b_CloseConnection);
+            this.tp_FSCfg.Controls.Add(this.b_Connec2FS);
             this.tp_FSCfg.Controls.Add(this.gb_FSCredentials);
             this.tp_FSCfg.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tp_FSCfg.Location = new System.Drawing.Point(4, 25);
@@ -73,6 +73,38 @@
             this.tp_FSCfg.TabIndex = 0;
             this.tp_FSCfg.Text = "FS Configuration";
             this.tp_FSCfg.UseVisualStyleBackColor = true;
+            // 
+            // rtb_Log
+            // 
+            this.rtb_Log.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtb_Log.Location = new System.Drawing.Point(20, 314);
+            this.rtb_Log.Name = "rtb_Log";
+            this.rtb_Log.ReadOnly = true;
+            this.rtb_Log.Size = new System.Drawing.Size(926, 274);
+            this.rtb_Log.TabIndex = 5;
+            this.rtb_Log.Text = "";
+            // 
+            // b_CloseConnection
+            // 
+            this.b_CloseConnection.Location = new System.Drawing.Point(257, 250);
+            this.b_CloseConnection.Name = "b_CloseConnection";
+            this.b_CloseConnection.Size = new System.Drawing.Size(195, 36);
+            this.b_CloseConnection.TabIndex = 4;
+            this.b_CloseConnection.Text = "Close Connection";
+            this.b_CloseConnection.UseVisualStyleBackColor = true;
+            this.b_CloseConnection.Click += new System.EventHandler(this.b_CloseConnection_Click);
+            // 
+            // b_Connec2FS
+            // 
+            this.b_Connec2FS.Location = new System.Drawing.Point(41, 250);
+            this.b_Connec2FS.Name = "b_Connec2FS";
+            this.b_Connec2FS.Size = new System.Drawing.Size(195, 36);
+            this.b_Connec2FS.TabIndex = 3;
+            this.b_Connec2FS.Text = "Connect to FS";
+            this.b_Connec2FS.UseVisualStyleBackColor = true;
+            this.b_Connec2FS.Click += new System.EventHandler(this.b_Connec2FS_Click);
             // 
             // gb_FSCredentials
             // 
@@ -173,36 +205,6 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(41, 250);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(195, 36);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Connect to FS";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(257, 250);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(195, 36);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Close Connection";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // rtb_Log
-            // 
-            this.rtb_Log.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtb_Log.Location = new System.Drawing.Point(20, 314);
-            this.rtb_Log.Name = "rtb_Log";
-            this.rtb_Log.ReadOnly = true;
-            this.rtb_Log.Size = new System.Drawing.Size(926, 274);
-            this.rtb_Log.TabIndex = 5;
-            this.rtb_Log.Text = "";
-            // 
             // f_BalanceAdj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -235,8 +237,8 @@
         private System.Windows.Forms.TextBox tb_FSUser;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox rtb_Log;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button b_CloseConnection;
+        private System.Windows.Forms.Button b_Connec2FS;
     }
 }
 
