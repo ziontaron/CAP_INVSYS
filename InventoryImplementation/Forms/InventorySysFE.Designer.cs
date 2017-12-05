@@ -36,6 +36,7 @@
             this.gb_EventAdmin = new System.Windows.Forms.GroupBox();
             this.gb_SysAdmin = new System.Windows.Forms.GroupBox();
             this.b_UserAdmin = new System.Windows.Forms.Button();
+            this.b_BalanceAdj = new System.Windows.Forms.Button();
             this.gb_CountFunctions.SuspendLayout();
             this.gb_EventAdmin.SuspendLayout();
             this.gb_SysAdmin.SuspendLayout();
@@ -101,6 +102,7 @@
             // gb_SysAdmin
             // 
             this.gb_SysAdmin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.gb_SysAdmin.Controls.Add(this.b_BalanceAdj);
             this.gb_SysAdmin.Controls.Add(this.b_UserAdmin);
             this.gb_SysAdmin.Enabled = false;
             this.gb_SysAdmin.Location = new System.Drawing.Point(239, 281);
@@ -120,6 +122,17 @@
             this.b_UserAdmin.Text = "User Administration";
             this.b_UserAdmin.UseVisualStyleBackColor = true;
             this.b_UserAdmin.Click += new System.EventHandler(this.b_UserAdmin_Click);
+            // 
+            // b_BalanceAdj
+            // 
+            this.b_BalanceAdj.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.b_BalanceAdj.Location = new System.Drawing.Point(23, 139);
+            this.b_BalanceAdj.Name = "b_BalanceAdj";
+            this.b_BalanceAdj.Size = new System.Drawing.Size(151, 86);
+            this.b_BalanceAdj.TabIndex = 1;
+            this.b_BalanceAdj.Text = "Balance Adujsment";
+            this.b_BalanceAdj.UseVisualStyleBackColor = true;
+            this.b_BalanceAdj.Click += new System.EventHandler(this.b_BalanceAdj_Click);
             // 
             // f_InventorySysFE
             // 
@@ -151,5 +164,6 @@
         private System.Windows.Forms.GroupBox gb_EventAdmin;
         private System.Windows.Forms.GroupBox gb_SysAdmin;
         private System.Windows.Forms.Button b_UserAdmin;
+        private System.Windows.Forms.Button b_BalanceAdj;
     }
 }

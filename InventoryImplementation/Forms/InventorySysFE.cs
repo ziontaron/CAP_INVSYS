@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Balance_Adjusments;
 
 namespace InventoryImplementation
 {
@@ -65,6 +66,11 @@ namespace InventoryImplementation
         private void b_UserAdmin_Click(object sender, EventArgs e)
         {
             f_UserAdministration F = new f_UserAdministration(ref x);
+            F.Show();
+        }
+        private void b_BalanceAdj_Click(object sender, EventArgs e)
+        {
+            f_BalanceAdj F = new f_BalanceAdj();
             F.Show();
         }
         #endregion

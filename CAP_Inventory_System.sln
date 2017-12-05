@@ -18,6 +18,8 @@ Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "CAPA INV REPORTS", "CAPA IN
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FS4Amalgamma", "FS4Amalgamma\FS4Amalgamma.csproj", "{4761923C-BFF0-4136-8307-559E87201380}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Balance Adjusments", "Balance Adjusments\Balance Adjusments.csproj", "{D3154A67-A16F-4AA6-9C50-9353CE6AE569}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -104,6 +106,18 @@ Global
 		{4761923C-BFF0-4136-8307-559E87201380}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4761923C-BFF0-4136-8307-559E87201380}.Release|x86.ActiveCfg = Release|Any CPU
 		{4761923C-BFF0-4136-8307-559E87201380}.Release|x86.Build.0 = Release|Any CPU
+		{D3154A67-A16F-4AA6-9C50-9353CE6AE569}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3154A67-A16F-4AA6-9C50-9353CE6AE569}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3154A67-A16F-4AA6-9C50-9353CE6AE569}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D3154A67-A16F-4AA6-9C50-9353CE6AE569}.Debug|x86.Build.0 = Debug|Any CPU
+		{D3154A67-A16F-4AA6-9C50-9353CE6AE569}.DebugLocal|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3154A67-A16F-4AA6-9C50-9353CE6AE569}.DebugLocal|Any CPU.Build.0 = Debug|Any CPU
+		{D3154A67-A16F-4AA6-9C50-9353CE6AE569}.DebugLocal|x86.ActiveCfg = Debug|Any CPU
+		{D3154A67-A16F-4AA6-9C50-9353CE6AE569}.DebugLocal|x86.Build.0 = Debug|Any CPU
+		{D3154A67-A16F-4AA6-9C50-9353CE6AE569}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3154A67-A16F-4AA6-9C50-9353CE6AE569}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3154A67-A16F-4AA6-9C50-9353CE6AE569}.Release|x86.ActiveCfg = Release|Any CPU
+		{D3154A67-A16F-4AA6-9C50-9353CE6AE569}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -179,6 +179,10 @@
     <Content Include="ok.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Balance Adjusments\Balance Adjusments.csproj">
+      <Project>{d3154a67-a16f-4aa6-9c50-9353ce6ae569}</Project>
+      <Name>Balance Adjusments</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BD_MNG\BD_MNG.csproj">
       <Project>{60a1cb55-faf7-4672-b8fb-4fed0fb447dc}</Project>
       <Name>BD_MNG</Name>
