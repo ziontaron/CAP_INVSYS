@@ -1,32 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using FS4Amalgamma;
+using System;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using FS4Amalgamma;
+using CAP_Inventory_System;
+using System.Collections.Generic;
 
 namespace Balance_Adjusments
 {
     public partial class f_BalanceAdj : Form
     {
+        Inventory_System_API x = new Inventory_System_API();
+        TicketTag _tag = new TicketTag();
         AmalgammaFSTI FSTI;
-        public f_BalanceAdj()
+        public f_BalanceAdj(ref Inventory_System_API IE)
         {
             InitializeComponent();
+            x = IE;
+            cb_InvEvent.Items.AddRange(_LoadEvents().ToArray());
+            l_EventStatus.Text = "";
         }
 
-        private void b_CFGBrowse_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog CFGDialog = new OpenFileDialog();
-            DialogResult result = CFGDialog.ShowDialog();
-            if (result == DialogResult.OK) // Test result.
-            {
-                tb_FSCFGFile.Text = CFGDialog.FileName;
-            }
-        }
-
+        #region private Functions
         private void FS_ConfLog(string LogType, string LogMessage)
         {
             switch (LogType)
@@ -58,11 +52,50 @@ namespace Balance_Adjusments
                     }
             }
         }
+        private List<string> _LoadEvents()
+        {
+            //Clear();
+            List<string> L = new List<string>();
+            L = x.LoadEvents();
+            return L;
+        }
+        private void LoadEventInfo()
+        {
+            x.ReadInventoryEventByName(cb_InvEvent.SelectedItem.ToString());
+            if (x.ActiveEventStatus)
+            {
+                //active
+                l_EventStatus.Text = "ACTIVE";
+                l_EventStatus.ForeColor = Color.Green;
+            }
+            else
+            {
+                //closed
+                l_EventStatus.Text = "CLOSED";
+                l_EventStatus.ForeColor = Color.Red;
+            }
+        }
+
+        #endregion
+
+        private void b_CFGBrowse_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog CFGDialog = new OpenFileDialog();
+            DialogResult result = CFGDialog.ShowDialog();
+            if (result == DialogResult.OK) // Test result.
+            {
+                tb_FSCFGFile.Text = CFGDialog.FileName;
+            }
+        }
 
         private void b_CloseConnection_Click(object sender, EventArgs e)
         {
             FSTI.AmalgammaFSTI_Stop();
             FS_ConfLog("info", "Fourth Shift Client is closed now.");
+            b_Connec2FS.Text = "Connect to FS";
+            b_Connec2FS.Enabled = true;
+            b_CloseConnection.Enabled = false;
+            gb_FSCredentials.Enabled = true;
         }
 
         private void b_Connec2FS_Click(object sender, EventArgs e)
@@ -76,6 +109,10 @@ namespace Balance_Adjusments
                 if (FSTI.AmalgammaFSTI_Logon())
                 {
                     FS_ConfLog("success", "Fourth Shift Client loged on sucessfully.");
+                    b_Connec2FS.Enabled = false;
+                    b_CloseConnection.Enabled = true;
+                    gb_FSCredentials.Enabled = false;
+                    b_Connec2FS.Text = "Connected to FS.";
                 }
                 else
                 {
@@ -85,7 +122,29 @@ namespace Balance_Adjusments
             else
             {
                 FS_ConfLog("error", "Fourth Shift Client has not been Initialized.\n"
-                    +FSTI.FSTI_ErrorMsg);
+                    +" >Error Mg: "+FSTI.FSTI_ErrorMsg);
+            }
+        }
+
+        private void f_BalanceAdj_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (FSTI != null)
+            {
+                FSTI.AmalgammaFSTI_Stop();
+            }
+        }
+
+        private void cb_Lock_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cb_InvEvent.SelectedIndex > -1)
+            {
+                LoadEventInfo();
+                cb_InvEvent.Enabled = !cb_Lock.Checked;
+            }
+            else
+            {
+                cb_InvEvent.Enabled = true;
+                cb_Lock.Checked = false;
             }
         }
     }

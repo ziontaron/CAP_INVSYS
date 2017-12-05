@@ -63,6 +63,23 @@ namespace CAP_Inventory_System
 
         public virtual Ticket Ticket { get; set; }
 
+        [NotMapped]
+        public float Balance
+        {
+            get
+            {
+                if (ReCountQty > 0)
+                {
+                    return (ReCountQty - InventoryQty);
+                }
+                else
+                {
+
+                    return (CountQty - InventoryQty);
+                }
+            }
+        }
+
         //public int? FSTI_Transaction_key { get; set; }
     }
 }
