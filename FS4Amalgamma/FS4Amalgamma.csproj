@@ -44,10 +44,12 @@
     <Reference Include="FourthShift.TransactionClient, Version=1.0.7300.0, Culture=neutral, PublicKeyToken=541b4aff0f04b60a">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>M:\Mfgsys\Client\ProgFile\Managed\FourthShift.TransactionClient.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="FourthShift.Transactions, Version=1.0.7300.0, Culture=neutral, PublicKeyToken=541b4aff0f04b60a">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>M:\Mfgsys\Client\ProgFile\Managed\FourthShift.Transactions.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">

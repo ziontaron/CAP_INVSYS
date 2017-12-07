@@ -70,7 +70,7 @@ namespace InventoryImplementation
         }
         private void b_BalanceAdj_Click(object sender, EventArgs e)
         {
-            f_BalanceAdj F = new f_BalanceAdj();
+            f_BalanceAdj F = new f_BalanceAdj(ref x);
             F.Show();
         }
         #endregion
