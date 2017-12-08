@@ -14,7 +14,6 @@ namespace CAP_Inventory_System
             if (ActiveEventId != 0)
             {
                 Ticket _ticket = new Ticket();
-                cat_TicketTypeLogic _cat_TicketTypeLogic = new cat_TicketTypeLogic();
                 cat_TicketType cat = (cat_TicketType)_cat_TicketTypeLogic.ReadbyName(new cat_TicketType("TicketCount")).Result;
 
                 TicketCount _tag = new TicketCount();
@@ -52,7 +51,6 @@ namespace CAP_Inventory_System
             if (ActiveEventId != 0)
             {
                 int counter = 0; Ticket _ticket = new Ticket();
-                cat_TicketTypeLogic _cat_TicketTypeLogic = new cat_TicketTypeLogic();
                 cat_TicketType cat = (cat_TicketType)_cat_TicketTypeLogic.ReadbyName(new cat_TicketType("TicketCount")).Result;
 
                 TicketCount _tag = new TicketCount();
@@ -98,7 +96,6 @@ namespace CAP_Inventory_System
             if (ActiveEventId != 0)
             {
                 Ticket _ticket = new Ticket();
-                cat_TicketTypeLogic _cat_TicketTypeLogic = new cat_TicketTypeLogic();
                 cat_TicketType cat = (cat_TicketType)_cat_TicketTypeLogic.ReadbyName(new cat_TicketType("TicketCount")).Result;
                 TicketCount _tag = new TicketCount();
 
@@ -127,7 +124,6 @@ namespace CAP_Inventory_System
         {
             TicketTag _ticketTag = new TicketTag();
             TicketCount _ticketCount = new TicketCount();
-            TicketCountLogic _ticketCountLogic = new TicketCountLogic();
             Ticket _ticket = new Ticket();
             TicketLogic _ticketLogic = new TicketLogic();
             _ticket.InventoryEventKey = ActiveEventId;
@@ -162,8 +158,7 @@ namespace CAP_Inventory_System
         public void UpdateTag(TicketTag T)
         {
             TicketCount _ticketCount = new TicketCount();
-            TicketCountLogic _ticketCountLogic = new Logic.TicketCountLogic();
-
+            
             _ticketCount = Tag2Entity(T);
             _Response = _ticketCountLogic.Update(_ticketCount);
         }

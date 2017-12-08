@@ -28,6 +28,7 @@ namespace CAP_Inventory_System
         public string CounterInitials { get; set; }
         public DateTime? CountedDate { get; set; }
 
+        //public float Balance { get; set; }
         public int ItemNumber_FSKey { get; set; }
         public int TicketID { get; set; }
         public int TicketCountID { get; set; }

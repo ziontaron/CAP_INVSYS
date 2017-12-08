@@ -109,7 +109,7 @@ namespace CAP_Inventory_System
 
         #region Entities_Logic
         InventoryEventLogic _inventoryEventLogic = new InventoryEventLogic();
-        TicketLogic _ticketLogic = new TicketLogic();
+        TicketLogic _ticketLogic = new TicketLogic();        
         TicketCountLogic _ticketCountLogic = new TicketCountLogic();
         cat_TicketTypeLogic _cat_TicketTypeLogic = new cat_TicketTypeLogic();
         cat_UserRoleLogic _cat_UserRoleLogic = new cat_UserRoleLogic();
@@ -356,6 +356,86 @@ namespace CAP_Inventory_System
 
             return _tag;
         }
+        public DataTable TicketTagCount()
+        {
+            DataTable Balance = new DataTable();
+
+            //Item, Stk, Bin, Ic, DocNum, AC, Adj_Qty, RC, InvOffAcc, UM, LotNo, Remark
+            //   0,   1,   2,  3,      4,  5,       6,  7,         8,  9,    10,     11
+
+            #region Table Setup
+            Balance.Columns.Add("TagCountKey", typeof(int));
+            Balance.Columns.Add("TicketTag", typeof(int));
+            Balance.Columns.Add("ItemNumber", typeof(string));
+            Balance.Columns.Add("ItemDescription", typeof(string));
+            Balance.Columns.Add("STK", typeof(string));
+            Balance.Columns.Add("BIN", typeof(string));
+            Balance.Columns.Add("DocNum", typeof(string));
+            Balance.Columns.Add("InventoryQty", typeof(float));
+            Balance.Columns.Add("CountedQty", typeof(float));
+            Balance.Columns.Add("ActionCode", typeof(string));
+            Balance.Columns.Add("Balance", typeof(float));
+            Balance.Columns.Add("ReasonCode", typeof(string));
+            Balance.Columns.Add("InvAccount", typeof(string));
+            Balance.Columns.Add("UM", typeof(string));
+            Balance.Columns.Add("LotNumber", typeof(string));
+            Balance.Columns.Add("Remark", typeof(string));
+            #endregion
+
+            List<TicketCount> TagCounts = _ticketCountLogic.ReadAll();
+            float countedQty = 0;
+            string ActionCode = "";
+            foreach (TicketCount t in TagCounts)
+            {
+                if (t.ReCountQty > 0)
+                {
+                    countedQty = t.ReCountQty;
+                }
+                else
+                {
+                    countedQty = t.CountQty;
+                }
+
+                if (t.Balance == 0)
+                {
+                    ActionCode = "=";
+                }
+                else
+                {
+                    if (t.Balance > 0)
+                    {
+                        ActionCode = "+";
+                    }
+                    else
+                    {
+                        ActionCode = "-";
+                    }
+                }
+
+
+                Balance.Rows.Add(
+                      t.TagCountKey
+                    , (_ticketLogic.ReadbyId(t.TicketKey).Result as Ticket).TicketCounter
+                    , t.ItemNumber
+                    , t.ItemDescription
+                    , t.STK
+                    , t.BIN
+                    , "DocNum"
+                    , t.InventoryQty
+                    , countedQty
+                    , ActionCode
+                    , t.Balance
+                    , "ReasonCode"
+                    , "InvAccount"
+                    , t.UM
+                    , t.LotNumber
+                    , "Remark"
+                    );
+            }
+
+            return Balance;
+
+        }
         public static MOTag MOTag_DataRow2Tag(DataRow r)
         {
             MOTag _tag = new MOTag();
@@ -375,24 +455,6 @@ namespace CAP_Inventory_System
             
             return _tag;
         }
-        public TicketCount Tag2TicketCount(TicketTag T)
-        {
-            TicketCount _ticket = new TicketCount();
-            _ticket = Tag2Entity(T);
-            TicketCountLogic _ticketLogic = new Logic.TicketCountLogic();
-            _ticket = (TicketCount)_ticketLogic.ReadbyId(_ticket).Result;
-            return _ticket;
-        }
-        public List<string> LoadEvents()
-        {
-            List<string> L = new List<string>();
-            foreach (string t in ReadAllInventoryEvents())
-            {
-                L.Add(t);
-            }
-            return L;
-        }
-
         public Stadisticts LoadStadistics()
         {
             Stadisticts stats = new Stadisticts();
@@ -414,7 +476,6 @@ namespace CAP_Inventory_System
             //    UserRoleKey = _userRole.UserRoleKey
             //});
         }
-
         #endregion
     }    
 }

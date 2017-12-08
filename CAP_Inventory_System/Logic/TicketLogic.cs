@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Reusable;
+using System.Data;
 
 namespace CAP_Inventory_System.Logic
 {
@@ -59,7 +60,7 @@ namespace CAP_Inventory_System.Logic
                 List = context.Tickets.Where(r => r.InventoryEventKey == InventoryEvent_Id).ToList();
                 return List;
             }
-        }
+        }        
         public CommonResponse ReadbyId(Ticket e)
         {
             CommonResponse response = new Reusable.CommonResponse();

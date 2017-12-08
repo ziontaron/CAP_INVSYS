@@ -76,8 +76,15 @@ namespace CAP_Inventory_System
             return _inventoryEventLogic.QTYofTags(entity);
 
         }
-
-       
+        public List<string> LoadEvents()
+        {
+            List<string> L = new List<string>();
+            foreach (string t in ReadAllInventoryEvents())
+            {
+                L.Add(t);
+            }
+            return L;
+        }
         #endregion
     }
 }

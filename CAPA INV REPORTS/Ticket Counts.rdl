@@ -3,11 +3,6 @@
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="TicketCounts">
-      <DataSourceReference>CAPA_INV</DataSourceReference>
-      <rd:SecurityType>None</rd:SecurityType>
-      <rd:DataSourceID>d3a876ac-e236-4994-bcf2-9d7c3bcea587</rd:DataSourceID>
-    </DataSource>
     <DataSource Name="TicketCount">
       <DataSourceReference>CAPA_INV</DataSourceReference>
       <rd:SecurityType>None</rd:SecurityType>
@@ -17,7 +12,7 @@
   <DataSets>
     <DataSet Name="InventoryEvents">
       <Query>
-        <DataSourceName>TicketCounts</DataSourceName>
+        <DataSourceName>TicketCount</DataSourceName>
         <CommandText>SELECT InventoryEventKey, InventoryEventName, InventoryEventDescription
 FROM     InventoryEvent</CommandText>
       </Query>
@@ -38,7 +33,7 @@ FROM     InventoryEvent</CommandText>
     </DataSet>
     <DataSet Name="TicketCounts">
       <Query>
-        <DataSourceName>TicketCounts</DataSourceName>
+        <DataSourceName>TicketCount</DataSourceName>
         <QueryParameters>
           <QueryParameter Name="@CFrom">
             <Value>=Parameters!CFrom.Value</Value>
@@ -59,7 +54,8 @@ ELSE CONVERT(VARCHAR(10), TicketCount.CountedDate, 101)
 END
 ) AS [CountedDateStr]
 , TicketCount.TicketKey, TicketCount.ItemNumber, TicketCount.ItemDescription, TicketCount.ItemRef, TicketCount.UM, TicketCount.LotNumber, 
-TicketCount.CountQTY, TicketCount.ReCountQty, TicketCount.InventoryQty, TicketCount.SKT, TicketCount.BIN, TicketCount.IC, TicketCount.Verified, TicketCount.CountStatus, TicketCount.BlankTag, TicketCount.VoidTag
+TicketCount.CountQTY, TicketCount.ReCountQty, TicketCount.InventoryQty, TicketCount.STK, TicketCount.BIN, TicketCount.IC, TicketCount.Verified, --TicketCount.CountStatus, 
+TicketCount.BlankTag, TicketCount.VoidTag
 FROM     Ticket INNER JOIN
 TicketCount ON Ticket.TicketKey = TicketCount.TicketKey INNER JOIN
 InventoryEvent ON Ticket.InventoryEventKey = InventoryEvent.InventoryEventKey
@@ -123,8 +119,8 @@ WHERE  (Ticket.TicketCounter &gt;= @CFrom) AND (Ticket.TicketCounter &lt;= @CTo)
           <DataField>InventoryQty</DataField>
           <rd:TypeName>System.Single</rd:TypeName>
         </Field>
-        <Field Name="SKT">
-          <DataField>SKT</DataField>
+        <Field Name="STK">
+          <DataField>STK</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="BIN">
@@ -138,10 +134,6 @@ WHERE  (Ticket.TicketCounter &gt;= @CFrom) AND (Ticket.TicketCounter &lt;= @CTo)
         <Field Name="Verified">
           <DataField>Verified</DataField>
           <rd:TypeName>System.Boolean</rd:TypeName>
-        </Field>
-        <Field Name="CountStatus">
-          <DataField>CountStatus</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="BlankTag">
           <DataField>BlankTag</DataField>
@@ -1066,7 +1058,7 @@ WHERE  (Ticket.TicketCounter &gt;= @CFrom) AND (Ticket.TicketCounter &lt;= @CTo)
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!SKT.Value</Value>
+                                      <Value>=Fields!STK.Value</Value>
                                       <Style>
                                         <FontWeight>Bold</FontWeight>
                                       </Style>
@@ -2145,7 +2137,7 @@ WHERE  (Ticket.TicketCounter &gt;= @CFrom) AND (Ticket.TicketCounter &lt;= @CTo)
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!SKT.Value</Value>
+                                      <Value>=Fields!STK.Value</Value>
                                       <Style>
                                         <FontWeight>Bold</FontWeight>
                                       </Style>
@@ -2487,7 +2479,6 @@ WHERE  (Ticket.TicketCounter &gt;= @CFrom) AND (Ticket.TicketCounter &lt;= @CTo)
                             </RightBorder>
                           </Style>
                         </Rectangle>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>

@@ -64,6 +64,7 @@
     <Compile Include="API\MOTagHeader API.cs" />
     <Compile Include="API\MOTagLine.cs" />
     <Compile Include="API\Ticket API.cs" />
+    <Compile Include="API\TicketCount API.cs" />
     <Compile Include="API\TicketTag API.cs" />
     <Compile Include="API\TicketType API.cs" />
     <Compile Include="API\User API.cs" />

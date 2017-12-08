@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using FS4Amalgamma;
 using CAP_Inventory_System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace Balance_Adjusments
 {
@@ -76,7 +77,14 @@ namespace Balance_Adjusments
                 l_EventStatus.ForeColor = Color.Red;
             }
         }
+        private DataTable LoadTicketInfo()
+        {
+            DataTable tags = null; 
 
+            
+
+            return tags;
+        }
         #endregion
 
         private void b_CFGBrowse_Click(object sender, EventArgs e)
@@ -91,7 +99,7 @@ namespace Balance_Adjusments
 
         private void b_CloseConnection_Click(object sender, EventArgs e)
         {
-            //FSTI.AmalgammaFSTI_Stop();
+            FSTI.AmalgammaFSTI_Stop();
             FS_ConfLog("info", "Fourth Shift Client is closed now.");
             b_Connec2FS.Text = "Connect to FS";
             b_Connec2FS.Enabled = true;
@@ -101,6 +109,9 @@ namespace Balance_Adjusments
 
         private void b_Connec2FS_Click(object sender, EventArgs e)
         {
+            FSTI = new AmalgammaFSTI(tb_FSCFGFile.Text, tb_FSUser.Text, tb_FSPassword.Text);
+            FS_ConfLog("info", "Fourth Shift Client configuration loaded.");
+
             if (FSTI.AmalgammaFSTI_Initialization())
             {
                 FS_ConfLog("success", "Fourth Shift Client has been Initialized.");
@@ -144,6 +155,11 @@ namespace Balance_Adjusments
                 cb_InvEvent.Enabled = true;
                 cb_Lock.Checked = false;
             }
+        }
+
+        private void b_LoadTags_Click(object sender, EventArgs e)
+        {
+            dgv_BalanceTags.DataSource = x.TicketTagCount();
         }
     }
 }
