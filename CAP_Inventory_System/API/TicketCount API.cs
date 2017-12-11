@@ -18,6 +18,14 @@ namespace CAP_Inventory_System
             _ticket = (TicketCount)_ticketCountLogic.ReadbyId(_ticket).Result;
             return _ticket;
         }
+        public void CreateFSTITransaction(DataRow R)
+        {
+            TicketCount t = new CAP_Inventory_System.TicketCount();
+            t.TagCountKey = Convert.ToInt32( R["TagCountKey"].ToString());
+            t.TicketKey=Convert.ToInt32(R["TicketKey"].ToString());
+            t = (TicketCount)_ticketCountLogic.ReadbyId(t).Result;
+            Attach_FSTI_Transacion(t, R["DocNum"].ToString(), R["InvAccount"].ToString(), R["ReasonCode"].ToString(),R["Remark"].ToString());
+        }
         #endregion
     }
 }

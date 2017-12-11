@@ -16,11 +16,21 @@ namespace CAP_Inventory_System.Logic
             using (CAPA_INVContext context = new CAPA_INVContext())
             {
                 FSTI_Transactions t = new FSTI_Transactions();
-                t = context.FSTI_Transactions.FirstOrDefault(r => (r.FSTI_Transaction_key == e.FSTI_Transaction_key));
+                t = context.FSTI_Transactions.FirstOrDefault(r => (r.TagCountKey == e.TagCountKey));
                 if (t == null)
                 {
+                    e.DateStampIn = DateTime.Now;
                     context.FSTI_Transactions.Add(e);
-                    context.SaveChanges();
+                    try
+                    {
+                        context.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        response.Error("Exception: "+ex.Message, null);
+                        return response;
+                    }
+
                     response.Success(e, "OK");
                     return response;
                 }

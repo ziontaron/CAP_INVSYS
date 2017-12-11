@@ -12,24 +12,17 @@ namespace CAP_Inventory_System
         {
             FSTI_Transactions T = new FSTI_Transactions();
 
+            T.TransactionType = "INVA";
+            T.TagCountKey = e.TagCountKey;
             #region FSTI String Field
 
             //Item, Stk, Bin, Ic, DocNum, AC, Adj_Qty, RC, InvOffAcc, UM, LotNo, Remark
             //   0,   1,   2,  3,      4,  5,       6,  7,         8,  9,    10,     11
 
-            float balanceQty = 0;
+            //float balanceQty = 0;
             string ActionCode = "";
-
-            if (e.ReCountQty > 0)
-            {
-                balanceQty = e.ReCountQty - e.InventoryQty;
-            }
-            else
-            {
-                balanceQty = e.CountQty - e.InventoryQty;
-            }
-
-            if (balanceQty > 0)
+                        
+            if (e.Balance > 0)
             {
                 ActionCode = "+";
             }
@@ -46,7 +39,7 @@ namespace CAP_Inventory_System
             Fields += e.IC + ",";
             Fields += DocNum + ",";
             Fields += ActionCode + ",";
-            Fields += Math.Abs(balanceQty).ToString() + ",";
+            Fields += Math.Abs(e.Balance).ToString() + ",";
             Fields += ReasonCode + ",";
             Fields += InvAccount + ",";
             Fields += e.UM + ",";

@@ -356,15 +356,13 @@ namespace CAP_Inventory_System
 
             return _tag;
         }
-        public DataTable TicketTagCount()
+        public DataTable TicketTagCount(string DocNum, string ReasonCode, string InvAccount)
         {
             DataTable Balance = new DataTable();
-
             //Item, Stk, Bin, Ic, DocNum, AC, Adj_Qty, RC, InvOffAcc, UM, LotNo, Remark
             //   0,   1,   2,  3,      4,  5,       6,  7,         8,  9,    10,     11
 
             #region Table Setup
-            Balance.Columns.Add("TagCountKey", typeof(int));
             Balance.Columns.Add("TicketTag", typeof(int));
             Balance.Columns.Add("ItemNumber", typeof(string));
             Balance.Columns.Add("ItemDescription", typeof(string));
@@ -374,17 +372,22 @@ namespace CAP_Inventory_System
             Balance.Columns.Add("InventoryQty", typeof(float));
             Balance.Columns.Add("CountedQty", typeof(float));
             Balance.Columns.Add("ActionCode", typeof(string));
+            Balance.Columns.Add("IC", typeof(string));
             Balance.Columns.Add("Balance", typeof(float));
             Balance.Columns.Add("ReasonCode", typeof(string));
             Balance.Columns.Add("InvAccount", typeof(string));
             Balance.Columns.Add("UM", typeof(string));
             Balance.Columns.Add("LotNumber", typeof(string));
             Balance.Columns.Add("Remark", typeof(string));
+            Balance.Columns.Add("TicketKey", typeof(int));
+            Balance.Columns.Add("TagCountKey", typeof(int));
+            Balance.Columns.Add("Void", typeof(bool));
             #endregion
 
-            List<TicketCount> TagCounts = _ticketCountLogic.ReadAll();
+            List<TicketCount> TagCounts = _ticketCountLogic.ReadAllTicketCountsforEvent(ActiveEventId);
             float countedQty = 0;
             string ActionCode = "";
+            Ticket _ticket = new Ticket();
             foreach (TicketCount t in TagCounts)
             {
                 if (t.ReCountQty > 0)
@@ -412,24 +415,28 @@ namespace CAP_Inventory_System
                     }
                 }
 
+                _ticket = (Ticket)_ticketLogic.ReadbyId(t.TicketKey).Result;
 
                 Balance.Rows.Add(
-                      t.TagCountKey
-                    , (_ticketLogic.ReadbyId(t.TicketKey).Result as Ticket).TicketCounter
+                     _ticket.TicketCounter
                     , t.ItemNumber
                     , t.ItemDescription
                     , t.STK
                     , t.BIN
-                    , "DocNum"
+                    , DocNum
                     , t.InventoryQty
                     , countedQty
                     , ActionCode
+                    , t.IC
                     , t.Balance
-                    , "ReasonCode"
-                    , "InvAccount"
+                    , ReasonCode
+                    , InvAccount
                     , t.UM
                     , t.LotNumber
-                    , "Remark"
+                    , "IE: " + ActiveEventName + " Inva: Tag " + (_ticketLogic.ReadbyId(t.TicketKey).Result as Ticket).TicketCounter.ToString()
+                    , _ticket.TicketKey
+                    , t.TagCountKey
+                    , t.VoidTag
                     );
             }
 

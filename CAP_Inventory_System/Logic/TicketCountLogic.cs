@@ -43,6 +43,16 @@ namespace CAP_Inventory_System.Logic
                 return List;
             }
         }
+        public List<TicketCount> ReadAllTicketCountsforEvent(int EventId)
+        {
+            using (CAPA_INVContext context = new CAPA_INVContext())
+            {
+                List<TicketCount> List = new List<TicketCount>();
+                // && r.Ticket.cat_TicketTypeKey == 1
+                List = context.TicketCounts.Where(r => (r.Ticket.InventoryEventKey == EventId)).ToList();
+                return List;
+            }
+        }
         public List<TicketCount> ReadAll(int Ticket_Id)
         {
             using (CAPA_INVContext context = new CAPA_INVContext())
@@ -59,7 +69,7 @@ namespace CAP_Inventory_System.Logic
             {
                 using (CAPA_INVContext context = new CAPA_INVContext())
                 {
-                    e = context.TicketCounts.FirstOrDefault(r => (r.TagCountKey == e.TagCountKey && r.Ticket.cat_TicketTypeKey==2));
+                    e = context.TicketCounts.FirstOrDefault(r => (r.TagCountKey == e.TagCountKey && r.Ticket.cat_TicketType.TicketType== "TicketCount"));
                     if (e != null)
                     {
                         response.Success(e, "OK");

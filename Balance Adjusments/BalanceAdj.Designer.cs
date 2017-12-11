@@ -43,29 +43,45 @@
             this.tb_FSUser = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tp_TransactionAdmin = new System.Windows.Forms.TabPage();
+            this.gb_TransactionInfo = new System.Windows.Forms.GroupBox();
+            this.b_CreateFSTI = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.b_LoadTags = new System.Windows.Forms.Button();
+            this.tb_InvAccount = new System.Windows.Forms.TextBox();
+            this.tb_DocNo = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tb_ReasonCode = new System.Windows.Forms.TextBox();
             this.dgv_BalanceTags = new System.Windows.Forms.DataGridView();
             this.l_EventStatus = new System.Windows.Forms.Label();
             this.cb_Lock = new System.Windows.Forms.CheckBox();
             this.cb_InvEvent = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.b_LoadTags = new System.Windows.Forms.Button();
+            this.tp_TransactionProcess = new System.Windows.Forms.TabPage();
+            this.gb_TransactionProcess = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tc_InvBalanceAdj.SuspendLayout();
             this.tp_FSCfg.SuspendLayout();
             this.gb_FSCredentials.SuspendLayout();
             this.tp_TransactionAdmin.SuspendLayout();
+            this.gb_TransactionInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_BalanceTags)).BeginInit();
+            this.tp_TransactionProcess.SuspendLayout();
+            this.gb_TransactionProcess.SuspendLayout();
             this.SuspendLayout();
             // 
             // tc_InvBalanceAdj
             // 
             this.tc_InvBalanceAdj.Controls.Add(this.tp_FSCfg);
             this.tc_InvBalanceAdj.Controls.Add(this.tp_TransactionAdmin);
+            this.tc_InvBalanceAdj.Controls.Add(this.tp_TransactionProcess);
             this.tc_InvBalanceAdj.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tc_InvBalanceAdj.Location = new System.Drawing.Point(0, 0);
             this.tc_InvBalanceAdj.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tc_InvBalanceAdj.Name = "tc_InvBalanceAdj";
             this.tc_InvBalanceAdj.SelectedIndex = 0;
-            this.tc_InvBalanceAdj.Size = new System.Drawing.Size(976, 640);
+            this.tc_InvBalanceAdj.Size = new System.Drawing.Size(976, 704);
             this.tc_InvBalanceAdj.TabIndex = 0;
             // 
             // tp_FSCfg
@@ -79,7 +95,7 @@
             this.tp_FSCfg.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tp_FSCfg.Name = "tp_FSCfg";
             this.tp_FSCfg.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tp_FSCfg.Size = new System.Drawing.Size(968, 611);
+            this.tp_FSCfg.Size = new System.Drawing.Size(968, 675);
             this.tp_FSCfg.TabIndex = 0;
             this.tp_FSCfg.Text = "FS Configuration";
             this.tp_FSCfg.UseVisualStyleBackColor = true;
@@ -94,7 +110,7 @@
             this.rtb_Log.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rtb_Log.Name = "rtb_Log";
             this.rtb_Log.ReadOnly = true;
-            this.rtb_Log.Size = new System.Drawing.Size(927, 274);
+            this.rtb_Log.Size = new System.Drawing.Size(927, 344);
             this.rtb_Log.TabIndex = 5;
             this.rtb_Log.Text = "";
             // 
@@ -216,7 +232,7 @@
             // 
             // tp_TransactionAdmin
             // 
-            this.tp_TransactionAdmin.Controls.Add(this.b_LoadTags);
+            this.tp_TransactionAdmin.Controls.Add(this.gb_TransactionInfo);
             this.tp_TransactionAdmin.Controls.Add(this.dgv_BalanceTags);
             this.tp_TransactionAdmin.Controls.Add(this.l_EventStatus);
             this.tp_TransactionAdmin.Controls.Add(this.cb_Lock);
@@ -226,21 +242,116 @@
             this.tp_TransactionAdmin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tp_TransactionAdmin.Name = "tp_TransactionAdmin";
             this.tp_TransactionAdmin.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tp_TransactionAdmin.Size = new System.Drawing.Size(968, 611);
+            this.tp_TransactionAdmin.Size = new System.Drawing.Size(968, 675);
             this.tp_TransactionAdmin.TabIndex = 1;
             this.tp_TransactionAdmin.Text = "Transaction Administration";
             this.tp_TransactionAdmin.UseVisualStyleBackColor = true;
             // 
+            // gb_TransactionInfo
+            // 
+            this.gb_TransactionInfo.Controls.Add(this.b_CreateFSTI);
+            this.gb_TransactionInfo.Controls.Add(this.label6);
+            this.gb_TransactionInfo.Controls.Add(this.b_LoadTags);
+            this.gb_TransactionInfo.Controls.Add(this.tb_InvAccount);
+            this.gb_TransactionInfo.Controls.Add(this.tb_DocNo);
+            this.gb_TransactionInfo.Controls.Add(this.label5);
+            this.gb_TransactionInfo.Controls.Add(this.label4);
+            this.gb_TransactionInfo.Controls.Add(this.tb_ReasonCode);
+            this.gb_TransactionInfo.Enabled = false;
+            this.gb_TransactionInfo.Location = new System.Drawing.Point(30, 62);
+            this.gb_TransactionInfo.Name = "gb_TransactionInfo";
+            this.gb_TransactionInfo.Size = new System.Drawing.Size(910, 110);
+            this.gb_TransactionInfo.TabIndex = 22;
+            this.gb_TransactionInfo.TabStop = false;
+            this.gb_TransactionInfo.Text = "Transaction Information";
+            // 
+            // b_CreateFSTI
+            // 
+            this.b_CreateFSTI.Enabled = false;
+            this.b_CreateFSTI.Location = new System.Drawing.Point(745, 76);
+            this.b_CreateFSTI.Name = "b_CreateFSTI";
+            this.b_CreateFSTI.Size = new System.Drawing.Size(146, 28);
+            this.b_CreateFSTI.TabIndex = 24;
+            this.b_CreateFSTI.Text = "Create Transaction";
+            this.b_CreateFSTI.UseVisualStyleBackColor = true;
+            this.b_CreateFSTI.Click += new System.EventHandler(this.b_CreateFSTI_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(627, 32);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(97, 17);
+            this.label6.TabIndex = 23;
+            this.label6.Text = "Inv Account:";
+            // 
+            // b_LoadTags
+            // 
+            this.b_LoadTags.Enabled = false;
+            this.b_LoadTags.Location = new System.Drawing.Point(591, 76);
+            this.b_LoadTags.Name = "b_LoadTags";
+            this.b_LoadTags.Size = new System.Drawing.Size(146, 28);
+            this.b_LoadTags.TabIndex = 17;
+            this.b_LoadTags.Text = "Load Tags";
+            this.b_LoadTags.UseVisualStyleBackColor = true;
+            this.b_LoadTags.Click += new System.EventHandler(this.b_LoadTags_Click);
+            // 
+            // tb_InvAccount
+            // 
+            this.tb_InvAccount.Location = new System.Drawing.Point(745, 29);
+            this.tb_InvAccount.Name = "tb_InvAccount";
+            this.tb_InvAccount.Size = new System.Drawing.Size(146, 22);
+            this.tb_InvAccount.TabIndex = 22;
+            // 
+            // tb_DocNo
+            // 
+            this.tb_DocNo.Location = new System.Drawing.Point(140, 29);
+            this.tb_DocNo.Name = "tb_DocNo";
+            this.tb_DocNo.Size = new System.Drawing.Size(146, 22);
+            this.tb_DocNo.TabIndex = 18;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(324, 32);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(110, 17);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "Reason Code:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(22, 32);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(110, 17);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "Document No:";
+            // 
+            // tb_ReasonCode
+            // 
+            this.tb_ReasonCode.Location = new System.Drawing.Point(442, 29);
+            this.tb_ReasonCode.Name = "tb_ReasonCode";
+            this.tb_ReasonCode.Size = new System.Drawing.Size(146, 22);
+            this.tb_ReasonCode.TabIndex = 20;
+            // 
             // dgv_BalanceTags
             // 
+            this.dgv_BalanceTags.AllowUserToAddRows = false;
+            this.dgv_BalanceTags.AllowUserToDeleteRows = false;
             this.dgv_BalanceTags.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv_BalanceTags.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_BalanceTags.Location = new System.Drawing.Point(30, 68);
+            this.dgv_BalanceTags.Location = new System.Drawing.Point(30, 187);
             this.dgv_BalanceTags.Name = "dgv_BalanceTags";
+            this.dgv_BalanceTags.ReadOnly = true;
             this.dgv_BalanceTags.RowTemplate.Height = 24;
-            this.dgv_BalanceTags.Size = new System.Drawing.Size(910, 518);
+            this.dgv_BalanceTags.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_BalanceTags.Size = new System.Drawing.Size(910, 463);
             this.dgv_BalanceTags.TabIndex = 16;
             // 
             // l_EventStatus
@@ -285,21 +396,50 @@
             this.label3.TabIndex = 12;
             this.label3.Text = "Inventory Event List:";
             // 
-            // b_LoadTags
+            // tp_TransactionProcess
             // 
-            this.b_LoadTags.Location = new System.Drawing.Point(832, 18);
-            this.b_LoadTags.Name = "b_LoadTags";
-            this.b_LoadTags.Size = new System.Drawing.Size(108, 24);
-            this.b_LoadTags.TabIndex = 17;
-            this.b_LoadTags.Text = "Load Tags";
-            this.b_LoadTags.UseVisualStyleBackColor = true;
-            this.b_LoadTags.Click += new System.EventHandler(this.b_LoadTags_Click);
+            this.tp_TransactionProcess.Controls.Add(this.gb_TransactionProcess);
+            this.tp_TransactionProcess.Location = new System.Drawing.Point(4, 25);
+            this.tp_TransactionProcess.Name = "tp_TransactionProcess";
+            this.tp_TransactionProcess.Padding = new System.Windows.Forms.Padding(3);
+            this.tp_TransactionProcess.Size = new System.Drawing.Size(968, 675);
+            this.tp_TransactionProcess.TabIndex = 2;
+            this.tp_TransactionProcess.Text = "Transaction Process";
+            this.tp_TransactionProcess.UseVisualStyleBackColor = true;
+            // 
+            // gb_TransactionProcess
+            // 
+            this.gb_TransactionProcess.Controls.Add(this.richTextBox1);
+            this.gb_TransactionProcess.Controls.Add(this.label7);
+            this.gb_TransactionProcess.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gb_TransactionProcess.Location = new System.Drawing.Point(3, 3);
+            this.gb_TransactionProcess.Name = "gb_TransactionProcess";
+            this.gb_TransactionProcess.Size = new System.Drawing.Size(962, 669);
+            this.gb_TransactionProcess.TabIndex = 0;
+            this.gb_TransactionProcess.TabStop = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(51, 48);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(46, 17);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "label7";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(15, 159);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(928, 489);
+            this.richTextBox1.TabIndex = 1;
+            this.richTextBox1.Text = "";
             // 
             // f_BalanceAdj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(976, 640);
+            this.ClientSize = new System.Drawing.Size(976, 704);
             this.Controls.Add(this.tc_InvBalanceAdj);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -313,7 +453,12 @@
             this.gb_FSCredentials.PerformLayout();
             this.tp_TransactionAdmin.ResumeLayout(false);
             this.tp_TransactionAdmin.PerformLayout();
+            this.gb_TransactionInfo.ResumeLayout(false);
+            this.gb_TransactionInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_BalanceTags)).EndInit();
+            this.tp_TransactionProcess.ResumeLayout(false);
+            this.gb_TransactionProcess.ResumeLayout(false);
+            this.gb_TransactionProcess.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -340,6 +485,18 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dgv_BalanceTags;
         private System.Windows.Forms.Button b_LoadTags;
+        private System.Windows.Forms.TabPage tp_TransactionProcess;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox tb_DocNo;
+        private System.Windows.Forms.GroupBox gb_TransactionInfo;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox tb_InvAccount;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox tb_ReasonCode;
+        private System.Windows.Forms.Button b_CreateFSTI;
+        private System.Windows.Forms.GroupBox gb_TransactionProcess;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label label7;
     }
 }
 
