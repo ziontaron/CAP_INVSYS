@@ -123,7 +123,7 @@ namespace Balance_Adjusments
         private void b_CloseConnection_Click(object sender, EventArgs e)
         {
             FSTI.AmalgammaFSTI_Stop();
-            FS_ConfLog("info", "Fourth Shift Client is closed now.");
+            FS_ConfLog(ref rtb_Log, "info", "Fourth Shift Client is closed now.");
             b_Connec2FS.Text = "Connect to FS";
             b_Connec2FS.Enabled = true;
             b_CloseConnection.Enabled = false;
@@ -132,14 +132,14 @@ namespace Balance_Adjusments
         private void b_Connec2FS_Click(object sender, EventArgs e)
         {
             FSTI = new AmalgammaFSTI(tb_FSCFGFile.Text, tb_FSUser.Text, tb_FSPassword.Text);
-            FS_ConfLog("info", "Fourth Shift Client configuration loaded.");
+            FS_ConfLog(ref rtb_Log, "info", "Fourth Shift Client configuration loaded.");
 
             if (FSTI.AmalgammaFSTI_Initialization())
             {
-                FS_ConfLog("success", "Fourth Shift Client has been Initialized.");
+                FS_ConfLog(ref rtb_Log, "success", "Fourth Shift Client has been Initialized.");
                 if (FSTI.AmalgammaFSTI_Logon())
                 {
-                    FS_ConfLog("success", "Fourth Shift Client loged on sucessfully.");
+                    FS_ConfLog(ref rtb_Log, "success", "Fourth Shift Client loged on sucessfully.");
                     b_Connec2FS.Enabled = false;
                     b_CloseConnection.Enabled = true;
                     gb_FSCredentials.Enabled = false;
@@ -147,12 +147,12 @@ namespace Balance_Adjusments
                 }
                 else
                 {
-                    FS_ConfLog("error", "Fourth Shift Client fail to login.");
+                    FS_ConfLog(ref rtb_Log, "error", "Fourth Shift Client fail to login.");
                 }
             }
             else
             {
-                FS_ConfLog("error", "Fourth Shift Client has not been Initialized.\n"
+                FS_ConfLog(ref rtb_Log, "error", "Fourth Shift Client has not been Initialized.\n"
                     +" >Error Mg: "+FSTI.FSTI_ErrorMsg);
             }
         }
