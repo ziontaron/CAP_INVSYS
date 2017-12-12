@@ -172,6 +172,7 @@ namespace Balance_Adjusments
                 b_LoadTags.Enabled = false;
                 gb_TransactionInfo.Enabled = false;
             }
+
         }
         private void b_LoadTags_Click(object sender, EventArgs e)
         {

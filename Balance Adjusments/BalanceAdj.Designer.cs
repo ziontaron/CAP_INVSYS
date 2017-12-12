@@ -421,6 +421,7 @@
             this.gb_TransactionProcess.Controls.Add(this.tb_FSTITransactionsQty);
             this.gb_TransactionProcess.Controls.Add(this.label7);
             this.gb_TransactionProcess.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gb_TransactionProcess.Enabled = false;
             this.gb_TransactionProcess.Location = new System.Drawing.Point(3, 3);
             this.gb_TransactionProcess.Name = "gb_TransactionProcess";
             this.gb_TransactionProcess.Size = new System.Drawing.Size(962, 669);
@@ -469,6 +470,7 @@
             // 
             // rtb_FSTI_Log
             // 
+            this.rtb_FSTI_Log.BackColor = System.Drawing.Color.White;
             this.rtb_FSTI_Log.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtb_FSTI_Log.Location = new System.Drawing.Point(3, 3);
             this.rtb_FSTI_Log.Name = "rtb_FSTI_Log";
