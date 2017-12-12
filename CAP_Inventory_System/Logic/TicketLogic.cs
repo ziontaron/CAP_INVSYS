@@ -8,11 +8,11 @@ namespace CAP_Inventory_System.Logic
 {
     class TicketLogic : ICRUD<Ticket>
     {
-        private readonly CAPA_INVContext _context;
-        public TicketLogic(CAPA_INVContext context)
-        {
-            _context = context;
-        }
+        //private readonly CAPA_INVContext _context;
+        //public TicketLogic(CAPA_INVContext lcontext)
+        //{
+        //    _context = lcontext;
+        //}
         public TicketLogic()
         {
             
@@ -25,13 +25,13 @@ namespace CAP_Inventory_System.Logic
             {
                 using (CAPA_INVContext context = new CAPA_INVContext())
                 {
-                    if (_context.Tickets.FirstOrDefault(r => (r.TicketCounter == e.TicketCounter)
+                    if (context.Tickets.FirstOrDefault(r => (r.TicketCounter == e.TicketCounter)
                     && (r.InventoryEventKey == e.InventoryEventKey)) == null)
                     {
-                        _context.Tickets.Add(e);
+                        context.Tickets.Add(e);
                         try
                         {
-                            _context.SaveChanges();
+                            context.SaveChanges();
                             response.Success(e, "OK");
                         }
                         catch(Exception ex)
@@ -58,7 +58,7 @@ namespace CAP_Inventory_System.Logic
             using (CAPA_INVContext context = new CAPA_INVContext())
             {
                 List<Ticket> List = new List<Ticket>();
-                List = _context.Tickets.ToList();
+                List = context.Tickets.ToList();
                 return List;
             }
         }
@@ -67,7 +67,7 @@ namespace CAP_Inventory_System.Logic
             using (CAPA_INVContext context = new CAPA_INVContext())
             {
                 List<Ticket> List = new List<Ticket>();
-                List = _context.Tickets.Where(r => r.InventoryEventKey == InventoryEvent_Id).ToList();
+                List = context.Tickets.Where(r => r.InventoryEventKey == InventoryEvent_Id).ToList();
                 return List;
             }
         }        
@@ -78,7 +78,7 @@ namespace CAP_Inventory_System.Logic
             {
                 using (CAPA_INVContext context = new CAPA_INVContext())
                 {
-                    e = _context.Tickets.FirstOrDefault(r => r.TicketKey == e.TicketKey);
+                    e = context.Tickets.FirstOrDefault(r => r.TicketKey == e.TicketKey);
                     if (e != null)
                     {
                         response.Success(e, "OK");
@@ -106,7 +106,7 @@ namespace CAP_Inventory_System.Logic
             {
                 using (CAPA_INVContext context = new CAPA_INVContext())
                 {
-                    e = _context.Tickets.FirstOrDefault(r => r.TicketKey == e.TicketKey);
+                    e = context.Tickets.FirstOrDefault(r => r.TicketKey == e.TicketKey);
                     if (e != null)
                     {
                         response.Success(e, "OK");
@@ -132,7 +132,7 @@ namespace CAP_Inventory_System.Logic
             {
                 using (CAPA_INVContext context = new CAPA_INVContext())
                 {
-                    e = _context.Tickets.FirstOrDefault(r => (r.TicketCounter == e.TicketCounter && r.InventoryEventKey == e.InventoryEventKey));
+                    e = context.Tickets.FirstOrDefault(r => (r.TicketCounter == e.TicketCounter && r.InventoryEventKey == e.InventoryEventKey));
                     if (e != null)
                     {
                         response.Success(e, "OK");
@@ -159,7 +159,7 @@ namespace CAP_Inventory_System.Logic
             {
                 using (CAPA_INVContext context = new CAPA_INVContext())
                 {
-                    e = _context.Tickets.FirstOrDefault(r => (r.TicketCounter == e.TicketCounter && r.InventoryEventKey == e.InventoryEventKey));
+                    e = context.Tickets.FirstOrDefault(r => (r.TicketCounter == e.TicketCounter && r.InventoryEventKey == e.InventoryEventKey));
                     if (e != null)
                     {
                         response.Success(e, "OK");
@@ -185,12 +185,12 @@ namespace CAP_Inventory_System.Logic
             {
                 using (CAPA_INVContext context = new CAPA_INVContext())
                 {
-                    Ticket entity = _context.Tickets.FirstOrDefault(r => r.TicketKey == e.TicketKey);
+                    Ticket entity = context.Tickets.FirstOrDefault(r => r.TicketKey == e.TicketKey);
 
                     if (entity != null)
                     {
                         entity = e;
-                        _context.SaveChanges();
+                        context.SaveChanges();
                         response.Success(entity, "OK");
                         return response;
                     }
@@ -214,11 +214,11 @@ namespace CAP_Inventory_System.Logic
             {
                 using (CAPA_INVContext context = new CAPA_INVContext())
                 {
-                    Ticket entity = _context.Tickets.FirstOrDefault(r => r.TicketKey == e.TicketKey);
+                    Ticket entity = context.Tickets.FirstOrDefault(r => r.TicketKey == e.TicketKey);
                     if (entity != null)
                     {
-                        _context.Tickets.Remove(entity);
-                        _context.SaveChanges();
+                        context.Tickets.Remove(entity);
+                        context.SaveChanges();
                         response.Success();
                         return response;
                     }
@@ -240,7 +240,7 @@ namespace CAP_Inventory_System.Logic
             {
                 using (CAPA_INVContext context = new CAPA_INVContext())
                 {
-                    e = _context.Tickets.FirstOrDefault(r => (r.TicketCounter == e.TicketCounter && r.InventoryEventKey== e.InventoryEventKey));
+                    e = context.Tickets.FirstOrDefault(r => (r.TicketCounter == e.TicketCounter && r.InventoryEventKey== e.InventoryEventKey));
                     if (e != null)
                     {
                         response.Success(e, "OK");
@@ -269,7 +269,7 @@ namespace CAP_Inventory_System.Logic
 
                 try
                 {
-                    TagCounter = _context.Tickets.Where(q => q.InventoryEventKey == e.InventoryEventKey).Max(r => r.TicketCounter);
+                    TagCounter = context.Tickets.Where(q => q.InventoryEventKey == e.InventoryEventKey).Max(r => r.TicketCounter);
                 }
                 catch
                 {
