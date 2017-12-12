@@ -6,6 +6,7 @@ namespace CAP_Inventory_System
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    [Table("V_FSTI_Transaction")]
     public partial class V_FSTI_Transaction
     {
         public string InventoryEventName { get; set; }

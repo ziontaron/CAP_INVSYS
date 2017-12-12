@@ -7,13 +7,13 @@ namespace CAP_Inventory_System.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class V_FSTI_TransactionviewSupportadded : IMigrationMetadata
+    public sealed partial class V_FSTI_Transaction : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(V_FSTI_TransactionviewSupportadded));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(V_FSTI_Transaction));
         
         string IMigrationMetadata.Id
         {
-            get { return "201712120135262_V_FSTI_Transaction [view] Support added"; }
+            get { return "201712120150445_V_FSTI_Transaction"; }
         }
         
         string IMigrationMetadata.Source

@@ -203,9 +203,9 @@
     <Compile Include="Migrations\201712042014121_SKT to STK.Designer.cs">
       <DependentUpon>201712042014121_SKT to STK.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712120135262_V_FSTI_Transaction [view] Support added.cs" />
-    <Compile Include="Migrations\201712120135262_V_FSTI_Transaction [view] Support added.Designer.cs">
-      <DependentUpon>201712120135262_V_FSTI_Transaction [view] Support added.cs</DependentUpon>
+    <Compile Include="Migrations\201712120150445_V_FSTI_Transaction.cs" />
+    <Compile Include="Migrations\201712120150445_V_FSTI_Transaction.Designer.cs">
+      <DependentUpon>201712120150445_V_FSTI_Transaction.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Reusable\BaseEntity.cs" />
@@ -297,8 +297,8 @@
     <EmbeddedResource Include="Migrations\201712042014121_SKT to STK.resx">
       <DependentUpon>201712042014121_SKT to STK.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712120135262_V_FSTI_Transaction [view] Support added.resx">
-      <DependentUpon>201712120135262_V_FSTI_Transaction [view] Support added.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712120150445_V_FSTI_Transaction.resx">
+      <DependentUpon>201712120150445_V_FSTI_Transaction.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

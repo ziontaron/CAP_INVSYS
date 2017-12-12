@@ -39,7 +39,7 @@ namespace CAP_Inventory_System.Migrations
 
             #region V_FSTI_Transaction View Setup
             string V_FSTI_Transaction_DROP_V = @"DROP VIEW [dbo].[V_FSTI_Transaction]";
-            string V_FSTI_Transaction_DROP_T = @"DROP TABLE [dbo].[V_FSTI_Transaction]";
+            //string V_FSTI_Transaction_DROP_T = @"DROP TABLE [dbo].[V_FSTI_Transaction]";
             string V_FSTI_Transaction_CREATE = @"CREATE VIEW [dbo].[V_FSTI_Transaction] AS
                                         SELECT dbo.InventoryEvent.InventoryEventName, dbo.Ticket.TicketCounter, dbo.FSTI_Transactions.*
                                         FROM dbo.Ticket INNER JOIN
@@ -47,8 +47,7 @@ namespace CAP_Inventory_System.Migrations
                                         dbo.InventoryEvent ON dbo.Ticket.InventoryEventKey = dbo.InventoryEvent.InventoryEventKey INNER JOIN
                                         dbo.FSTI_Transactions ON dbo.TicketCount.TagCountKey = dbo.FSTI_Transactions.TagCountKey
                                         ";
-            //context.Database.ExecuteSqlCommand(V_FSTI_Transaction);
-            context.DB_MNG.Execute_Command(V_FSTI_Transaction_DROP_T);
+            //context.DB_MNG.Execute_Command(V_FSTI_Transaction_DROP_T);
             context.DB_MNG.Execute_Command(V_FSTI_Transaction_DROP_V);
             context.DB_MNG.Execute_Command(V_FSTI_Transaction_CREATE);
             #endregion
