@@ -417,6 +417,7 @@
             this.gb_TransactionProcess.Size = new System.Drawing.Size(962, 669);
             this.gb_TransactionProcess.TabIndex = 0;
             this.gb_TransactionProcess.TabStop = false;
+            this.gb_TransactionProcess.Text = "Forth Shift Data Upload";
             // 
             // label7
             // 

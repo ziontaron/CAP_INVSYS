@@ -2,16 +2,23 @@ namespace CAP_Inventory_System
 {
     using System;
     using System.Data.Entity;
+    using System.Configuration;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
     using Data_Base_MNG;
+    using System.Data;
 
     public partial class CAPA_INVContext : DbContext
     {
+        public SQL DB_MNG;
         //public CAPA_INVContext() : base("name=CAPA_INVServer")
-        public CAPA_INVContext() : base("name=CAPA_INVLocal")
+        //public CAPA_INVContext() : base("name=CAPA_INVLocal")
         //public CAPA_INVContext() : base("name=CAPA_INVSandBox")
+        public CAPA_INVContext() : base("name=CAPA_INV")
         {
+            string ConnStr = "";
+            ConnStr = ConfigurationManager.ConnectionStrings["CAPA_INV"].ConnectionString;
+            DB_MNG = new SQL(ConnStr);
         }
         public CAPA_INVContext(string conn) : base(conn)
         {
@@ -28,6 +35,9 @@ namespace CAP_Inventory_System
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<FS_ItemMaster> FS_ItemMaster { get; set; }
         public virtual DbSet<FSTI_Transactions> FSTI_Transactions { get; set; }
+        #region Views
+        public virtual DbSet<V_FSTI_Transaction> V_FSTI_Transaction { get; set; }
+        #endregion
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

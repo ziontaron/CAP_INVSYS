@@ -44,6 +44,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -72,6 +73,7 @@
     <Compile Include="EF\CAPA_INVModel.cs" />
     <Compile Include="EF\cat_TicketType.cs" />
     <Compile Include="EF\cat_UserRole.cs" />
+    <Compile Include="EF\V_FSTI_Transaction.cs" />
     <Compile Include="EF\FS_ItemMaster.cs" />
     <Compile Include="EF\InventoryEvent.cs" />
     <Compile Include="EF\MOTagCount.cs" />
@@ -94,6 +96,7 @@
     <Compile Include="Entities\TicketCount.cs" />
     <Compile Include="API\Inventory System API.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="Entities\V_FSTI_Transaction.cs" />
     <Compile Include="Logic\cat_TicketTypeLogic.cs" />
     <Compile Include="Logic\cat_UserRoleLogic.cs" />
     <Compile Include="Logic\FSTI_TransactionLogic.cs" />
@@ -200,6 +203,10 @@
     <Compile Include="Migrations\201712042014121_SKT to STK.Designer.cs">
       <DependentUpon>201712042014121_SKT to STK.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712120135262_V_FSTI_Transaction [view] Support added.cs" />
+    <Compile Include="Migrations\201712120135262_V_FSTI_Transaction [view] Support added.Designer.cs">
+      <DependentUpon>201712120135262_V_FSTI_Transaction [view] Support added.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Reusable\BaseEntity.cs" />
     <Compile Include="Reusable\CommonResponse.cs" />
@@ -290,6 +297,9 @@
     <EmbeddedResource Include="Migrations\201712042014121_SKT to STK.resx">
       <DependentUpon>201712042014121_SKT to STK.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712120135262_V_FSTI_Transaction [view] Support added.resx">
+      <DependentUpon>201712120135262_V_FSTI_Transaction [view] Support added.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BD_MNG\BD_MNG.csproj">
@@ -297,7 +307,11 @@
       <Name>BD_MNG</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="DBViews\V_FSTI_Transaction.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
