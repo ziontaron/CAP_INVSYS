@@ -102,6 +102,8 @@ namespace CAP_Inventory_System
         }
         #endregion
 
+        private CAPA_INVContext context;
+
         #region Entities
         CommonResponse _Response;
         InventoryEvent _ActiveInventoryEvent;
@@ -117,6 +119,7 @@ namespace CAP_Inventory_System
         MOTagCountLogic _moTagCountLogic = new MOTagCountLogic();
         FS_ItemMasterLogic _FS_ItemMasterLogic = new FS_ItemMasterLogic();
         FSTI_TransactionLogic _FSTI_TransactionLogic = new FSTI_TransactionLogic();
+        V_FSTI_TransactionLogic _V_FSTI_TransactionLogic = new V_FSTI_TransactionLogic();
         #endregion
 
         #region Private Properties
@@ -318,6 +321,15 @@ namespace CAP_Inventory_System
             return MOTCount;
         }
         #endregion
+
+        private CAPA_INVContext GetContext()
+        {
+            if (context == null)
+            {
+                context = new CAPA_INVContext();
+            }
+            return context;
+        }
         #endregion
 
         #region Public Functions        

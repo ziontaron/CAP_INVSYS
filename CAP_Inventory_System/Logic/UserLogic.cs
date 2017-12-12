@@ -21,7 +21,7 @@ namespace CAP_Inventory_System.Logic
                         e.UserName = e.UserName.ToUpper();
                         context.Users.Add(e);
                         context.SaveChanges();
-                        response.Success(e, "OK");
+                        response.Success(e, "OK"); 
                         return response;
                     }
                     else

@@ -122,38 +122,37 @@ namespace CAP_Inventory_System
         }
         public TicketTag LoadTag(int Counter)
         {
-            TicketTag _ticketTag = new TicketTag();
-            TicketCount _ticketCount = new TicketCount();
-            Ticket _ticket = new Ticket();
-            TicketLogic _ticketLogic = new TicketLogic();
-            _ticket.InventoryEventKey = ActiveEventId;
-            _ticket.TicketCounter = Counter;
+                TicketTag _ticketTag = new TicketTag();
+                TicketCount _ticketCount = new TicketCount();
+                Ticket _ticket = new Ticket();
+                _ticket.InventoryEventKey = ActiveEventId;
+                _ticket.TicketCounter = Counter;
 
-            _ticket = (Ticket)_ticketLogic.ReadbyName(_ticket).Result;
+                _ticket = (Ticket)_ticketLogic.ReadbyName(_ticket).Result;
 
-            //_ticketCount.Ticket = _ticket;
-            if (_ticket != null)
-            {
-                if (_ticket.cat_TicketTypeKey == 1)
+                //_ticketCount.Ticket = _ticket;
+                if (_ticket != null)
                 {
-                    if (_ticketCountLogic.ReadAll(_ticket.TicketKey).Count > 0)
+                    if (_ticket.cat_TicketTypeKey == 1)
                     {
-                        _ticketCount = _ticketCountLogic.ReadAll(_ticket.TicketKey)[0];
-                        _ticketCount.Ticket = _ticket;
+                        if (_ticketCountLogic.ReadAll(_ticket.TicketKey).Count > 0)
+                        {
+                            _ticketCount = _ticketCountLogic.ReadAll(_ticket.TicketKey)[0];
+                            _ticketCount.Ticket = _ticket;
 
-                        //if (_ticket.TicketCounts.Count > 0)
-                        //{
-                        //    _ticketCount = (TicketCount)_ticket.TicketCounts;
-                        //}
+                            //if (_ticket.TicketCounts.Count > 0)
+                            //{
+                            //    _ticketCount = (TicketCount)_ticket.TicketCounts;
+                            //}
 
-                        //_ticketCount = _ticketCountLogic.ReadAll(_ticket.TicketKey)[0];
+                            //_ticketCount = _ticketCountLogic.ReadAll(_ticket.TicketKey)[0];
 
-                        _ticketTag = Entity2Tag(_ticketCount);
-                        return _ticketTag;
+                            _ticketTag = Entity2Tag(_ticketCount);
+                            return _ticketTag;
+                        }
                     }
                 }
-            }
-            return null;
+                return null;
         }
         public void UpdateTag(TicketTag T)
         {

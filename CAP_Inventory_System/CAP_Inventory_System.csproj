@@ -70,6 +70,7 @@
     <Compile Include="API\TicketType API.cs" />
     <Compile Include="API\User API.cs" />
     <Compile Include="API\UserRole API.cs" />
+    <Compile Include="API\V_FSTI_TransactionLogic API.cs" />
     <Compile Include="EF\CAPA_INVModel.cs" />
     <Compile Include="EF\cat_TicketType.cs" />
     <Compile Include="EF\cat_UserRole.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="Logic\TicketCountLogic.cs" />
     <Compile Include="Logic\TicketLogic.cs" />
     <Compile Include="Logic\UserLogic.cs" />
+    <Compile Include="Logic\V_FSTI_TransactionLogic.cs" />
     <Compile Include="Migrations\201709120249361_LastDB_ver.cs" />
     <Compile Include="Migrations\201709120249361_LastDB_ver.Designer.cs">
       <DependentUpon>201709120249361_LastDB_ver.cs</DependentUpon>
@@ -207,6 +209,10 @@
     <Compile Include="Migrations\201712120150445_V_FSTI_Transaction.Designer.cs">
       <DependentUpon>201712120150445_V_FSTI_Transaction.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712121655010_V_FSTI_Transaction update.cs" />
+    <Compile Include="Migrations\201712121655010_V_FSTI_Transaction update.Designer.cs">
+      <DependentUpon>201712121655010_V_FSTI_Transaction update.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Reusable\BaseEntity.cs" />
     <Compile Include="Reusable\CommonResponse.cs" />
@@ -299,6 +305,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712120150445_V_FSTI_Transaction.resx">
       <DependentUpon>201712120150445_V_FSTI_Transaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712121655010_V_FSTI_Transaction update.resx">
+      <DependentUpon>201712121655010_V_FSTI_Transaction update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

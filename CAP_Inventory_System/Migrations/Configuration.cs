@@ -39,15 +39,16 @@ namespace CAP_Inventory_System.Migrations
 
             #region V_FSTI_Transaction View Setup
             string V_FSTI_Transaction_DROP_V = @"DROP VIEW [dbo].[V_FSTI_Transaction]";
-            //string V_FSTI_Transaction_DROP_T = @"DROP TABLE [dbo].[V_FSTI_Transaction]";
+            string V_FSTI_Transaction_DROP_T = @"DROP TABLE [dbo].[V_FSTI_Transaction]";
             string V_FSTI_Transaction_CREATE = @"CREATE VIEW [dbo].[V_FSTI_Transaction] AS
-                                        SELECT dbo.InventoryEvent.InventoryEventName, dbo.Ticket.TicketCounter, dbo.FSTI_Transactions.*
-                                        FROM dbo.Ticket INNER JOIN
-                                        dbo.TicketCount ON dbo.Ticket.TicketKey = dbo.TicketCount.TicketKey INNER JOIN
-                                        dbo.InventoryEvent ON dbo.Ticket.InventoryEventKey = dbo.InventoryEvent.InventoryEventKey INNER JOIN
-                                        dbo.FSTI_Transactions ON dbo.TicketCount.TagCountKey = dbo.FSTI_Transactions.TagCountKey
-                                        ";
-            //context.DB_MNG.Execute_Command(V_FSTI_Transaction_DROP_T);
+                                       SELECT InventoryEvent.InventoryEventName, Ticket.TicketCounter, FSTI_Transactions.FSTI_Transaction_key, FSTI_Transactions.TransactionType, FSTI_Transactions.TransactionStringFields, 
+                      FSTI_Transactions.TransactionProcessedYN, FSTI_Transactions.FSResponse, FSTI_Transactions.FSError, FSTI_Transactions.DateStampIn, FSTI_Transactions.DateStampOut, 
+                      FSTI_Transactions.FS_PartNo, FSTI_Transactions.TagCountKey, InventoryEvent.InventoryEventKey
+                      FROM Ticket INNER JOIN
+                      TicketCount ON Ticket.TicketKey = TicketCount.TicketKey INNER JOIN
+                      InventoryEvent ON Ticket.InventoryEventKey = InventoryEvent.InventoryEventKey INNER JOIN
+                      FSTI_Transactions ON TicketCount.TagCountKey = FSTI_Transactions.TagCountKey";
+            context.DB_MNG.Execute_Command(V_FSTI_Transaction_DROP_T);
             context.DB_MNG.Execute_Command(V_FSTI_Transaction_DROP_V);
             context.DB_MNG.Execute_Command(V_FSTI_Transaction_CREATE);
             #endregion

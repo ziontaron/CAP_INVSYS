@@ -60,7 +60,11 @@
             this.tp_TransactionProcess = new System.Windows.Forms.TabPage();
             this.gb_TransactionProcess = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.tb_FSTITransactionsQty = new System.Windows.Forms.TextBox();
+            this.b_LoadTransactions = new System.Windows.Forms.Button();
+            this.tp_Log = new System.Windows.Forms.TabPage();
+            this.rtb_FSTI_Log = new System.Windows.Forms.RichTextBox();
+            this.dgv_FSTI_T = new System.Windows.Forms.DataGridView();
             this.tc_InvBalanceAdj.SuspendLayout();
             this.tp_FSCfg.SuspendLayout();
             this.gb_FSCredentials.SuspendLayout();
@@ -69,6 +73,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_BalanceTags)).BeginInit();
             this.tp_TransactionProcess.SuspendLayout();
             this.gb_TransactionProcess.SuspendLayout();
+            this.tp_Log.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_FSTI_T)).BeginInit();
             this.SuspendLayout();
             // 
             // tc_InvBalanceAdj
@@ -76,6 +82,7 @@
             this.tc_InvBalanceAdj.Controls.Add(this.tp_FSCfg);
             this.tc_InvBalanceAdj.Controls.Add(this.tp_TransactionAdmin);
             this.tc_InvBalanceAdj.Controls.Add(this.tp_TransactionProcess);
+            this.tc_InvBalanceAdj.Controls.Add(this.tp_Log);
             this.tc_InvBalanceAdj.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tc_InvBalanceAdj.Location = new System.Drawing.Point(0, 0);
             this.tc_InvBalanceAdj.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -409,7 +416,9 @@
             // 
             // gb_TransactionProcess
             // 
-            this.gb_TransactionProcess.Controls.Add(this.richTextBox1);
+            this.gb_TransactionProcess.Controls.Add(this.dgv_FSTI_T);
+            this.gb_TransactionProcess.Controls.Add(this.b_LoadTransactions);
+            this.gb_TransactionProcess.Controls.Add(this.tb_FSTITransactionsQty);
             this.gb_TransactionProcess.Controls.Add(this.label7);
             this.gb_TransactionProcess.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gb_TransactionProcess.Location = new System.Drawing.Point(3, 3);
@@ -422,19 +431,66 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(51, 48);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(12, 36);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(46, 17);
+            this.label7.Size = new System.Drawing.Size(173, 17);
             this.label7.TabIndex = 0;
-            this.label7.Text = "label7";
+            this.label7.Text = "# of FSTI Transactions";
             // 
-            // richTextBox1
+            // tb_FSTITransactionsQty
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(15, 159);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(928, 489);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "";
+            this.tb_FSTITransactionsQty.Enabled = false;
+            this.tb_FSTITransactionsQty.Location = new System.Drawing.Point(207, 33);
+            this.tb_FSTITransactionsQty.Name = "tb_FSTITransactionsQty";
+            this.tb_FSTITransactionsQty.Size = new System.Drawing.Size(138, 22);
+            this.tb_FSTITransactionsQty.TabIndex = 2;
+            // 
+            // b_LoadTransactions
+            // 
+            this.b_LoadTransactions.Location = new System.Drawing.Point(648, 25);
+            this.b_LoadTransactions.Name = "b_LoadTransactions";
+            this.b_LoadTransactions.Size = new System.Drawing.Size(298, 38);
+            this.b_LoadTransactions.TabIndex = 3;
+            this.b_LoadTransactions.Text = "Load FSTI Transactions";
+            this.b_LoadTransactions.UseVisualStyleBackColor = true;
+            this.b_LoadTransactions.Click += new System.EventHandler(this.b_LoadTransactions_Click);
+            // 
+            // tp_Log
+            // 
+            this.tp_Log.Controls.Add(this.rtb_FSTI_Log);
+            this.tp_Log.Location = new System.Drawing.Point(4, 25);
+            this.tp_Log.Name = "tp_Log";
+            this.tp_Log.Padding = new System.Windows.Forms.Padding(3);
+            this.tp_Log.Size = new System.Drawing.Size(968, 675);
+            this.tp_Log.TabIndex = 3;
+            this.tp_Log.Text = "Log Info";
+            this.tp_Log.UseVisualStyleBackColor = true;
+            // 
+            // rtb_FSTI_Log
+            // 
+            this.rtb_FSTI_Log.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtb_FSTI_Log.Location = new System.Drawing.Point(3, 3);
+            this.rtb_FSTI_Log.Name = "rtb_FSTI_Log";
+            this.rtb_FSTI_Log.ReadOnly = true;
+            this.rtb_FSTI_Log.Size = new System.Drawing.Size(962, 669);
+            this.rtb_FSTI_Log.TabIndex = 2;
+            this.rtb_FSTI_Log.Text = "";
+            // 
+            // dgv_FSTI_T
+            // 
+            this.dgv_FSTI_T.AllowUserToAddRows = false;
+            this.dgv_FSTI_T.AllowUserToDeleteRows = false;
+            this.dgv_FSTI_T.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgv_FSTI_T.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_FSTI_T.Location = new System.Drawing.Point(5, 173);
+            this.dgv_FSTI_T.Name = "dgv_FSTI_T";
+            this.dgv_FSTI_T.ReadOnly = true;
+            this.dgv_FSTI_T.RowTemplate.Height = 24;
+            this.dgv_FSTI_T.Size = new System.Drawing.Size(951, 490);
+            this.dgv_FSTI_T.TabIndex = 4;
             // 
             // f_BalanceAdj
             // 
@@ -460,6 +516,8 @@
             this.tp_TransactionProcess.ResumeLayout(false);
             this.gb_TransactionProcess.ResumeLayout(false);
             this.gb_TransactionProcess.PerformLayout();
+            this.tp_Log.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_FSTI_T)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -496,8 +554,12 @@
         private System.Windows.Forms.TextBox tb_ReasonCode;
         private System.Windows.Forms.Button b_CreateFSTI;
         private System.Windows.Forms.GroupBox gb_TransactionProcess;
-        private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button b_LoadTransactions;
+        private System.Windows.Forms.TextBox tb_FSTITransactionsQty;
+        private System.Windows.Forms.TabPage tp_Log;
+        private System.Windows.Forms.RichTextBox rtb_FSTI_Log;
+        private System.Windows.Forms.DataGridView dgv_FSTI_T;
     }
 }
 

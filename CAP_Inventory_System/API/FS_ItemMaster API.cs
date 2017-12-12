@@ -7,7 +7,7 @@ using System;
 namespace CAP_Inventory_System
 {
     public partial class Inventory_System_API
-    {        
+    {   
         public void AddItemtoIM(DataRow Item)
         {
             FS_ItemMaster FS_Item = new FS_ItemMaster(Item);

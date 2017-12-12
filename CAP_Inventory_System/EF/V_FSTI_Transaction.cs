@@ -10,6 +10,8 @@ namespace CAP_Inventory_System
     public partial class V_FSTI_Transaction
     {
         public string InventoryEventName { get; set; }
+
+        public int InventoryEventKey { get; set; }
         
         public int TicketCounter { get; set; }
 
@@ -33,5 +35,6 @@ namespace CAP_Inventory_System
         public string FS_PartNo { get; set; }
         
         public int TagCountKey { get; set; }
+
     }
 }

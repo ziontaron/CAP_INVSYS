@@ -11,13 +11,14 @@ namespace CAP_Inventory_System
     public partial class CAPA_INVContext : DbContext
     {
         public SQL DB_MNG;
+        //public CAPA_INVContext() : base("name=CAPA_INV")
         //public CAPA_INVContext() : base("name=CAPA_INVServer")
-        //public CAPA_INVContext() : base("name=CAPA_INVLocal")
+        public CAPA_INVContext() : base("name=CAPA_INVLocal")
         //public CAPA_INVContext() : base("name=CAPA_INVSandBox")
-        public CAPA_INVContext() : base("name=CAPA_INV")
         {
-            string ConnStr = "";
-            ConnStr = ConfigurationManager.ConnectionStrings["CAPA_INV"].ConnectionString;
+            //string ConnStr = "";
+            //ConnStr = ConfigurationManager.ConnectionStrings["CAPA_INV"].ConnectionString;
+            string ConnStr = Database.Connection.ConnectionString;
             DB_MNG = new SQL(ConnStr);
         }
         public CAPA_INVContext(string conn) : base(conn)

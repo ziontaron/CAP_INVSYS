@@ -15,6 +15,15 @@ namespace Balance_Adjusments
         Inventory_System_API x = new Inventory_System_API();
         TicketTag _tag = new TicketTag();
         DataTable Tags = new DataTable();
+        DataTable FSTI_T = new DataTable();
+
+        enum LogType
+        {
+            error,
+            success,
+            info
+        };
+
         public f_BalanceAdj(ref Inventory_System_API IE)
         {
             InitializeComponent();
@@ -24,56 +33,29 @@ namespace Balance_Adjusments
         }
 
         #region private Functions
-        //private void FS_ConfLog(string LogType, string LogMessage)
-        //{
-        //    switch (LogType)
-        //    {
-        //        case "error":
-        //            {
-        //                rtb_Log.SelectionColor = Color.Red;
-        //                rtb_Log.AppendText(LogMessage);
-        //                rtb_Log.AppendText("\n");
-        //                break;
-        //            }
-        //        case "success":
-        //            {
-        //                rtb_Log.SelectionColor = Color.DarkGreen;
-        //                rtb_Log.AppendText(LogMessage);
-        //                rtb_Log.AppendText("\n");
-        //                break;
-        //            }
-        //        case "info":
-        //            {
-        //                rtb_Log.SelectionColor = Color.Black;
-        //                rtb_Log.AppendText(LogMessage);
-        //                rtb_Log.AppendText("\n");
-        //                break;
-        //            }
-        //        default:
-        //            {
-        //                break;
-        //            }
-        //    }
-        //}
-        private void FS_ConfLog(ref RichTextBox rtb_Log,  string LogType, string LogMessage)
+        private void LoadFSTITransactions()
         {
-            switch (LogType)
+            FSTI_T = x.ReadAllFSTI_Transactions();
+        }
+        private void DataLogger(ref RichTextBox rtb_Log, LogType _logType, string LogMessage)
+        {
+            switch (_logType)
             {
-                case "error":
+                case LogType.error:
                     {
                         rtb_Log.SelectionColor = Color.Red;
                         rtb_Log.AppendText(LogMessage);
                         rtb_Log.AppendText("\n");
                         break;
                     }
-                case "success":
+                case LogType.success:
                     {
                         rtb_Log.SelectionColor = Color.DarkGreen;
                         rtb_Log.AppendText(LogMessage);
                         rtb_Log.AppendText("\n");
                         break;
                     }
-                case "info":
+                case LogType.info:
                     {
                         rtb_Log.SelectionColor = Color.Black;
                         rtb_Log.AppendText(LogMessage);
@@ -123,7 +105,8 @@ namespace Balance_Adjusments
         private void b_CloseConnection_Click(object sender, EventArgs e)
         {
             FSTI.AmalgammaFSTI_Stop();
-            FS_ConfLog(ref rtb_Log, "info", "Fourth Shift Client is closed now.");
+            DataLogger(ref rtb_Log, LogType.info, "Fourth Shift Client is closed now.");
+            DataLogger(ref rtb_FSTI_Log, LogType.info, "Fourth Shift Client is closed now.");
             b_Connec2FS.Text = "Connect to FS";
             b_Connec2FS.Enabled = true;
             b_CloseConnection.Enabled = false;
@@ -132,14 +115,17 @@ namespace Balance_Adjusments
         private void b_Connec2FS_Click(object sender, EventArgs e)
         {
             FSTI = new AmalgammaFSTI(tb_FSCFGFile.Text, tb_FSUser.Text, tb_FSPassword.Text);
-            FS_ConfLog(ref rtb_Log, "info", "Fourth Shift Client configuration loaded.");
+            DataLogger(ref rtb_Log, LogType.info, "Fourth Shift Client configuration loaded.");
+            DataLogger(ref rtb_FSTI_Log, LogType.info, "Fourth Shift Client configuration loaded.");
 
             if (FSTI.AmalgammaFSTI_Initialization())
             {
-                FS_ConfLog(ref rtb_Log, "success", "Fourth Shift Client has been Initialized.");
+                DataLogger(ref rtb_Log, LogType.success, "Fourth Shift Client has been Initialized.");
+                DataLogger(ref rtb_FSTI_Log, LogType.success, "Fourth Shift Client has been Initialized.");
                 if (FSTI.AmalgammaFSTI_Logon())
                 {
-                    FS_ConfLog(ref rtb_Log, "success", "Fourth Shift Client loged on sucessfully.");
+                    DataLogger(ref rtb_Log, LogType.success, "Fourth Shift Client loged on sucessfully.");
+                    DataLogger(ref rtb_FSTI_Log, LogType.success, "Fourth Shift Client loged on sucessfully.");
                     b_Connec2FS.Enabled = false;
                     b_CloseConnection.Enabled = true;
                     gb_FSCredentials.Enabled = false;
@@ -147,13 +133,16 @@ namespace Balance_Adjusments
                 }
                 else
                 {
-                    FS_ConfLog(ref rtb_Log, "error", "Fourth Shift Client fail to login.");
+                    DataLogger(ref rtb_Log, LogType.error, "Fourth Shift Client fail to login.");
+                    DataLogger(ref rtb_FSTI_Log, LogType.error, "Fourth Shift Client fail to login.");
                 }
             }
             else
             {
-                FS_ConfLog(ref rtb_Log, "error", "Fourth Shift Client has not been Initialized.\n"
-                    +" >Error Mg: "+FSTI.FSTI_ErrorMsg);
+                DataLogger(ref rtb_Log, LogType.error, "Fourth Shift Client has not been Initialized.\n"
+                    + " >Error Mg: " + FSTI.FSTI_ErrorMsg);
+                DataLogger(ref rtb_FSTI_Log, LogType.error, "Fourth Shift Client has not been Initialized.\n"
+                    + " >Error Mg: " + FSTI.FSTI_ErrorMsg);
             }
         }
         private void f_BalanceAdj_FormClosing(object sender, FormClosingEventArgs e)
@@ -211,6 +200,14 @@ namespace Balance_Adjusments
             }
             MessageBox.Show("FSTI Transaction creation finished.");
         }
-        
+
+        private void b_LoadTransactions_Click(object sender, EventArgs e)
+        {
+            dgv_FSTI_T.DataSource = null;
+            LoadFSTITransactions();
+            tb_FSTITransactionsQty.Text = FSTI_T.Rows.Count.ToString();
+            DataLogger(ref rtb_FSTI_Log, LogType.info, tb_FSTITransactionsQty.Text + " Transacctions Loded");
+            dgv_FSTI_T.DataSource = FSTI_T;
+        }
     }
 }
