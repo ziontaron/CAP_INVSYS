@@ -53,6 +53,10 @@ namespace CAP_Inventory_System
 
             _FSTI_TransactionLogic.Create(T);
         }
-      
+        public void Update_FSTI_Transaction(FSTI_Transactions T)
+        {
+            _FSTI_TransactionLogic.Update(T);
+        }
+              
     }
 }

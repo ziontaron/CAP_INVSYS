@@ -114,10 +114,13 @@ namespace CAP_Inventory_System.Logic
 
                     if (entity != null)
                     {
-                        //entity.UserName = e.UserName;
-                        //entity.UserRoleKey = e.UserRoleKey;
+                        entity.TransactionStringFields = e.TransactionStringFields;
+                        entity.TransactionProcessedYN = e.TransactionProcessedYN;
+                        entity.FSResponse = e.FSResponse;
+                        entity.FSError = e.FSError;
+                        entity.DateStampOut = e.DateStampOut;
                         //entity.Password = e.Password;
-                        //context.SaveChanges();
+                        context.SaveChanges();
                         response.Success(entity, "OK");
                         return response;
                     }

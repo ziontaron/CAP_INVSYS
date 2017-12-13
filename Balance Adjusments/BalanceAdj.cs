@@ -91,6 +91,80 @@ namespace Balance_Adjusments
                 l_EventStatus.ForeColor = Color.Red;
             }
         }
+        private FSTI_Transactions DGV2Entity(DataRow r)
+        {
+            FSTI_Transactions _FSTI_Tran = new FSTI_Transactions();
+
+            _FSTI_Tran.FSTI_Transaction_key = (int)r["FSTI_Transaction_key"];
+            _FSTI_Tran.TagCountKey= (int)r["TagCountKey"];
+            _FSTI_Tran.TransactionStringFields = r["TransactionStringFields"].ToString();
+            return _FSTI_Tran;
+        }
+        private void Update_FSTI_Result(FSTI_Transactions FS_t, bool IsError)
+        {
+            if (!IsError)
+            {
+                FS_t.FSError = false;
+                FS_t.FSResponse = FSTI.CDFResponse;
+            }
+            else
+            {
+                FS_t.FSError = true;
+                FS_t.FSResponse = FSTI.Trans_Error_Msg;
+            }
+
+            FS_t.TransactionProcessedYN = true;
+            FS_t.DateStampOut = DateTime.Now;
+            x.Update_FSTI_Transaction(FS_t);
+        }
+
+        private void Process_INVAs()
+        {
+            FSTI_Transactions _FSTI_Tran;
+            string fields = "";
+            string user = "";
+            try
+            {
+                if (FSTI.AmalgammaFSTI_Initialization())
+                {
+                    if (FSTI.AmalgammaFSTI_Logon())
+                    {
+                        // for (int j = 0; j < dgv_FSTI_T.Rows.Count; j++)
+                        for (int j = 0; j < 10; j++)
+                        {
+                            fields = dgv_FSTI_T.Rows[j].Cells[7].Value.ToString();
+                            user = "Inv Sys";
+                            if (FSTI.AmalgammaFSTI_INVA01(fields, user))
+                            {
+                                DataLogger(ref rtb_FSTI_Log, LogType.success, "INVA01 - " + fields + " - Transaction was successfully processed.");
+                                _FSTI_Tran = DGV2Entity(FSTI_T.Rows[j]);
+                                Update_FSTI_Result(_FSTI_Tran, false);
+                            }
+                            else
+                            {
+                                DataLogger(ref rtb_FSTI_Log, LogType.error, "Transaction Failed Tag - " +
+                                    dgv_FSTI_T.Rows[j].Cells["TicketCounter"].Value.ToString() + " - " + FSTI.Trans_Error_Msg);
+                                DataLogger(ref rtb_FSTI_Log, LogType.error, "  -" + dgv_FSTI_T.Rows[j].Cells["TransactionStringFields"].Value.ToString());
+                                if (FSTI.DetailError.Count > 0)
+                                {
+                                    DataLogger(ref rtb_FSTI_Log, LogType.error, ">Detail Error");
+                                    for (int i = 0; i < FSTI.DetailError.Count; i++)
+                                    {
+                                        DataLogger(ref rtb_FSTI_Log, LogType.error, "  -" + FSTI.DetailError[i].ToString());
+                                    }
+                                }
+                                _FSTI_Tran = DGV2Entity(FSTI_T.Rows[j]);
+                                Update_FSTI_Result(_FSTI_Tran, true);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                DataLogger(ref rtb_FSTI_Log, LogType.error, ex.Message);
+            }
+        }
         #endregion
 
         private void b_CFGBrowse_Click(object sender, EventArgs e)
@@ -160,12 +234,14 @@ namespace Balance_Adjusments
                 cb_InvEvent.Enabled = !cb_Lock.Checked;
                 b_LoadTags.Enabled = true;
                 gb_TransactionInfo.Enabled = true;
+                gb_TransactionProcess.Enabled = true;
             }
             else
             {
                 cb_InvEvent.Enabled = true;
                 cb_Lock.Checked = false;
                 b_LoadTags.Enabled = false;
+                gb_TransactionProcess.Enabled = false;
             }
             if (!cb_Lock.Checked)
             {
@@ -176,7 +252,8 @@ namespace Balance_Adjusments
         }
         private void b_LoadTags_Click(object sender, EventArgs e)
         {
-            if (tb_DocNo.Text == "" || tb_ReasonCode.Text == "" || tb_InvAccount.Text == "")
+            //|| tb_ReasonCode.Text == ""
+            if (tb_DocNo.Text == ""  || tb_InvAccount.Text == "")
             {
                 MessageBox.Show("The Transaction Info Fields can not be empty.","ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
@@ -201,7 +278,6 @@ namespace Balance_Adjusments
             }
             MessageBox.Show("FSTI Transaction creation finished.");
         }
-
         private void b_LoadTransactions_Click(object sender, EventArgs e)
         {
             dgv_FSTI_T.DataSource = null;
@@ -209,6 +285,11 @@ namespace Balance_Adjusments
             tb_FSTITransactionsQty.Text = FSTI_T.Rows.Count.ToString();
             DataLogger(ref rtb_FSTI_Log, LogType.info, tb_FSTITransactionsQty.Text + " Transacctions Loded");
             dgv_FSTI_T.DataSource = FSTI_T;
+        }
+
+        private void b_UploadTransactions_Click(object sender, EventArgs e)
+        {
+            Process_INVAs();
         }
     }
 }

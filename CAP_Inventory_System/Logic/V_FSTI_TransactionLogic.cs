@@ -99,7 +99,9 @@ namespace CAP_Inventory_System.Logic
 
         public CommonResponse Update(V_FSTI_Transaction e)
         {
-            throw new NotImplementedException();
+            CommonResponse response = new Reusable.CommonResponse();
+
+            return response;
         }
     }
 }
