@@ -20,5 +20,18 @@ namespace CAP_Inventory_System
             FS_Item t = new FS_Item(FS_Item);
             return t;
         }
+        public List<FS_Item> LoadItemMaster()
+        {
+            List<FS_Item> L = new List<FS_Item>();
+            List<FS_ItemMaster> IM = new List<FS_ItemMaster>();
+            IM = _FS_ItemMasterLogic.ReadAll();
+            foreach (FS_ItemMaster i in IM)
+            {
+                L.Add(new FS_Item(i));
+            }
+
+            return L;
+
+        }
     }
 }

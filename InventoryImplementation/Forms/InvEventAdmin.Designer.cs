@@ -66,6 +66,8 @@
             this.tb_RefreshRateSecs = new System.Windows.Forms.TextBox();
             this.b_RefreshStats = new System.Windows.Forms.Button();
             this.gb_TicketCountStadistics = new System.Windows.Forms.GroupBox();
+            this.l_TicketVoid = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.l_TicketVerified = new System.Windows.Forms.Label();
             this.gb_CountedTikets = new System.Windows.Forms.GroupBox();
@@ -75,8 +77,6 @@
             this.l_TicketBlanks = new System.Windows.Forms.Label();
             this.l_TicketCounts = new System.Windows.Forms.Label();
             this.t_RefreshStatsRate = new System.Windows.Forms.Timer(this.components);
-            this.l_TicketVoid = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.tb_EventAdmin.SuspendLayout();
             this.t_AdminEvent.SuspendLayout();
             this.gb_AdminEvent.SuspendLayout();
@@ -296,6 +296,7 @@
             // 
             // b_MOtagsFromCSV
             // 
+            this.b_MOtagsFromCSV.Enabled = false;
             this.b_MOtagsFromCSV.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.b_MOtagsFromCSV.Location = new System.Drawing.Point(22, 131);
             this.b_MOtagsFromCSV.Name = "b_MOtagsFromCSV";
@@ -307,6 +308,7 @@
             // 
             // b_tagsFromCSV
             // 
+            this.b_tagsFromCSV.Enabled = false;
             this.b_tagsFromCSV.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.b_tagsFromCSV.Location = new System.Drawing.Point(22, 37);
             this.b_tagsFromCSV.Name = "b_tagsFromCSV";
@@ -501,6 +503,26 @@
             this.gb_TicketCountStadistics.TabStop = false;
             this.gb_TicketCountStadistics.Text = "Ticket Tag Counts Stadistics";
             // 
+            // l_TicketVoid
+            // 
+            this.l_TicketVoid.AutoSize = true;
+            this.l_TicketVoid.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.l_TicketVoid.Location = new System.Drawing.Point(183, 118);
+            this.l_TicketVoid.Name = "l_TicketVoid";
+            this.l_TicketVoid.Size = new System.Drawing.Size(17, 17);
+            this.l_TicketVoid.TabIndex = 9;
+            this.l_TicketVoid.Text = "0";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(27, 118);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(132, 17);
+            this.label12.TabIndex = 8;
+            this.label12.Text = "Ticket Tag Void: ";
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -587,26 +609,6 @@
             this.t_RefreshStatsRate.Enabled = true;
             this.t_RefreshStatsRate.Interval = 10000;
             this.t_RefreshStatsRate.Tick += new System.EventHandler(this.t_RefreshStatsRate_Tick);
-            // 
-            // l_TicketVoid
-            // 
-            this.l_TicketVoid.AutoSize = true;
-            this.l_TicketVoid.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.l_TicketVoid.Location = new System.Drawing.Point(183, 118);
-            this.l_TicketVoid.Name = "l_TicketVoid";
-            this.l_TicketVoid.Size = new System.Drawing.Size(17, 17);
-            this.l_TicketVoid.TabIndex = 9;
-            this.l_TicketVoid.Text = "0";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(27, 118);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(132, 17);
-            this.label12.TabIndex = 8;
-            this.label12.Text = "Ticket Tag Void: ";
             // 
             // f_InvEventAdmin
             // 

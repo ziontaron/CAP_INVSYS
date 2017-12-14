@@ -10,12 +10,16 @@ namespace CAP_Inventory_System
     {
         public FS_Item(FS_ItemMaster e)
         {
-            ItemNumber_FSKey = e.ItemNumber_FSKey;
-            ItemNo = e.ItemNumber;
-            ItemDesc = e.ItemDescription;
-            ItemUM = e.ItemUM;
-            ItemRevision = e.ItemRevision;
-            ItemReference1 = e.ItemReference1;
+            if (e != null)
+            {
+                ItemNumber_FSKey = e.ItemNumber_FSKey;
+                ItemNo = e.ItemNumber;
+                ItemDesc = e.ItemDescription;
+                ItemUM = e.ItemUM;
+                ItemRevision = e.ItemRevision;
+                ItemReference1 = e.ItemReference1;
+                Cost = e.TotalRolledCost;
+            }
         }
 
         public int ItemNumber_FSKey { get; set; }
@@ -24,5 +28,6 @@ namespace CAP_Inventory_System
         public string ItemUM { get; set; }
         public string ItemRevision { get; set; }
         public string ItemReference1 { get; set; }
+        public float Cost { get; set; }
     }
 }

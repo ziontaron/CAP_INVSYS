@@ -12,8 +12,8 @@ namespace InventoryImplementation
     {
         Inventory_System_API x = new Inventory_System_API();
         Tools _tools = new Tools();
-        SQL INV_SYS = new SQL(".", "CAPA_INV", "inv_sys", "Capsonic2017!");
-        SQL DBMNG = new SQL("FSSERV", "FSDBMR", "AmalAdmin", "Amalgamma16");
+        //SQL INV_SYS = new SQL(".", "CAPA_INV", "inv_sys", "Capsonic2017!");
+        //SQL DBMNG = new SQL("FSSERV", "FSDBMR", "AmalAdmin", "Amalgamma16");
         //SQL INV_SYS = new SQL("rsserver", "CAPA_INV", "inv_sys", "Capsonic2017!");
 
         public f_InvEventAdmin(ref Inventory_System_API IE)
@@ -325,6 +325,10 @@ namespace InventoryImplementation
         private void b_LoadFSIM_Click(object sender, EventArgs e)
         {
             string ItemMaster_Q = @"SELECT * FROM _CAP_INV_SYS_ItemMaster";
+
+            CAPA_INVContext context = new CAPA_INVContext();
+            SQL DBMNG = context.DB_MNG_FS;
+
             DataTable Item_Master_T = DBMNG.Execute_Query(ItemMaster_Q);
 
             for(int i=0;i<Item_Master_T.Rows.Count;i++)
@@ -332,6 +336,7 @@ namespace InventoryImplementation
                 x.AddItemtoIM(Item_Master_T.Rows[i]);
             }
 
+            context.Dispose();
         }
     }
 }

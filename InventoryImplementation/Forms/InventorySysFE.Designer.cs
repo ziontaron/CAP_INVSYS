@@ -37,6 +37,7 @@
             this.gb_SysAdmin = new System.Windows.Forms.GroupBox();
             this.b_BalanceAdj = new System.Windows.Forms.Button();
             this.b_UserAdmin = new System.Windows.Forms.Button();
+            this.b_ItemMaster = new System.Windows.Forms.Button();
             this.gb_CountFunctions.SuspendLayout();
             this.gb_EventAdmin.SuspendLayout();
             this.gb_SysAdmin.SuspendLayout();
@@ -44,6 +45,7 @@
             // 
             // gb_CountFunctions
             // 
+            this.gb_CountFunctions.Controls.Add(this.b_ItemMaster);
             this.gb_CountFunctions.Controls.Add(this.b_MOTag);
             this.gb_CountFunctions.Controls.Add(this.b_TagCapture);
             this.gb_CountFunctions.Enabled = false;
@@ -57,9 +59,9 @@
             // b_MOTag
             // 
             this.b_MOTag.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.b_MOTag.Location = new System.Drawing.Point(27, 139);
+            this.b_MOTag.Location = new System.Drawing.Point(27, 101);
             this.b_MOTag.Name = "b_MOTag";
-            this.b_MOTag.Size = new System.Drawing.Size(151, 86);
+            this.b_MOTag.Size = new System.Drawing.Size(151, 58);
             this.b_MOTag.TabIndex = 2;
             this.b_MOTag.Text = "MO Tag Capture";
             this.b_MOTag.UseVisualStyleBackColor = true;
@@ -70,7 +72,7 @@
             this.b_TagCapture.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.b_TagCapture.Location = new System.Drawing.Point(27, 37);
             this.b_TagCapture.Name = "b_TagCapture";
-            this.b_TagCapture.Size = new System.Drawing.Size(151, 86);
+            this.b_TagCapture.Size = new System.Drawing.Size(151, 58);
             this.b_TagCapture.TabIndex = 1;
             this.b_TagCapture.Text = "Tag Capture";
             this.b_TagCapture.UseVisualStyleBackColor = true;
@@ -134,6 +136,17 @@
             this.b_UserAdmin.UseVisualStyleBackColor = true;
             this.b_UserAdmin.Click += new System.EventHandler(this.b_UserAdmin_Click);
             // 
+            // b_ItemMaster
+            // 
+            this.b_ItemMaster.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.b_ItemMaster.Location = new System.Drawing.Point(27, 165);
+            this.b_ItemMaster.Name = "b_ItemMaster";
+            this.b_ItemMaster.Size = new System.Drawing.Size(151, 58);
+            this.b_ItemMaster.TabIndex = 3;
+            this.b_ItemMaster.Text = "MO Tag Capture";
+            this.b_ItemMaster.UseVisualStyleBackColor = true;
+            this.b_ItemMaster.Click += new System.EventHandler(this.b_ItemMaster_Click);
+            // 
             // f_InventorySysFE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -165,5 +178,6 @@
         private System.Windows.Forms.GroupBox gb_SysAdmin;
         private System.Windows.Forms.Button b_UserAdmin;
         private System.Windows.Forms.Button b_BalanceAdj;
+        private System.Windows.Forms.Button b_ItemMaster;
     }
 }

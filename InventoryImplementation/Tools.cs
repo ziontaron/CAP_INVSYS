@@ -29,11 +29,15 @@ namespace InventoryImplementation
         }
         public void Load_Tags_From_SQL(ref Inventory_System_API x)
         {
-            SQL DBMNG = new SQL("FSSERV", "FSDBMR", "AmalAdmin", "Amalgamma16");
+            //SQL DBMNG = new SQL("FSSERV", "FSDBMR", "AmalAdmin", "Amalgamma16");
+
+            CAPA_INVContext context = new CAPA_INVContext();
+            SQL DBMNG = context.DB_MNG_FS;
+
             DataTable TicketTags = new DataTable();
             List<TicketTag> L = new List<TicketTag>();
 
-            string _query = @"select * from [_CAP_INV_SYS_TicketCount_Tag]";
+            string _query = @"select * from [FSDBMR].[dbo].[_CAP_INV_SYS_TicketCount_Tag]";
 
             TicketTags = DBMNG.Execute_Query(_query);
 
@@ -47,6 +51,7 @@ namespace InventoryImplementation
             {
                 x.CreateCountTiket(L[j]);
             }
+            context.Dispose();
         }
         public void Load_Tags_From_Random(ref Inventory_System_API x, int No_Tags)
         {
@@ -108,7 +113,11 @@ namespace InventoryImplementation
         }
         public void Load_MOTags_From_SQL(ref Inventory_System_API x)
         {
-            SQL DBMNG = new SQL("FSSERV", "FSDBMR", "AmalAdmin", "Amalgamma16");
+            //SQL DBMNG = new SQL("FSSERV", "FSDBMR", "AmalAdmin", "Amalgamma16");
+
+            CAPA_INVContext context = new CAPA_INVContext();
+            SQL DBMNG = context.DB_MNG_FS;
+
             DataTable TicketMOTags = new DataTable();
             List<MOTag> L = new List<MOTag>();
             MOTag MOTag2Save = new MOTag();
@@ -142,6 +151,7 @@ namespace InventoryImplementation
             //{
             //    x.CreateMOHeaderTag(L[j]);
             //}
+            context.Dispose();
         }
     }
 }

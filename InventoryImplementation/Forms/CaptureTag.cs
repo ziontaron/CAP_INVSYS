@@ -362,12 +362,20 @@ namespace InventoryImplementation
         private void LoadFSItemInfo(string PN)
         {
             FS_Item item = x.LoadItemNo(PN);
-            _tag.ItemNumber = item.ItemNo;
-            _tag.ItemDescription = item.ItemDesc;
-            _tag.ItemUM = item.ItemUM;
-            _tag.ItemReference1 = item.ItemReference1;
-            _tag.ItemNumber_FSKey = item.ItemNumber_FSKey;
-            LoadTagInfo(_tag);
+            if (item.ItemNo != null)
+            {
+                _tag.ItemNumber = item.ItemNo;
+                _tag.ItemDescription = item.ItemDesc;
+                _tag.ItemUM = item.ItemUM;
+                _tag.ItemReference1 = item.ItemReference1;
+                _tag.ItemNumber_FSKey = item.ItemNumber_FSKey;
+                LoadTagInfo(_tag);
+            }
+            else
+            {
+                _tag.ItemNumber = "";
+                MessageBox.Show("Part No was not foud in the Item Master","ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
         }
         #endregion
 
@@ -525,8 +533,14 @@ namespace InventoryImplementation
             if (e.KeyValue == 13)
             {
                 LoadFSItemInfo(tb_ItemNo.Text);
-
-                tb_ItemDesc.Focus();
+                if (tb_ItemDesc.Text == "")
+                {
+                    tb_ItemNo.Focus();
+                }
+                else
+                {
+                    tb_ItemDesc.Focus();
+                }
             }
         }
         private void tb_ItemDesc_KeyDown(object sender, KeyEventArgs e)

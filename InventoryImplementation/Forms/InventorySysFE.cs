@@ -14,6 +14,7 @@ namespace InventoryImplementation
 {
     public partial class f_InventorySysFE : Form
     {
+        f_Item_Master f_IM;
         Inventory_System_API x = new Inventory_System_API();
         f_InventoryLogin login = new f_InventoryLogin();
         public f_InventorySysFE()
@@ -75,5 +76,11 @@ namespace InventoryImplementation
         }
         #endregion
 
+        private void b_ItemMaster_Click(object sender, EventArgs e)
+        {
+            f_IM = new f_Item_Master(ref x);
+            f_IM.ShowDialog();
+            //MessageBox.Show("Selected Part: " + f_IM.PartNo);
+        }
     }
 }

@@ -17,6 +17,8 @@ namespace Balance_Adjusments
         DataTable Tags = new DataTable();
         DataTable FSTI_T = new DataTable();
 
+        TOOLS.Dataloger LOGGER;
+
         enum LogType
         {
             error,
@@ -117,20 +119,20 @@ namespace Balance_Adjusments
             FS_t.DateStampOut = DateTime.Now;
             x.Update_FSTI_Transaction(FS_t);
         }
-
         private void Process_INVAs()
         {
             FSTI_Transactions _FSTI_Tran;
             string fields = "";
             string user = "";
+            LOGGER = new TOOLS.Dataloger(x.ActiveEventName, "log", "");
             try
             {
                 if (FSTI.AmalgammaFSTI_Initialization())
                 {
                     if (FSTI.AmalgammaFSTI_Logon())
                     {
-                        // for (int j = 0; j < dgv_FSTI_T.Rows.Count; j++)
-                        for (int j = 0; j < 10; j++)
+                        for (int j = 0; j < dgv_FSTI_T.Rows.Count; j++)
+                        //for (int j = 0; j < 10; j++)
                         {
                             fields = dgv_FSTI_T.Rows[j].Cells[7].Value.ToString();
                             user = "Inv Sys";
@@ -139,6 +141,7 @@ namespace Balance_Adjusments
                                 DataLogger(ref rtb_FSTI_Log, LogType.success, "INVA01 - " + fields + " - Transaction was successfully processed.");
                                 _FSTI_Tran = DGV2Entity(FSTI_T.Rows[j]);
                                 Update_FSTI_Result(_FSTI_Tran, false);
+                                LOGGER.WriteLogLine(TOOLS.Dataloger.Category.Info, _FSTI_Tran.FSResponse);
                             }
                             else
                             {
@@ -155,6 +158,7 @@ namespace Balance_Adjusments
                                 }
                                 _FSTI_Tran = DGV2Entity(FSTI_T.Rows[j]);
                                 Update_FSTI_Result(_FSTI_Tran, true);
+                                LOGGER.WriteLogLine(TOOLS.Dataloger.Category.Error, _FSTI_Tran.FSResponse);
                             }
                         }
                     }
@@ -271,7 +275,9 @@ namespace Balance_Adjusments
         {
             for (int i = 0; i < Tags.Rows.Count; i++)
             {
-                if (Tags.Rows[i]["ItemNumber"].ToString() != "" && Tags.Rows[i]["Void"].ToString() != "true")
+                if (Tags.Rows[i]["ItemNumber"].ToString() != "" 
+                    && Tags.Rows[i]["Void"].ToString() != "true" 
+                    && Tags.Rows[i]["ActionCode"].ToString() != "=")
                 {
                     x.CreateFSTITransaction(Tags.Rows[i]);
                 }
@@ -286,7 +292,6 @@ namespace Balance_Adjusments
             DataLogger(ref rtb_FSTI_Log, LogType.info, tb_FSTITransactionsQty.Text + " Transacctions Loded");
             dgv_FSTI_T.DataSource = FSTI_T;
         }
-
         private void b_UploadTransactions_Click(object sender, EventArgs e)
         {
             Process_INVAs();
