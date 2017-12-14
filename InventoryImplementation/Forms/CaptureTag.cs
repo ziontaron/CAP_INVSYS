@@ -530,12 +530,17 @@ namespace InventoryImplementation
         }        
         private void tb_ItemNo_KeyDown(object sender, KeyEventArgs e)
         {
+            f_Item_Master f_IM; 
             if (e.KeyValue == 13)
             {
                 LoadFSItemInfo(tb_ItemNo.Text);
                 if (tb_ItemDesc.Text == "")
                 {
+                    f_IM = new f_Item_Master(ref x,tb_ItemNo.Text);
+                    f_IM.ShowDialog();
                     tb_ItemNo.Focus();
+                    tb_ItemNo.Text = f_IM.PartNo;
+                    LoadFSItemInfo(tb_ItemNo.Text);
                 }
                 else
                 {

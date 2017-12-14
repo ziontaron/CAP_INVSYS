@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(f_InventorySysFE));
             this.gb_CountFunctions = new System.Windows.Forms.GroupBox();
+            this.b_ItemMaster = new System.Windows.Forms.Button();
             this.b_MOTag = new System.Windows.Forms.Button();
             this.b_TagCapture = new System.Windows.Forms.Button();
             this.b_AdminForm = new System.Windows.Forms.Button();
@@ -37,7 +38,6 @@
             this.gb_SysAdmin = new System.Windows.Forms.GroupBox();
             this.b_BalanceAdj = new System.Windows.Forms.Button();
             this.b_UserAdmin = new System.Windows.Forms.Button();
-            this.b_ItemMaster = new System.Windows.Forms.Button();
             this.gb_CountFunctions.SuspendLayout();
             this.gb_EventAdmin.SuspendLayout();
             this.gb_SysAdmin.SuspendLayout();
@@ -56,10 +56,21 @@
             this.gb_CountFunctions.TabStop = false;
             this.gb_CountFunctions.Text = "Counter Functions";
             // 
+            // b_ItemMaster
+            // 
+            this.b_ItemMaster.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.b_ItemMaster.Location = new System.Drawing.Point(27, 171);
+            this.b_ItemMaster.Name = "b_ItemMaster";
+            this.b_ItemMaster.Size = new System.Drawing.Size(151, 58);
+            this.b_ItemMaster.TabIndex = 3;
+            this.b_ItemMaster.Text = "Item Master";
+            this.b_ItemMaster.UseVisualStyleBackColor = true;
+            this.b_ItemMaster.Click += new System.EventHandler(this.b_ItemMaster_Click);
+            // 
             // b_MOTag
             // 
             this.b_MOTag.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.b_MOTag.Location = new System.Drawing.Point(27, 101);
+            this.b_MOTag.Location = new System.Drawing.Point(27, 104);
             this.b_MOTag.Name = "b_MOTag";
             this.b_MOTag.Size = new System.Drawing.Size(151, 58);
             this.b_MOTag.TabIndex = 2;
@@ -135,17 +146,6 @@
             this.b_UserAdmin.Text = "User Administration";
             this.b_UserAdmin.UseVisualStyleBackColor = true;
             this.b_UserAdmin.Click += new System.EventHandler(this.b_UserAdmin_Click);
-            // 
-            // b_ItemMaster
-            // 
-            this.b_ItemMaster.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.b_ItemMaster.Location = new System.Drawing.Point(27, 165);
-            this.b_ItemMaster.Name = "b_ItemMaster";
-            this.b_ItemMaster.Size = new System.Drawing.Size(151, 58);
-            this.b_ItemMaster.TabIndex = 3;
-            this.b_ItemMaster.Text = "MO Tag Capture";
-            this.b_ItemMaster.UseVisualStyleBackColor = true;
-            this.b_ItemMaster.Click += new System.EventHandler(this.b_ItemMaster_Click);
             // 
             // f_InventorySysFE
             // 

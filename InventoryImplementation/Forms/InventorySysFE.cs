@@ -79,7 +79,7 @@ namespace InventoryImplementation
         private void b_ItemMaster_Click(object sender, EventArgs e)
         {
             f_IM = new f_Item_Master(ref x);
-            f_IM.ShowDialog();
+            f_IM.Show();
             //MessageBox.Show("Selected Part: " + f_IM.PartNo);
         }
     }

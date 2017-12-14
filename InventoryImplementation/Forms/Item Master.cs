@@ -74,7 +74,7 @@ namespace InventoryImplementation
             List2Table(L);
             dgv_ItemMaster.DataSource = T;
         }
-        public f_Item_Master(ref Inventory_System_API IE,ref string Partno)
+        public f_Item_Master(ref Inventory_System_API IE, string Partno)
         {
             InitializeComponent();
             x = IE;
@@ -84,6 +84,7 @@ namespace InventoryImplementation
             List<FS_Item> L_filtered = L.Where(l => l.ItemNo.Contains(_PartNo)).ToList();
             List2Table(L_filtered);
             dgv_ItemMaster.DataSource = T;
+            tb_PartNo.Text = Partno;
         }
         private void dgv_ItemMaster_KeyDown(object sender, KeyEventArgs e)
         {
