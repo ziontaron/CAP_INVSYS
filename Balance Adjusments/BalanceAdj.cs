@@ -167,7 +167,7 @@ namespace Balance_Adjusments
                                 }
                                 _FSTI_Tran = DGV2Entity(FSTI_T.Rows[j]);
                                 Update_FSTI_Result(_FSTI_Tran, true);
-                                LOGGER.WriteLogLine(TOOLS.Dataloger.Category.Error, _FSTI_Tran.FSResponse);
+                                LOGGER.WriteLogLine(TOOLS.Dataloger.Category.Error,"Tag: "+ dgv_FSTI_T.Rows[j].Cells["TicketCounter"].Value.ToString() + " - " + _FSTI_Tran.FSResponse);
                             }
                         }
                     }
