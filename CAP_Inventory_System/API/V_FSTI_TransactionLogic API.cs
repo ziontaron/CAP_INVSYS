@@ -30,23 +30,26 @@ namespace CAP_Inventory_System
 
             List<V_FSTI_Transaction> LT = _V_FSTI_TransactionLogic.ReadAll(ActiveEventId);
 
-            foreach (V_FSTI_Transaction fsti in LT)
+            if (LT != null)
             {
-                T.Rows.Add(
-                    fsti.InventoryEventKey
-                    , fsti.FSTI_Transaction_key
-                    , fsti.TagCountKey
-                    , fsti.FS_PartNo
-                    , fsti.InventoryEventName
-                    , fsti.TicketCounter
-                    , fsti.TransactionType
-                    , fsti.TransactionStringFields
-                    , fsti.TransactionProcessedYN
-                    , fsti.FSResponse
-                    , fsti.FSError
-                    , fsti.DateStampIn
-                    , fsti.DateStampOut
-                    );
+                foreach (V_FSTI_Transaction fsti in LT)
+                {
+                    T.Rows.Add(
+                        fsti.InventoryEventKey
+                        , fsti.FSTI_Transaction_key
+                        , fsti.TagCountKey
+                        , fsti.FS_PartNo
+                        , fsti.InventoryEventName
+                        , fsti.TicketCounter
+                        , fsti.TransactionType
+                        , fsti.TransactionStringFields
+                        , fsti.TransactionProcessedYN
+                        , fsti.FSResponse
+                        , fsti.FSError
+                        , fsti.DateStampIn
+                        , fsti.DateStampOut
+                        );
+                }
             }
             return T;
         }

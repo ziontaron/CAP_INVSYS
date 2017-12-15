@@ -12,8 +12,8 @@ namespace ConsoleImplementation
     {
         static void Main(string[] args)
         {
-            //Inventory_System_API x = new Inventory_System_API("RC IE");
-            Inventory_System_API x = new Inventory_System_API("Otro");
+            Inventory_System_API x = new Inventory_System_API("RC IE");
+            //Inventory_System_API x = new Inventory_System_API("Otro");
             //Inventory_System_API x = new Inventory_System_API(4);
             //Inventory_System_API x = new Inventory_System_API();
             //x.CreateInventoryEvent("TEST", "Test");

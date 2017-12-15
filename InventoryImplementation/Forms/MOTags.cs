@@ -261,7 +261,9 @@ namespace InventoryImplementation
         }
         private void b_Save_Click(object sender, EventArgs e)
         {
+            SaveMOHeader();
             SaveMOLies();
+            MessageBox.Show("The MO Header and MO Lines were saved.");
         }
         private void b_Refresh_Click(object sender, EventArgs e)
         {

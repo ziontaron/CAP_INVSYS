@@ -29,8 +29,9 @@
                   THEN CASE WHEN (TicketCount.ReCountQty - TicketCount.InventoryQty) &lt; 0 THEN ((TicketCount.ReCountQty - TicketCount.InventoryQty) * - 1) ELSE (TicketCount.ReCountQty - TicketCount.InventoryQty) 
                   END WHEN (TicketCount.CountQTY &lt;&gt; 0) THEN CASE WHEN (TicketCount.CountQTY - TicketCount.InventoryQty) &lt; 0 THEN ((TicketCount.CountQTY - TicketCount.InventoryQty) * - 1) 
                   ELSE (TicketCount.CountQTY - TicketCount.InventoryQty) END WHEN (TicketCount.CountQTY = 0) THEN TicketCount.InventoryQty ELSE 0 END) AS AbsBalance, (CASE WHEN (TicketCount.ReCountQty &gt; 0) 
-                  THEN TicketCount.ReCountQty - TicketCount.InventoryQty WHEN (TicketCount.CountQTY &lt;&gt; 0) THEN TicketCount.CountQTY - TicketCount.InventoryQty WHEN (TicketCount.CountQTY = 0) THEN TicketCount.InventoryQty ELSE 0 END) 
-                  AS Balance, TicketCount.STK, TicketCount.BIN, TicketCount.IC, TicketCount.Verified, TicketCount.BlankTag, TicketCount.VoidTag, FS_ItemMaster.TotalRolledCost
+                  THEN TicketCount.ReCountQty - TicketCount.InventoryQty WHEN (TicketCount.CountQTY &lt;&gt; 0) THEN TicketCount.CountQTY - TicketCount.InventoryQty WHEN (TicketCount.CountQTY = 0) 
+                  THEN TicketCount.CountQTY - TicketCount.InventoryQty ELSE 0 END) AS Balance, TicketCount.STK, TicketCount.BIN, TicketCount.IC, TicketCount.Verified, TicketCount.BlankTag, TicketCount.VoidTag, 
+                  FS_ItemMaster.TotalRolledCost
 FROM     FS_ItemMaster INNER JOIN
                   InventoryEvent INNER JOIN
                   Ticket ON InventoryEvent.InventoryEventKey = Ticket.InventoryEventKey INNER JOIN
@@ -175,13 +176,13 @@ FROM     InventoryEvent</CommandText>
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>0.65833in</Width>
+                  <Width>0.75833in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.61667in</Width>
+                  <Width>1.48334in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.45in</Width>
@@ -211,6 +212,9 @@ FROM     InventoryEvent</CommandText>
                   <Width>0.7in</Width>
                 </TablixColumn>
                 <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
+                <TablixColumn>
                   <Width>0.76667in</Width>
                 </TablixColumn>
               </TablixColumns>
@@ -227,7 +231,7 @@ FROM     InventoryEvent</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Counter</Value>
+                                  <Value>Tag Counter</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -585,6 +589,41 @@ FROM     InventoryEvent</CommandText>
                       </CellContents>
                     </TablixCell>
                     <TablixCell />
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox1">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Total Rolled Cost</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox1</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Textbox30">
@@ -1005,6 +1044,37 @@ FROM     InventoryEvent</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
+                        <Textbox Name="TotalRolledCost1">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!TotalRolledCost.Value</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>TotalRolledCost1</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
                         <Textbox Name="TotalRolledCost">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -1055,6 +1125,7 @@ FROM     InventoryEvent</CommandText>
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
+                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
@@ -1062,17 +1133,18 @@ FROM     InventoryEvent</CommandText>
                 <TablixMember>
                   <FixedData>true</FixedData>
                   <RepeatOnNewPage>true</RepeatOnNewPage>
-                  <KeepTogether>true</KeepTogether>
                 </TablixMember>
                 <TablixMember>
                   <Group Name="Details" />
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
+            <RepeatRowHeaders>true</RepeatRowHeaders>
+            <FixedRowHeaders>true</FixedRowHeaders>
             <DataSetName>Balance</DataSetName>
             <Top>0.02778in</Top>
             <Height>0.35in</Height>
-            <Width>10.29167in</Width>
+            <Width>11.25834in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1083,7 +1155,7 @@ FROM     InventoryEvent</CommandText>
         <Height>0.5in</Height>
         <Style />
       </Body>
-      <Width>10.38334in</Width>
+      <Width>11.25834in</Width>
       <Page>
         <PageHeight>6in</PageHeight>
         <PageWidth>11in</PageWidth>

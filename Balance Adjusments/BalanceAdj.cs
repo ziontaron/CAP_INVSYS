@@ -291,6 +291,7 @@ namespace Balance_Adjusments
             tb_FSTITransactionsQty.Text = FSTI_T.Rows.Count.ToString();
             DataLogger(ref rtb_FSTI_Log, LogType.info, tb_FSTITransactionsQty.Text + " Transacctions Loded");
             dgv_FSTI_T.DataSource = FSTI_T;
+            b_UploadTransactions.Enabled = true;
         }
         private void b_UploadTransactions_Click(object sender, EventArgs e)
         {

@@ -24,13 +24,16 @@
             <Value>=Parameters!CTo.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>SELECT TOP (100) PERCENT Ticket.TicketCounter, InventoryEvent.InventoryEventName, MOTagHeader.Planner, MOTagHeader.MO, MOTagHeader.MO_Ln, MOTagHeader.MO_Status, MOTagHeader.Order_Qty, MOTagHeader.LineType, 
-                  MOTagHeader.Recv_Qty, MOTagHeader.Parent_Item_NO, MOTagHeader.Parent_Item_Desc, MOTagHeader.Parent_ItemRef1, MOTagHeader.CounterInitials, MOTagHeader.CountedDate, MOTagHeader.FG_Qty_in_WIP, 
-                  MOTagCount.SeqNum, MOTagCount.UM, MOTagCount.Component_No, MOTagCount.Component_Desc, MOTagCount.Qty_Per, MOTagCount.Issued_Qty, MOTagCount.LooseCountQty, MOTagCount.LooseReCountQty
-FROM     Ticket INNER JOIN
-                  InventoryEvent ON Ticket.InventoryEventKey = InventoryEvent.InventoryEventKey INNER JOIN
-                  MOTagHeader ON Ticket.TicketKey = MOTagHeader.TicketKey INNER JOIN
-                  MOTagCount ON MOTagHeader.MOTagHeaderKey = MOTagCount.MOTagHeaderKey
+        <CommandText>SELECT     TOP (100) PERCENT Ticket.TicketCounter, InventoryEvent.InventoryEventName, MOTagHeader.Planner, MOTagHeader.MO, MOTagHeader.MO_Ln, MOTagHeader.MO_Status, 
+                      MOTagHeader.Order_Qty, MOTagHeader.LineType, MOTagHeader.Recv_Qty, MOTagHeader.Parent_Item_NO, MOTagHeader.Parent_Item_Desc, MOTagHeader.Parent_ItemRef1, 
+                      MOTagHeader.CounterInitials, MOTagHeader.CountedDate, MOTagHeader.FG_Qty_in_WIP, MOTagCount.SeqNum, MOTagCount.UM, MOTagCount.Component_No, MOTagCount.Component_Desc, 
+                      MOTagCount.Qty_Per, MOTagCount.Issued_Qty, MOTagCount.LooseCountQty, MOTagCount.LooseReCountQty, InventoryEvent_1.InventoryEventKey, 
+                      InventoryEvent_1.InventoryEventName AS Expr1
+FROM         Ticket INNER JOIN
+                      InventoryEvent ON Ticket.InventoryEventKey = InventoryEvent.InventoryEventKey INNER JOIN
+                      MOTagHeader ON Ticket.TicketKey = MOTagHeader.TicketKey INNER JOIN
+                      MOTagCount ON MOTagHeader.MOTagHeaderKey = MOTagCount.MOTagHeaderKey INNER JOIN
+                      InventoryEvent AS InventoryEvent_1 ON Ticket.InventoryEventKey = InventoryEvent_1.InventoryEventKey
 WHERE  (Ticket.TicketCounter &gt;=@CFrom) AND (Ticket.TicketCounter &lt;= @CTo) AND (InventoryEvent.InventoryEventKey = @IE)
 ORDER BY Ticket.TicketCounter, MOTagHeader.MO, MOTagHeader.MO_Ln, MOTagCount.SeqNum</CommandText>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
@@ -127,6 +130,14 @@ ORDER BY Ticket.TicketCounter, MOTagHeader.MO, MOTagHeader.MO_Ln, MOTagCount.Seq
         <Field Name="LooseReCountQty">
           <DataField>LooseReCountQty</DataField>
           <rd:TypeName>System.Single</rd:TypeName>
+        </Field>
+        <Field Name="InventoryEventKey">
+          <DataField>InventoryEventKey</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Expr1">
+          <DataField>Expr1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
     </DataSet>
@@ -802,6 +813,35 @@ FROM     InventoryEvent</CommandText>
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
                             </Textbox>
+                            <Textbox Name="InventoryEventName">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=First(Fields!InventoryEventName.Value)</Value>
+                                      <Style />
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>InventoryEventName</rd:DefaultName>
+                              <Left>0in</Left>
+                              <Height>0.21667in</Height>
+                              <Width>3.50833in</Width>
+                              <ZIndex>19</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
                           </ReportItems>
                           <KeepTogether>true</KeepTogether>
                           <Style>
@@ -1451,7 +1491,7 @@ FROM     InventoryEvent</CommandText>
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.18333in</Height>
+                  <Height>0.16666in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -1892,7 +1932,6 @@ FROM     InventoryEvent</CommandText>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -2535,7 +2574,7 @@ FROM     InventoryEvent</CommandText>
             <DataSetName>DS_MO_TAGS</DataSetName>
             <Top>0.13in</Top>
             <Left>0.11334in</Left>
-            <Height>2.45277in</Height>
+            <Height>2.4361in</Height>
             <Width>10.46112in</Width>
             <Style>
               <Border>

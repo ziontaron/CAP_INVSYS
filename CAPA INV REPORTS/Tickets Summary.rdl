@@ -298,7 +298,7 @@ WHERE  (TicketCount.STK IN (@STK)) AND (InventoryEvent.InventoryEventKey = @IE)<
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Counter</Value>
+                                  <Value>Tag No</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -1920,7 +1920,7 @@ WHERE  (TicketCount.STK IN (@STK)) AND (InventoryEvent.InventoryEventKey = @IE)<
               </SortExpression>
             </SortExpressions>
             <Height>0.70833in</Height>
-            <Width>10.025in</Width>
+            <Width>10.02499in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
