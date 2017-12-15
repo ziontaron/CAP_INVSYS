@@ -52,14 +52,17 @@ namespace CAP_Inventory_System
             }
             return L;
         }
-        public void UpdateInventoryEvent(int Event_Key, string Event_Name, string Event_Description, bool Event_Status)
+        public void UpdateInventoryEvent(int Event_Key, string Event_Name, string Event_Description
+            , bool Event_Status, bool TicketCountLoded, bool MOTags)
         {
             InventoryEvent entity = new InventoryEvent
             {
                 InventoryEventKey = Event_Key,
                 InventoryEventName = Event_Name,
                 InventoryEventDescription = Event_Description,
-                Status = Event_Status
+                Status = Event_Status,
+                TicketCountTags = TicketCountLoded,
+                MOTags= MOTags
             };
             _Response = _inventoryEventLogic.Update(entity);
             UpdateActiveInventoryEvent((InventoryEvent)_Response.Result);

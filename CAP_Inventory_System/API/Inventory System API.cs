@@ -85,6 +85,34 @@ namespace CAP_Inventory_System
                 }
             }
         }
+        public bool TicketCountLoaded
+        {
+            get
+            {
+                try
+                {
+                    return _ActiveInventoryEvent.TicketCountTags;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
+        public bool MOTagsLoaded
+        {
+            get
+            {
+                try
+                {
+                    return _ActiveInventoryEvent.MOTags;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
         public DateTime ActiveEventCreationDate
         {
             get

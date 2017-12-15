@@ -226,10 +226,20 @@ namespace InventoryImplementation
         }
         private void tb_MOTagCounter_KeyDown(object sender, KeyEventArgs e)
         {
+            int counter = 0;
             switch (e.KeyValue)
             {
                 case 13:
                     {
+                        try
+                        {
+                            counter = Convert.ToInt32(tb_MOTagCounter.Text);
+                        }
+                        catch
+                        {
+                            counter = 0;
+                        }
+                        Load_SelectedMOtagHeader(counter);
                         tb_CountedBy.Focus();
                         break;
                     }

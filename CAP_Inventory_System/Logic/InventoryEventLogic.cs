@@ -109,6 +109,8 @@ namespace CAP_Inventory_System.Logic
                         entity.InventoryEventName = e.InventoryEventName;
                         entity.InventoryEventDescription = e.InventoryEventDescription;
                         entity.Status = e.Status;
+                        entity.TicketCountTags = e.TicketCountTags;
+                        entity.MOTags = e.MOTags;
                         context.SaveChanges();
                         response.Success(entity, "OK");
                         return response;

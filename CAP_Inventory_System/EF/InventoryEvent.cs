@@ -33,6 +33,10 @@ namespace CAP_Inventory_System
 
         public bool Status { get; set; }
 
+        public bool TicketCountTags { get; set; }
+
+        public bool MOTags { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ticket> Tickets { get; set; }
     }

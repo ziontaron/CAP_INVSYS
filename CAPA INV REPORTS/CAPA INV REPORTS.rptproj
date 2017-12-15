@@ -14,6 +14,10 @@
   <DataSets />
   <Reports>
     <ProjectItem>
+      <Name>Finance Report.rdl</Name>
+      <FullPath>Finance Report.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
       <Name>MO TAGS.rdl</Name>
       <FullPath>MO TAGS.rdl</FullPath>
     </ProjectItem>
@@ -22,8 +26,8 @@
       <FullPath>Ticket Counts.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>Finance Report.rdl</Name>
-      <FullPath>Finance Report.rdl</FullPath>
+      <Name>Tickets Summary.rdl</Name>
+      <FullPath>Tickets Summary.rdl</FullPath>
     </ProjectItem>
   </Reports>
   <Configurations>

@@ -19,7 +19,7 @@ namespace InventoryImplementation
 
         DataTable T = new DataTable();
 
-       
+        bool Triggered = false;
 
         public string PartNo
         {
@@ -85,11 +85,14 @@ namespace InventoryImplementation
             List2Table(L_filtered);
             dgv_ItemMaster.DataSource = T;
             tb_PartNo.Text = Partno;
+            Triggered = false;
         }
         private void dgv_ItemMaster_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyValue == 13)
             {
+                _PartNo = T.Rows[dgv_ItemMaster.SelectedRows[0].Index]["ItemNo"].ToString();
+                this.Hide();
             }
         }
         private void tb_PartNo_KeyDown(object sender, KeyEventArgs e)
@@ -118,7 +121,9 @@ namespace InventoryImplementation
             if (dgv_ItemMaster.SelectedRows.Count > 0)
             {
                 _PartNo = T.Rows[dgv_ItemMaster.SelectedRows[0].Index]["ItemNo"].ToString();
+                this.Hide();
             }
         }
+        
     }
 }

@@ -839,7 +839,6 @@ FROM     InventoryEvent</CommandText>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -1061,7 +1060,9 @@ FROM     InventoryEvent</CommandText>
             <TablixRowHierarchy>
               <TablixMembers>
                 <TablixMember>
+                  <FixedData>true</FixedData>
                   <RepeatOnNewPage>true</RepeatOnNewPage>
+                  <KeepTogether>true</KeepTogether>
                 </TablixMember>
                 <TablixMember>
                   <Group Name="Details" />
@@ -1082,18 +1083,8 @@ FROM     InventoryEvent</CommandText>
         <Height>0.5in</Height>
         <Style />
       </Body>
-      <Width>10.64167in</Width>
+      <Width>10.38334in</Width>
       <Page>
-        <PageHeader>
-          <Height>1in</Height>
-          <PrintOnFirstPage>true</PrintOnFirstPage>
-          <PrintOnLastPage>true</PrintOnLastPage>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-          </Style>
-        </PageHeader>
         <PageHeight>6in</PageHeight>
         <PageWidth>11in</PageWidth>
         <LeftMargin>0.1in</LeftMargin>

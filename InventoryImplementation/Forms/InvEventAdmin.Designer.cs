@@ -320,6 +320,7 @@
             // 
             // b_tagsFromRandom
             // 
+            this.b_tagsFromRandom.Enabled = false;
             this.b_tagsFromRandom.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.b_tagsFromRandom.Location = new System.Drawing.Point(22, 236);
             this.b_tagsFromRandom.Name = "b_tagsFromRandom";

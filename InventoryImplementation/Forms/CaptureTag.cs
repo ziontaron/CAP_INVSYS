@@ -547,13 +547,28 @@ namespace InventoryImplementation
                     tb_ItemDesc.Focus();
                 }
             }
+            if (e.KeyValue == 115)
+            {
+                f_IM = new f_Item_Master(ref x, tb_ItemNo.Text);
+                f_IM.ShowDialog();
+                tb_ItemNo.Text = f_IM.PartNo;
+                LoadFSItemInfo(tb_ItemNo.Text);
+            }
         }
         private void tb_ItemDesc_KeyDown(object sender, KeyEventArgs e)
         {
+            f_Item_Master f_IM;
             if (e.KeyValue == 13)
             {
                 tb_ItemRef.Focus();
                 _tag.ItemDescription = tb_ItemDesc.Text;
+            }
+            if (e.KeyValue == 115)
+            {
+                f_IM = new f_Item_Master(ref x, tb_ItemNo.Text);
+                f_IM.ShowDialog();
+                tb_ItemNo.Text = f_IM.PartNo;
+                LoadFSItemInfo(tb_ItemNo.Text);
             }
         }
         private void tb_ItemRef_KeyDown(object sender, KeyEventArgs e)

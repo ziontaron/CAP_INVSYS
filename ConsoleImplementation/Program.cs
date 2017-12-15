@@ -12,12 +12,13 @@ namespace ConsoleImplementation
     {
         static void Main(string[] args)
         {
-            Inventory_System_API x = new Inventory_System_API("RC IE");
+            //Inventory_System_API x = new Inventory_System_API("RC IE");
+            Inventory_System_API x = new Inventory_System_API("Otro");
             //Inventory_System_API x = new Inventory_System_API(4);
             //Inventory_System_API x = new Inventory_System_API();
             //x.CreateInventoryEvent("TEST", "Test");
 
-            
+
             DateTime start = DateTime.Now;
 
             MOTagLine T = new MOTagLine
@@ -38,7 +39,7 @@ namespace ConsoleImplementation
 
             //load_MOtags_from_CSV(ref x);
 
-            Simulate_Capture(ref x, 3000);
+            Simulate_Capture(ref x, 5000);
 
             DateTime stop = DateTime.Now;
             int lat = TimeSpan.FromTicks(stop.Ticks - start.Ticks).Seconds;

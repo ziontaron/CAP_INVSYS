@@ -66,6 +66,8 @@ namespace InventoryImplementation
                 gb_BlankTags.Enabled = true;
                 gb_LoadTags.Enabled = true;
                 b_CreateIE.Enabled = false;
+                b_tagsFromSQL.Enabled = !x.TicketCountLoaded;
+                b_MOtagsFromSQL.Enabled = !x.MOTagsLoaded;
                 rtb_ro_EventDescription.Enabled = false;
             }
 
@@ -190,7 +192,7 @@ namespace InventoryImplementation
         }
         private void b_ChangeStatus_Click(object sender, EventArgs e)
         {
-            x.UpdateInventoryEvent(x.ActiveEventId, x.ActiveEventName, x.ActiveEventDescription, !x.ActiveEventStatus);
+            x.UpdateInventoryEvent(x.ActiveEventId, x.ActiveEventName, x.ActiveEventDescription, !x.ActiveEventStatus,x.TicketCountLoaded,x.MOTagsLoaded);
             LoadEventInfo();
         }
         private void b_Clear_Click(object sender, EventArgs e)
@@ -239,6 +241,7 @@ namespace InventoryImplementation
             if (x.ActiveEventStatus)
             {
                 _tools.Load_Tags_From_SQL(ref x);
+                x.UpdateInventoryEvent(x.ActiveEventId, x.ActiveEventName, x.ActiveEventDescription, x.ActiveEventStatus, true, x.MOTagsLoaded);
                 LoadEventInfo();
             }
             else
@@ -287,6 +290,7 @@ namespace InventoryImplementation
             if (x.ActiveEventStatus)
             {
                 _tools.Load_MOTags_From_SQL(ref x);
+                x.UpdateInventoryEvent(x.ActiveEventId, x.ActiveEventName, x.ActiveEventDescription, !x.ActiveEventStatus, x.TicketCountLoaded, true);
                 LoadEventInfo();
             }
             else

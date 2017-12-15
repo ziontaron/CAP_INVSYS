@@ -213,6 +213,10 @@
     <Compile Include="Migrations\201712121655010_V_FSTI_Transaction update.Designer.cs">
       <DependentUpon>201712121655010_V_FSTI_Transaction update.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712150253227_Flags for Ticket Counts and MO Tags.cs" />
+    <Compile Include="Migrations\201712150253227_Flags for Ticket Counts and MO Tags.Designer.cs">
+      <DependentUpon>201712150253227_Flags for Ticket Counts and MO Tags.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Reusable\BaseEntity.cs" />
     <Compile Include="Reusable\CommonResponse.cs" />
@@ -308,6 +312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712121655010_V_FSTI_Transaction update.resx">
       <DependentUpon>201712121655010_V_FSTI_Transaction update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712150253227_Flags for Ticket Counts and MO Tags.resx">
+      <DependentUpon>201712150253227_Flags for Ticket Counts and MO Tags.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

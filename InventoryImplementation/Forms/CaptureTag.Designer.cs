@@ -78,7 +78,7 @@
             this.cb_InvEvent.Location = new System.Drawing.Point(192, 18);
             this.cb_InvEvent.Name = "cb_InvEvent";
             this.cb_InvEvent.Size = new System.Drawing.Size(246, 24);
-            this.cb_InvEvent.TabIndex = 3;
+            this.cb_InvEvent.TabIndex = 1;
             this.cb_InvEvent.SelectedIndexChanged += new System.EventHandler(this.cb_InvEvent_SelectedIndexChanged);
             // 
             // label1
@@ -151,7 +151,7 @@
             this.chb_Verified.Location = new System.Drawing.Point(650, 54);
             this.chb_Verified.Name = "chb_Verified";
             this.chb_Verified.Size = new System.Drawing.Size(78, 21);
-            this.chb_Verified.TabIndex = 31;
+            this.chb_Verified.TabIndex = 6;
             this.chb_Verified.Text = "Verified";
             this.chb_Verified.UseVisualStyleBackColor = true;
             this.chb_Verified.CheckedChanged += new System.EventHandler(this.chb_Verified_CheckedChanged);
@@ -182,7 +182,7 @@
             this.chb_Void.Location = new System.Drawing.Point(573, 54);
             this.chb_Void.Name = "chb_Void";
             this.chb_Void.Size = new System.Drawing.Size(58, 21);
-            this.chb_Void.TabIndex = 9;
+            this.chb_Void.TabIndex = 5;
             this.chb_Void.Text = "Void";
             this.chb_Void.UseVisualStyleBackColor = true;
             this.chb_Void.CheckedChanged += new System.EventHandler(this.chb_Void_CheckedChanged);
@@ -203,7 +203,7 @@
             this.tb_ReCountQty.Location = new System.Drawing.Point(220, 295);
             this.tb_ReCountQty.Name = "tb_ReCountQty";
             this.tb_ReCountQty.Size = new System.Drawing.Size(140, 22);
-            this.tb_ReCountQty.TabIndex = 28;
+            this.tb_ReCountQty.TabIndex = 19;
             this.tb_ReCountQty.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_ReCountQty_KeyDown);
             // 
             // label12
@@ -222,7 +222,7 @@
             this.tb_CountQty.Location = new System.Drawing.Point(24, 295);
             this.tb_CountQty.Name = "tb_CountQty";
             this.tb_CountQty.Size = new System.Drawing.Size(140, 22);
-            this.tb_CountQty.TabIndex = 26;
+            this.tb_CountQty.TabIndex = 18;
             this.tb_CountQty.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_CountQty_KeyDown);
             // 
             // label10
@@ -242,7 +242,7 @@
             this.tb_BIN.Location = new System.Drawing.Point(220, 226);
             this.tb_BIN.Name = "tb_BIN";
             this.tb_BIN.Size = new System.Drawing.Size(140, 22);
-            this.tb_BIN.TabIndex = 24;
+            this.tb_BIN.TabIndex = 17;
             this.tb_BIN.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_BIN_KeyDown);
             // 
             // label9
@@ -262,7 +262,7 @@
             this.tb_STK.Location = new System.Drawing.Point(24, 226);
             this.tb_STK.Name = "tb_STK";
             this.tb_STK.Size = new System.Drawing.Size(140, 22);
-            this.tb_STK.TabIndex = 22;
+            this.tb_STK.TabIndex = 16;
             this.tb_STK.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_STK_KeyDown);
             // 
             // gb_IC
@@ -285,7 +285,7 @@
             this.chb_Shipping.Location = new System.Drawing.Point(121, 59);
             this.chb_Shipping.Name = "chb_Shipping";
             this.chb_Shipping.Size = new System.Drawing.Size(85, 21);
-            this.chb_Shipping.TabIndex = 3;
+            this.chb_Shipping.TabIndex = 15;
             this.chb_Shipping.Text = "Shipping";
             this.chb_Shipping.UseVisualStyleBackColor = true;
             this.chb_Shipping.CheckedChanged += new System.EventHandler(this.chb_Shipping_CheckedChanged);
@@ -296,7 +296,7 @@
             this.chb_Hold.Location = new System.Drawing.Point(121, 32);
             this.chb_Hold.Name = "chb_Hold";
             this.chb_Hold.Size = new System.Drawing.Size(59, 21);
-            this.chb_Hold.TabIndex = 2;
+            this.chb_Hold.TabIndex = 13;
             this.chb_Hold.Text = "Hold";
             this.chb_Hold.UseVisualStyleBackColor = true;
             this.chb_Hold.CheckedChanged += new System.EventHandler(this.chb_Hold_CheckedChanged);
@@ -307,7 +307,7 @@
             this.chb_Inspection.Location = new System.Drawing.Point(19, 59);
             this.chb_Inspection.Name = "chb_Inspection";
             this.chb_Inspection.Size = new System.Drawing.Size(94, 21);
-            this.chb_Inspection.TabIndex = 1;
+            this.chb_Inspection.TabIndex = 14;
             this.chb_Inspection.Text = "Inspection";
             this.chb_Inspection.UseVisualStyleBackColor = true;
             this.chb_Inspection.CheckedChanged += new System.EventHandler(this.chb_Inspection_CheckedChanged);
@@ -318,7 +318,7 @@
             this.chb_OnHand.Location = new System.Drawing.Point(19, 32);
             this.chb_OnHand.Name = "chb_OnHand";
             this.chb_OnHand.Size = new System.Drawing.Size(87, 21);
-            this.chb_OnHand.TabIndex = 0;
+            this.chb_OnHand.TabIndex = 12;
             this.chb_OnHand.Text = "On Hand";
             this.chb_OnHand.UseVisualStyleBackColor = true;
             this.chb_OnHand.CheckedChanged += new System.EventHandler(this.chb_OnHand_CheckedChanged);
@@ -339,7 +339,7 @@
             this.tb_ItemRef.Location = new System.Drawing.Point(565, 108);
             this.tb_ItemRef.Name = "tb_ItemRef";
             this.tb_ItemRef.Size = new System.Drawing.Size(105, 22);
-            this.tb_ItemRef.TabIndex = 19;
+            this.tb_ItemRef.TabIndex = 9;
             this.tb_ItemRef.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_ItemRef_KeyDown);
             // 
             // label7
@@ -359,7 +359,7 @@
             this.tb_UM.Location = new System.Drawing.Point(369, 162);
             this.tb_UM.Name = "tb_UM";
             this.tb_UM.Size = new System.Drawing.Size(67, 22);
-            this.tb_UM.TabIndex = 17;
+            this.tb_UM.TabIndex = 11;
             this.tb_UM.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_UM_KeyDown);
             // 
             // label6
@@ -379,7 +379,7 @@
             this.tb_Lot.Location = new System.Drawing.Point(24, 162);
             this.tb_Lot.Name = "tb_Lot";
             this.tb_Lot.Size = new System.Drawing.Size(323, 22);
-            this.tb_Lot.TabIndex = 15;
+            this.tb_Lot.TabIndex = 10;
             this.tb_Lot.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_Lot_KeyDown);
             // 
             // label5
@@ -398,7 +398,7 @@
             this.tb_ItemDesc.Location = new System.Drawing.Point(220, 108);
             this.tb_ItemDesc.Name = "tb_ItemDesc";
             this.tb_ItemDesc.Size = new System.Drawing.Size(330, 22);
-            this.tb_ItemDesc.TabIndex = 13;
+            this.tb_ItemDesc.TabIndex = 8;
             this.tb_ItemDesc.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_ItemDesc_KeyDown);
             // 
             // label4
@@ -418,7 +418,7 @@
             this.tb_ItemNo.Location = new System.Drawing.Point(24, 108);
             this.tb_ItemNo.Name = "tb_ItemNo";
             this.tb_ItemNo.Size = new System.Drawing.Size(168, 22);
-            this.tb_ItemNo.TabIndex = 11;
+            this.tb_ItemNo.TabIndex = 7;
             this.tb_ItemNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_ItemNo_KeyDown);
             // 
             // label2
@@ -438,7 +438,7 @@
             this.tb_CounterInitials.Location = new System.Drawing.Point(220, 52);
             this.tb_CounterInitials.Name = "tb_CounterInitials";
             this.tb_CounterInitials.Size = new System.Drawing.Size(111, 22);
-            this.tb_CounterInitials.TabIndex = 9;
+            this.tb_CounterInitials.TabIndex = 4;
             this.tb_CounterInitials.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_CounterInitials_KeyDown);
             // 
             // label3
@@ -456,7 +456,7 @@
             this.tb_TagNo.Location = new System.Drawing.Point(24, 52);
             this.tb_TagNo.Name = "tb_TagNo";
             this.tb_TagNo.Size = new System.Drawing.Size(168, 22);
-            this.tb_TagNo.TabIndex = 7;
+            this.tb_TagNo.TabIndex = 3;
             this.tb_TagNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_TagNo_KeyDown);
             // 
             // cb_Lock
@@ -465,7 +465,7 @@
             this.cb_Lock.Location = new System.Drawing.Point(462, 20);
             this.cb_Lock.Name = "cb_Lock";
             this.cb_Lock.Size = new System.Drawing.Size(60, 21);
-            this.cb_Lock.TabIndex = 8;
+            this.cb_Lock.TabIndex = 2;
             this.cb_Lock.Text = "Lock";
             this.cb_Lock.UseVisualStyleBackColor = true;
             this.cb_Lock.CheckedChanged += new System.EventHandler(this.cb_Lock_CheckedChanged);
@@ -478,7 +478,7 @@
             this.b_NextTag.Location = new System.Drawing.Point(790, 43);
             this.b_NextTag.Name = "b_NextTag";
             this.b_NextTag.Size = new System.Drawing.Size(46, 27);
-            this.b_NextTag.TabIndex = 9;
+            this.b_NextTag.TabIndex = 101;
             this.b_NextTag.Text = ">>";
             this.b_NextTag.UseVisualStyleBackColor = true;
             this.b_NextTag.Click += new System.EventHandler(this.b_NextTag_Click);
@@ -491,7 +491,7 @@
             this.b_Prev.Location = new System.Drawing.Point(739, 43);
             this.b_Prev.Name = "b_Prev";
             this.b_Prev.Size = new System.Drawing.Size(45, 27);
-            this.b_Prev.TabIndex = 10;
+            this.b_Prev.TabIndex = 100;
             this.b_Prev.Text = "<<";
             this.b_Prev.UseVisualStyleBackColor = true;
             this.b_Prev.Click += new System.EventHandler(this.b_Prev_Click);

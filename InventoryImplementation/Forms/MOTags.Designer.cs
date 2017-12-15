@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(f_MOTags));
             this.tc_MoTags = new System.Windows.Forms.TabControl();
             this.tp_MOHeaders = new System.Windows.Forms.TabPage();
@@ -73,6 +74,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.ss_MOTags_Trip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tc_MoTags.SuspendLayout();
             this.tp_MOHeaders.SuspendLayout();
             this.gb_MOtagHeaderList.SuspendLayout();
@@ -634,5 +636,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button b_Save;
         private System.Windows.Forms.Button b_Refresh;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

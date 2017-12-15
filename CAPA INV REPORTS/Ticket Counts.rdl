@@ -45,20 +45,14 @@ FROM     InventoryEvent</CommandText>
             <Value>=Parameters!IE.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>SELECT Ticket.TicketCounter
-,RIGHT('0000000'+CAST(Ticket.TicketCounter AS NVARCHAR(10)),5) AS TicketCounterStr
-, TicketCount.CounterInitials, TicketCount.CountedDate
-, (CASE
-WHEN TicketCount.CountedDate IS NULL THEN ''
-ELSE CONVERT(VARCHAR(10), TicketCount.CountedDate, 101)
-END
-) AS [CountedDateStr]
-, TicketCount.TicketKey, TicketCount.ItemNumber, TicketCount.ItemDescription, TicketCount.ItemRef, TicketCount.UM, TicketCount.LotNumber, 
-TicketCount.CountQTY, TicketCount.ReCountQty, TicketCount.InventoryQty, TicketCount.STK, TicketCount.BIN, TicketCount.IC, TicketCount.Verified, --TicketCount.CountStatus, 
-TicketCount.BlankTag, TicketCount.VoidTag
-FROM     Ticket INNER JOIN
-TicketCount ON Ticket.TicketKey = TicketCount.TicketKey INNER JOIN
-InventoryEvent ON Ticket.InventoryEventKey = InventoryEvent.InventoryEventKey
+        <CommandText>SELECT     Ticket.TicketCounter, RIGHT('0000000' + CAST(Ticket.TicketCounter AS NVARCHAR(10)), 5) AS TicketCounterStr, TicketCount.CounterInitials, TicketCount.CountedDate, 
+                      (CASE WHEN TicketCount.CountedDate IS NULL THEN '' ELSE CONVERT(VARCHAR(10), TicketCount.CountedDate, 101) END) AS CountedDateStr, TicketCount.TicketKey, TicketCount.ItemNumber, 
+                      TicketCount.ItemDescription, TicketCount.ItemRef, TicketCount.UM, TicketCount.LotNumber, TicketCount.CountQTY, TicketCount.ReCountQty, TicketCount.InventoryQty, TicketCount.STK, 
+                      TicketCount.BIN, TicketCount.IC, TicketCount.Verified, TicketCount.BlankTag, TicketCount.VoidTag, InventoryEvent_1.InventoryEventName
+FROM         Ticket INNER JOIN
+                      TicketCount ON Ticket.TicketKey = TicketCount.TicketKey INNER JOIN
+                      InventoryEvent ON Ticket.InventoryEventKey = InventoryEvent.InventoryEventKey INNER JOIN
+                      InventoryEvent AS InventoryEvent_1 ON Ticket.InventoryEventKey = InventoryEvent_1.InventoryEventKey
 WHERE  (Ticket.TicketCounter &gt;= @CFrom) AND (Ticket.TicketCounter &lt;= @CTo) AND (InventoryEvent.InventoryEventKey = @IE)</CommandText>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
@@ -142,6 +136,10 @@ WHERE  (Ticket.TicketCounter &gt;= @CFrom) AND (Ticket.TicketCounter &lt;= @CTo)
         <Field Name="VoidTag">
           <DataField>VoidTag</DataField>
           <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="InventoryEventName">
+          <DataField>InventoryEventName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
     </DataSet>
@@ -698,9 +696,74 @@ WHERE  (Ticket.TicketCounter &gt;= @CFrom) AND (Ticket.TicketCounter &lt;= @CTo)
                                     </Paragraph>
                                   </Paragraphs>
                                   <rd:DefaultName>Textbox45</rd:DefaultName>
-                                  <Top>0.12006in</Top>
                                   <Height>0.42655in</Height>
                                   <Width>4.74681in</Width>
+                                  <Style>
+                                    <Border>
+                                      <Style>None</Style>
+                                    </Border>
+                                    <PaddingLeft>2pt</PaddingLeft>
+                                    <PaddingRight>2pt</PaddingRight>
+                                    <PaddingTop>2pt</PaddingTop>
+                                    <PaddingBottom>2pt</PaddingBottom>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="Textbox1">
+                                  <CanGrow>true</CanGrow>
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=Fields!InventoryEventName.Value</Value>
+                                          <Style />
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style>
+                                        <TextAlign>Center</TextAlign>
+                                      </Style>
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <rd:DefaultName>Textbox1</rd:DefaultName>
+                                  <Top>0.79944in</Top>
+                                  <Height>0.25in</Height>
+                                  <Width>4.7468in</Width>
+                                  <ZIndex>1</ZIndex>
+                                  <Style>
+                                    <Border>
+                                      <Style>None</Style>
+                                    </Border>
+                                    <PaddingLeft>2pt</PaddingLeft>
+                                    <PaddingRight>2pt</PaddingRight>
+                                    <PaddingTop>2pt</PaddingTop>
+                                    <PaddingBottom>2pt</PaddingBottom>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="Textbox90">
+                                  <CanGrow>true</CanGrow>
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>A</Value>
+                                          <Style>
+                                            <FontSize>24pt</FontSize>
+                                            <FontWeight>Bold</FontWeight>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style>
+                                        <TextAlign>Center</TextAlign>
+                                      </Style>
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <rd:DefaultName>Textbox45</rd:DefaultName>
+                                  <Top>0.33902in</Top>
+                                  <Left>0.01231in</Left>
+                                  <Height>0.42655in</Height>
+                                  <Width>4.74681in</Width>
+                                  <ZIndex>2</ZIndex>
                                   <Style>
                                     <Border>
                                       <Style>None</Style>
@@ -715,7 +778,7 @@ WHERE  (Ticket.TicketCounter &gt;= @CFrom) AND (Ticket.TicketCounter &lt;= @CTo)
                               <KeepTogether>true</KeepTogether>
                               <Top>2.27542in</Top>
                               <Left>0.12068in</Left>
-                              <Height>1.09887in</Height>
+                              <Height>1.10458in</Height>
                               <Width>4.77143in</Width>
                               <ZIndex>7</ZIndex>
                               <Style>
@@ -1777,9 +1840,75 @@ WHERE  (Ticket.TicketCounter &gt;= @CFrom) AND (Ticket.TicketCounter &lt;= @CTo)
                                     </Paragraph>
                                   </Paragraphs>
                                   <rd:DefaultName>Textbox45</rd:DefaultName>
-                                  <Top>0.12006in</Top>
                                   <Height>0.42655in</Height>
                                   <Width>4.74681in</Width>
+                                  <Style>
+                                    <Border>
+                                      <Style>None</Style>
+                                    </Border>
+                                    <PaddingLeft>2pt</PaddingLeft>
+                                    <PaddingRight>2pt</PaddingRight>
+                                    <PaddingTop>2pt</PaddingTop>
+                                    <PaddingBottom>2pt</PaddingBottom>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="Textbox2">
+                                  <CanGrow>true</CanGrow>
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=Fields!InventoryEventName.Value</Value>
+                                          <Style />
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style>
+                                        <TextAlign>Center</TextAlign>
+                                      </Style>
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <rd:DefaultName>Textbox1</rd:DefaultName>
+                                  <Top>0.79944in</Top>
+                                  <Left>0.01232in</Left>
+                                  <Height>0.25in</Height>
+                                  <Width>4.7468in</Width>
+                                  <ZIndex>1</ZIndex>
+                                  <Style>
+                                    <Border>
+                                      <Style>None</Style>
+                                    </Border>
+                                    <PaddingLeft>2pt</PaddingLeft>
+                                    <PaddingRight>2pt</PaddingRight>
+                                    <PaddingTop>2pt</PaddingTop>
+                                    <PaddingBottom>2pt</PaddingBottom>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="Textbox91">
+                                  <CanGrow>true</CanGrow>
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>B</Value>
+                                          <Style>
+                                            <FontSize>24pt</FontSize>
+                                            <FontWeight>Bold</FontWeight>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style>
+                                        <TextAlign>Center</TextAlign>
+                                      </Style>
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <rd:DefaultName>Textbox45</rd:DefaultName>
+                                  <Top>0.33616in</Top>
+                                  <Left>0.01231in</Left>
+                                  <Height>0.42655in</Height>
+                                  <Width>4.74681in</Width>
+                                  <ZIndex>2</ZIndex>
                                   <Style>
                                     <Border>
                                       <Style>None</Style>
