@@ -124,15 +124,24 @@ namespace Balance_Adjusments
             FSTI_Transactions _FSTI_Tran;
             string fields = "";
             string user = "";
+            int QTY_Transactions = 0;
             LOGGER = new TOOLS.Dataloger(x.ActiveEventName, "log", "");
             try
             {
+                if (cb_TestTransactions.Checked)
+                {
+                    QTY_Transactions = 100;
+                }
+                else
+                {
+                    QTY_Transactions = dgv_FSTI_T.Rows.Count;
+                }
                 if (FSTI.AmalgammaFSTI_Initialization())
                 {
                     if (FSTI.AmalgammaFSTI_Logon())
                     {
-                        for (int j = 0; j < dgv_FSTI_T.Rows.Count; j++)
-                        //for (int j = 0; j < 10; j++)
+                        //for (int j = 0; j < dgv_FSTI_T.Rows.Count; j++)
+                        for (int j = 0; j < QTY_Transactions; j++)
                         {
                             fields = dgv_FSTI_T.Rows[j].Cells[7].Value.ToString();
                             user = "Inv Sys";

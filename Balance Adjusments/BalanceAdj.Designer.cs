@@ -66,6 +66,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.tp_Log = new System.Windows.Forms.TabPage();
             this.rtb_FSTI_Log = new System.Windows.Forms.RichTextBox();
+            this.cb_TestTransactions = new System.Windows.Forms.CheckBox();
             this.tc_InvBalanceAdj.SuspendLayout();
             this.tp_FSCfg.SuspendLayout();
             this.gb_FSCredentials.SuspendLayout();
@@ -426,6 +427,7 @@
             // 
             // gb_TransactionProcess
             // 
+            this.gb_TransactionProcess.Controls.Add(this.cb_TestTransactions);
             this.gb_TransactionProcess.Controls.Add(this.b_UploadTransactions);
             this.gb_TransactionProcess.Controls.Add(this.dgv_FSTI_T);
             this.gb_TransactionProcess.Controls.Add(this.b_LoadTransactions);
@@ -446,10 +448,10 @@
             // 
             this.b_UploadTransactions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.b_UploadTransactions.Enabled = false;
-            this.b_UploadTransactions.Location = new System.Drawing.Point(703, 24);
+            this.b_UploadTransactions.Location = new System.Drawing.Point(657, 24);
             this.b_UploadTransactions.Margin = new System.Windows.Forms.Padding(4);
             this.b_UploadTransactions.Name = "b_UploadTransactions";
-            this.b_UploadTransactions.Size = new System.Drawing.Size(252, 41);
+            this.b_UploadTransactions.Size = new System.Drawing.Size(298, 41);
             this.b_UploadTransactions.TabIndex = 5;
             this.b_UploadTransactions.Text = "Upload Transactions to Fourth Shift";
             this.b_UploadTransactions.UseVisualStyleBackColor = true;
@@ -463,18 +465,18 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv_FSTI_T.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_FSTI_T.Location = new System.Drawing.Point(5, 82);
+            this.dgv_FSTI_T.Location = new System.Drawing.Point(5, 112);
             this.dgv_FSTI_T.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgv_FSTI_T.Name = "dgv_FSTI_T";
             this.dgv_FSTI_T.ReadOnly = true;
             this.dgv_FSTI_T.RowTemplate.Height = 24;
-            this.dgv_FSTI_T.Size = new System.Drawing.Size(950, 583);
+            this.dgv_FSTI_T.Size = new System.Drawing.Size(950, 553);
             this.dgv_FSTI_T.TabIndex = 4;
             // 
             // b_LoadTransactions
             // 
             this.b_LoadTransactions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.b_LoadTransactions.Location = new System.Drawing.Point(512, 25);
+            this.b_LoadTransactions.Location = new System.Drawing.Point(449, 25);
             this.b_LoadTransactions.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.b_LoadTransactions.Name = "b_LoadTransactions";
             this.b_LoadTransactions.Size = new System.Drawing.Size(184, 38);
@@ -525,6 +527,16 @@
             this.rtb_FSTI_Log.Size = new System.Drawing.Size(962, 671);
             this.rtb_FSTI_Log.TabIndex = 2;
             this.rtb_FSTI_Log.Text = "";
+            // 
+            // cb_TestTransactions
+            // 
+            this.cb_TestTransactions.AutoSize = true;
+            this.cb_TestTransactions.Location = new System.Drawing.Point(657, 72);
+            this.cb_TestTransactions.Name = "cb_TestTransactions";
+            this.cb_TestTransactions.Size = new System.Drawing.Size(263, 21);
+            this.cb_TestTransactions.TabIndex = 6;
+            this.cb_TestTransactions.Text = "Send 100 Transactions (For Testing)";
+            this.cb_TestTransactions.UseVisualStyleBackColor = true;
             // 
             // f_BalanceAdj
             // 
@@ -595,6 +607,7 @@
         private System.Windows.Forms.RichTextBox rtb_FSTI_Log;
         private System.Windows.Forms.DataGridView dgv_FSTI_T;
         private System.Windows.Forms.Button b_UploadTransactions;
+        private System.Windows.Forms.CheckBox cb_TestTransactions;
     }
 }
 
