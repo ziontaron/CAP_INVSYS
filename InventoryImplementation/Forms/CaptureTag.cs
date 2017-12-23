@@ -639,8 +639,21 @@ namespace InventoryImplementation
         {
             if (!Loading_data)
             {
-                UpdateTag();
+                if (chb_Blank.Checked && (tb_ItemNo.Text == "" || tb_CountQty.Text == "0"))
+                {
+                    MessageBox.Show("A blank Tag can not be Verified.","ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                }
+                else
+                {
+                    UpdateTag();
+                }
             }
+        }
+
+        private void b_MassiveVer_Click(object sender, EventArgs e)
+        {
+            f_MassiveTagVerify z = new InventoryImplementation.f_MassiveTagVerify(ref x);
+            z.ShowDialog();
         }
     }
 }

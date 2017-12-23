@@ -27,20 +27,44 @@ namespace InventoryImplementation
                 x.CreateCountTiket(L[j]);
             }
         }
-        public void Load_Tags_From_SQL(ref Inventory_System_API x)
+        public void Load_Tags_From_SQL(ref Inventory_System_API x, string Location)
         {
             //SQL DBMNG = new SQL("FSSERV", "FSDBMR", "AmalAdmin", "Amalgamma16");
 
             CAPA_INVContext context = new CAPA_INVContext();
             SQL DBMNG = context.DB_MNG_FS;
+            string JZ = " WHERE (Stockroom NOT IN ('3','5','FG','NO')) ";
+            string EP = " WHERE (Stockroom IN ('3','5','FG','NO')) ";
+            string Criteria = "";
 
             DataTable TicketTags = new DataTable();
             List<TicketTag> L = new List<TicketTag>();
 
-            string _query = @"select * from [FSDBMR].[dbo].[_CAP_INV_SYS_TicketCount_Tag]";
+            switch (Location)
+            {
+                case "JZ":
+                    {
+                        Criteria = JZ;
+                        break;
+                    }
+                case "EP":
+                    {
+                        Criteria = EP;
+                        break;
+                    }
+                default:
+                    {
+                        Criteria = "";
+                        break;
+                    }
+            }
+
+            string _query = @"SELECT * FROM [FSDBMR].[dbo].[_CAP_INV_SYS_TicketCount_Tag] " +
+                Criteria +
+                " ORDER BY Stockroom, Bin, ItemNumber";
 
             TicketTags = DBMNG.Execute_Query(_query);
-
+            int counter = x.GetLastCounter();
             foreach (DataRow R in TicketTags.Rows)
             {
                 L.Add(TicketTagLogic.DataRow2Tag(R));
@@ -49,6 +73,7 @@ namespace InventoryImplementation
             }
             for (int j = 0; j < L.Count; j++)
             {
+                L[j].Counter = counter + j + 1;
                 x.CreateCountTiket(L[j]);
             }
             context.Dispose();

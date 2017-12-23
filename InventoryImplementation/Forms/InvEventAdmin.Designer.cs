@@ -49,7 +49,6 @@
             this.b_MOtagsFromSQL = new System.Windows.Forms.Button();
             this.b_MOtagsFromCSV = new System.Windows.Forms.Button();
             this.b_tagsFromCSV = new System.Windows.Forms.Button();
-            this.b_tagsFromRandom = new System.Windows.Forms.Button();
             this.b_tagsFromSQL = new System.Windows.Forms.Button();
             this.tb_EventCreationDate = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -77,6 +76,8 @@
             this.l_TicketBlanks = new System.Windows.Forms.Label();
             this.l_TicketCounts = new System.Windows.Forms.Label();
             this.t_RefreshStatsRate = new System.Windows.Forms.Timer(this.components);
+            this.rb_JZ_Tags = new System.Windows.Forms.RadioButton();
+            this.rb_EPDC_Tags = new System.Windows.Forms.RadioButton();
             this.tb_EventAdmin.SuspendLayout();
             this.t_AdminEvent.SuspendLayout();
             this.gb_AdminEvent.SuspendLayout();
@@ -149,9 +150,9 @@
             // 
             this.b_LoadFSIM.Enabled = false;
             this.b_LoadFSIM.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.b_LoadFSIM.Location = new System.Drawing.Point(686, 380);
+            this.b_LoadFSIM.Location = new System.Drawing.Point(710, 380);
             this.b_LoadFSIM.Name = "b_LoadFSIM";
-            this.b_LoadFSIM.Size = new System.Drawing.Size(170, 77);
+            this.b_LoadFSIM.Size = new System.Drawing.Size(146, 77);
             this.b_LoadFSIM.TabIndex = 23;
             this.b_LoadFSIM.Text = "Load FS Item Master";
             this.b_LoadFSIM.UseVisualStyleBackColor = true;
@@ -161,9 +162,9 @@
             // 
             this.b_CreateIE.Enabled = false;
             this.b_CreateIE.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.b_CreateIE.Location = new System.Drawing.Point(686, 281);
+            this.b_CreateIE.Location = new System.Drawing.Point(710, 281);
             this.b_CreateIE.Name = "b_CreateIE";
-            this.b_CreateIE.Size = new System.Drawing.Size(170, 77);
+            this.b_CreateIE.Size = new System.Drawing.Size(146, 77);
             this.b_CreateIE.TabIndex = 22;
             this.b_CreateIE.Text = "Creale";
             this.b_CreateIE.UseVisualStyleBackColor = true;
@@ -174,9 +175,9 @@
             this.gb_AdminEvent.Controls.Add(this.b_ChangeStatus);
             this.gb_AdminEvent.Controls.Add(this.b_DeleteEvent);
             this.gb_AdminEvent.Enabled = false;
-            this.gb_AdminEvent.Location = new System.Drawing.Point(463, 246);
+            this.gb_AdminEvent.Location = new System.Drawing.Point(507, 246);
             this.gb_AdminEvent.Name = "gb_AdminEvent";
-            this.gb_AdminEvent.Size = new System.Drawing.Size(197, 335);
+            this.gb_AdminEvent.Size = new System.Drawing.Size(187, 335);
             this.gb_AdminEvent.TabIndex = 21;
             this.gb_AdminEvent.TabStop = false;
             this.gb_AdminEvent.Text = "Admin Events";
@@ -184,7 +185,7 @@
             // b_ChangeStatus
             // 
             this.b_ChangeStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.b_ChangeStatus.Location = new System.Drawing.Point(22, 35);
+            this.b_ChangeStatus.Location = new System.Drawing.Point(17, 35);
             this.b_ChangeStatus.Name = "b_ChangeStatus";
             this.b_ChangeStatus.Size = new System.Drawing.Size(154, 77);
             this.b_ChangeStatus.TabIndex = 13;
@@ -195,7 +196,7 @@
             // b_DeleteEvent
             // 
             this.b_DeleteEvent.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.b_DeleteEvent.Location = new System.Drawing.Point(22, 134);
+            this.b_DeleteEvent.Location = new System.Drawing.Point(17, 134);
             this.b_DeleteEvent.Name = "b_DeleteEvent";
             this.b_DeleteEvent.Size = new System.Drawing.Size(154, 77);
             this.b_DeleteEvent.TabIndex = 15;
@@ -211,7 +212,7 @@
             this.gb_BlankTags.Controls.Add(this.b_nBlankTags);
             this.gb_BlankTags.Controls.Add(this.tb_NTags);
             this.gb_BlankTags.Enabled = false;
-            this.gb_BlankTags.Location = new System.Drawing.Point(241, 246);
+            this.gb_BlankTags.Location = new System.Drawing.Point(293, 246);
             this.gb_BlankTags.Name = "gb_BlankTags";
             this.gb_BlankTags.Size = new System.Drawing.Size(197, 335);
             this.gb_BlankTags.TabIndex = 20;
@@ -270,15 +271,16 @@
             // 
             // gb_LoadTags
             // 
+            this.gb_LoadTags.Controls.Add(this.rb_EPDC_Tags);
+            this.gb_LoadTags.Controls.Add(this.rb_JZ_Tags);
             this.gb_LoadTags.Controls.Add(this.b_MOtagsFromSQL);
             this.gb_LoadTags.Controls.Add(this.b_MOtagsFromCSV);
             this.gb_LoadTags.Controls.Add(this.b_tagsFromCSV);
-            this.gb_LoadTags.Controls.Add(this.b_tagsFromRandom);
             this.gb_LoadTags.Controls.Add(this.b_tagsFromSQL);
             this.gb_LoadTags.Enabled = false;
             this.gb_LoadTags.Location = new System.Drawing.Point(25, 244);
             this.gb_LoadTags.Name = "gb_LoadTags";
-            this.gb_LoadTags.Size = new System.Drawing.Size(195, 337);
+            this.gb_LoadTags.Size = new System.Drawing.Size(246, 337);
             this.gb_LoadTags.TabIndex = 19;
             this.gb_LoadTags.TabStop = false;
             this.gb_LoadTags.Text = "Load Tags";
@@ -286,9 +288,9 @@
             // b_MOtagsFromSQL
             // 
             this.b_MOtagsFromSQL.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.b_MOtagsFromSQL.Location = new System.Drawing.Point(22, 179);
+            this.b_MOtagsFromSQL.Location = new System.Drawing.Point(22, 153);
             this.b_MOtagsFromSQL.Name = "b_MOtagsFromSQL";
-            this.b_MOtagsFromSQL.Size = new System.Drawing.Size(154, 42);
+            this.b_MOtagsFromSQL.Size = new System.Drawing.Size(199, 42);
             this.b_MOtagsFromSQL.TabIndex = 13;
             this.b_MOtagsFromSQL.Text = "MO Tags From SQL";
             this.b_MOtagsFromSQL.UseVisualStyleBackColor = true;
@@ -298,9 +300,9 @@
             // 
             this.b_MOtagsFromCSV.Enabled = false;
             this.b_MOtagsFromCSV.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.b_MOtagsFromCSV.Location = new System.Drawing.Point(22, 131);
+            this.b_MOtagsFromCSV.Location = new System.Drawing.Point(22, 249);
             this.b_MOtagsFromCSV.Name = "b_MOtagsFromCSV";
-            this.b_MOtagsFromCSV.Size = new System.Drawing.Size(154, 42);
+            this.b_MOtagsFromCSV.Size = new System.Drawing.Size(199, 42);
             this.b_MOtagsFromCSV.TabIndex = 12;
             this.b_MOtagsFromCSV.Text = "MO Tags From CSV";
             this.b_MOtagsFromCSV.UseVisualStyleBackColor = true;
@@ -310,32 +312,20 @@
             // 
             this.b_tagsFromCSV.Enabled = false;
             this.b_tagsFromCSV.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.b_tagsFromCSV.Location = new System.Drawing.Point(22, 37);
+            this.b_tagsFromCSV.Location = new System.Drawing.Point(22, 201);
             this.b_tagsFromCSV.Name = "b_tagsFromCSV";
-            this.b_tagsFromCSV.Size = new System.Drawing.Size(154, 42);
+            this.b_tagsFromCSV.Size = new System.Drawing.Size(199, 42);
             this.b_tagsFromCSV.TabIndex = 9;
             this.b_tagsFromCSV.Text = "Tags From CSV";
             this.b_tagsFromCSV.UseVisualStyleBackColor = true;
             this.b_tagsFromCSV.Click += new System.EventHandler(this.b_tagsFromCSV_Click);
             // 
-            // b_tagsFromRandom
-            // 
-            this.b_tagsFromRandom.Enabled = false;
-            this.b_tagsFromRandom.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.b_tagsFromRandom.Location = new System.Drawing.Point(22, 236);
-            this.b_tagsFromRandom.Name = "b_tagsFromRandom";
-            this.b_tagsFromRandom.Size = new System.Drawing.Size(154, 77);
-            this.b_tagsFromRandom.TabIndex = 11;
-            this.b_tagsFromRandom.Text = "Create Random Tags ";
-            this.b_tagsFromRandom.UseVisualStyleBackColor = true;
-            this.b_tagsFromRandom.Click += new System.EventHandler(this.b_tagsFromRandom_Click);
-            // 
             // b_tagsFromSQL
             // 
             this.b_tagsFromSQL.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.b_tagsFromSQL.Location = new System.Drawing.Point(22, 85);
+            this.b_tagsFromSQL.Location = new System.Drawing.Point(22, 103);
             this.b_tagsFromSQL.Name = "b_tagsFromSQL";
-            this.b_tagsFromSQL.Size = new System.Drawing.Size(154, 40);
+            this.b_tagsFromSQL.Size = new System.Drawing.Size(199, 40);
             this.b_tagsFromSQL.TabIndex = 10;
             this.b_tagsFromSQL.Text = "Tags From SQL";
             this.b_tagsFromSQL.UseVisualStyleBackColor = true;
@@ -611,6 +601,32 @@
             this.t_RefreshStatsRate.Interval = 10000;
             this.t_RefreshStatsRate.Tick += new System.EventHandler(this.t_RefreshStatsRate_Tick);
             // 
+            // rb_JZ_Tags
+            // 
+            this.rb_JZ_Tags.AutoSize = true;
+            this.rb_JZ_Tags.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_JZ_Tags.Location = new System.Drawing.Point(22, 37);
+            this.rb_JZ_Tags.Name = "rb_JZ_Tags";
+            this.rb_JZ_Tags.Size = new System.Drawing.Size(137, 21);
+            this.rb_JZ_Tags.TabIndex = 14;
+            this.rb_JZ_Tags.TabStop = true;
+            this.rb_JZ_Tags.Text = "Ticket Tags JZ";
+            this.rb_JZ_Tags.UseVisualStyleBackColor = true;
+            this.rb_JZ_Tags.CheckedChanged += new System.EventHandler(this.rb_JZ_Tags_CheckedChanged);
+            // 
+            // rb_EPDC_Tags
+            // 
+            this.rb_EPDC_Tags.AutoSize = true;
+            this.rb_EPDC_Tags.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_EPDC_Tags.Location = new System.Drawing.Point(22, 65);
+            this.rb_EPDC_Tags.Name = "rb_EPDC_Tags";
+            this.rb_EPDC_Tags.Size = new System.Drawing.Size(160, 21);
+            this.rb_EPDC_Tags.TabIndex = 15;
+            this.rb_EPDC_Tags.TabStop = true;
+            this.rb_EPDC_Tags.Text = "Ticket Tags EPDC";
+            this.rb_EPDC_Tags.UseVisualStyleBackColor = true;
+            this.rb_EPDC_Tags.CheckedChanged += new System.EventHandler(this.rb_EPDC_Tags_CheckedChanged);
+            // 
             // f_InvEventAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -628,6 +644,7 @@
             this.gb_BlankTags.ResumeLayout(false);
             this.gb_BlankTags.PerformLayout();
             this.gb_LoadTags.ResumeLayout(false);
+            this.gb_LoadTags.PerformLayout();
             this.t_Stadistics.ResumeLayout(false);
             this.gb_IE_Stadistics.ResumeLayout(false);
             this.gb_IE_Stadistics.PerformLayout();
@@ -662,7 +679,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox gb_LoadTags;
         private System.Windows.Forms.Button b_tagsFromCSV;
-        private System.Windows.Forms.Button b_tagsFromRandom;
         private System.Windows.Forms.Button b_tagsFromSQL;
         private System.Windows.Forms.GroupBox gb_BlankTags;
         private System.Windows.Forms.GroupBox gb_AdminEvent;
@@ -687,6 +703,8 @@
         private System.Windows.Forms.Button b_LoadFSIM;
         private System.Windows.Forms.Label l_TicketVoid;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.RadioButton rb_EPDC_Tags;
+        private System.Windows.Forms.RadioButton rb_JZ_Tags;
     }
 }
 

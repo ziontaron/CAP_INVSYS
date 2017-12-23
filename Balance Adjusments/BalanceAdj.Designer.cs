@@ -531,7 +531,7 @@
             // cb_TestTransactions
             // 
             this.cb_TestTransactions.AutoSize = true;
-            this.cb_TestTransactions.Location = new System.Drawing.Point(657, 72);
+            this.cb_TestTransactions.Location = new System.Drawing.Point(15, 72);
             this.cb_TestTransactions.Name = "cb_TestTransactions";
             this.cb_TestTransactions.Size = new System.Drawing.Size(263, 21);
             this.cb_TestTransactions.TabIndex = 6;

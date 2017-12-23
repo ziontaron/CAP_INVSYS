@@ -161,6 +161,10 @@ namespace CAP_Inventory_System
             _ticketCount = Tag2Entity(T);
             _Response = _ticketCountLogic.Update(_ticketCount);
         }
+        public void UpdateTag(TicketCount T)
+        {
+            _Response = _ticketCountLogic.Update(T);
+        }
         #endregion
     }
 }

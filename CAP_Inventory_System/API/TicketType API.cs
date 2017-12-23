@@ -37,7 +37,6 @@ namespace CAP_Inventory_System
                 TicketTypeDescirption = ""
             };
             _Response = _cat_TicketTypeLogic.ReadbyId(entity);
-
         }
         public List<string> ReadAllTicketTypes()
         {

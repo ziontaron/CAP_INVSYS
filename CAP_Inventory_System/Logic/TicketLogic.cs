@@ -17,7 +17,6 @@ namespace CAP_Inventory_System.Logic
         {
             
         }
-
         public CommonResponse Create(Ticket e)
         {
             CommonResponse response = new Reusable.CommonResponse();
@@ -101,7 +100,7 @@ namespace CAP_Inventory_System.Logic
         {
             CommonResponse response = new Reusable.CommonResponse();
             Ticket e = new Ticket { TicketKey=ID};
-            //e.TicketKey = ID;
+            //e.TicketKey = ID; 
             if (e.TicketKey > 0)
             {
                 using (CAPA_INVContext context = new CAPA_INVContext())

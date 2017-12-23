@@ -66,6 +66,8 @@ namespace InventoryImplementation
                 gb_BlankTags.Enabled = true;
                 gb_LoadTags.Enabled = true;
                 b_CreateIE.Enabled = false;
+                rb_JZ_Tags.Enabled= !x.TicketCountLoaded;
+                rb_EPDC_Tags.Enabled = !x.TicketCountLoaded;
                 b_tagsFromSQL.Enabled = !x.TicketCountLoaded;
                 b_MOtagsFromSQL.Enabled = !x.MOTagsLoaded;
                 rtb_ro_EventDescription.Enabled = false;
@@ -240,7 +242,16 @@ namespace InventoryImplementation
         {
             if (x.ActiveEventStatus)
             {
-                _tools.Load_Tags_From_SQL(ref x);
+                string location = "";
+                if (rb_JZ_Tags.Checked)
+                {
+                    location = "JZ";
+                }
+                else
+                {
+                    location = "EP";
+                }
+                _tools.Load_Tags_From_SQL(ref x, location);
                 x.UpdateInventoryEvent(x.ActiveEventId, x.ActiveEventName, x.ActiveEventDescription, x.ActiveEventStatus, true, x.MOTagsLoaded);
                 LoadEventInfo();
             }
@@ -341,6 +352,22 @@ namespace InventoryImplementation
             }
 
             context.Dispose();
+        }
+
+        private void rb_JZ_Tags_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rb_JZ_Tags.Checked)
+            {
+                rb_EPDC_Tags.Checked = false;
+            }
+        }
+
+        private void rb_EPDC_Tags_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rb_EPDC_Tags.Checked)
+            {
+                rb_JZ_Tags.Checked = false;
+            }
         }
     }
 }

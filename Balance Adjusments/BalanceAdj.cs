@@ -143,9 +143,9 @@ namespace Balance_Adjusments
                         //for (int j = 0; j < dgv_FSTI_T.Rows.Count; j++)
                         for (int j = 0; j < QTY_Transactions; j++)
                         {
-                            fields = dgv_FSTI_T.Rows[j].Cells[7].Value.ToString();
+                            fields = dgv_FSTI_T.Rows[j].Cells["TransactionStringFields"].Value.ToString();
                             user = "Inv Sys";
-                            if (!(bool)dgv_FSTI_T.Rows[j].Cells[8].Value)
+                            if (!(bool)dgv_FSTI_T.Rows[j].Cells["TransactionProcessedYN"].Value)
                             {
                                 if (FSTI.AmalgammaFSTI_INVA01(fields, user))
                                 {

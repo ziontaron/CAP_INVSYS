@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Reusable;
+using System.Data.Entity;
 
 namespace CAP_Inventory_System.Logic
 {
@@ -61,6 +62,36 @@ namespace CAP_Inventory_System.Logic
                 List = context.TicketCounts.Where(r => (r.TicketKey == Ticket_Id&& r.Ticket.cat_TicketTypeKey == 1)).ToList();
                 return List;
             }
+        }
+        public List<TicketCount> ReadByProp(string Property, TicketCount T)
+        {
+            List<TicketCount> L = new List<TicketCount>();
+
+            using (CAPA_INVContext context = new CAPA_INVContext())
+            {
+                switch (Property)
+                {
+                    case "Verified":
+                        {
+                            List<TicketCount> List = new List<TicketCount>();
+                            List = context.TicketCounts
+                            .Where(r => (
+                            r.Ticket.InventoryEventKey == T.Ticket.InventoryEventKey
+                            && r.Ticket.cat_TicketTypeKey == 1)
+                            && r.Verified == T.Verified)
+                            .Include(t=> t.Ticket)
+                            .ToList();
+                            
+                            return List;
+                        }
+                    default:
+                        {
+                            break;
+                        }
+                }
+            }
+
+            return L;
         }
         public CommonResponse ReadbyId(TicketCount e)
         {

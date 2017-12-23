@@ -13,16 +13,16 @@ namespace CAP_Inventory_System
         public SQL DB_MNG;
         public SQL DB_MNG_FS;
         //public CAPA_INVContext() : base("name=CAPA_INV")
-        //public CAPA_INVContext() : base("name=CAPA_INVServer")
+        public CAPA_INVContext() : base("name=CAPA_INVServer")
         //public CAPA_INVContext() : base("name=CAPA_INVLocal")
-        public CAPA_INVContext() : base("name=CAPA_INVSandBox")
+        //public CAPA_INVContext() : base("name=CAPA_INVSandBox")
         {
             //string ConnStr = "";
             //ConnStr = ConfigurationManager.ConnectionStrings["CAPA_INV"].ConnectionString;
             string ConnStr = Database.Connection.ConnectionString;
             DB_MNG = new SQL(ConnStr);
-            //DB_MNG_FS = new SQL("FSSERV", "FSDBMR", "AmalAdmin", "Amalgamma16");
-            DB_MNG_FS = new SQL(@"sb-fsserv2\sbfsserv2", "FSDBMR", "AmalAdmin", "Amalgamma16");
+            DB_MNG_FS = new SQL("FSSERV", "FSDBMR", "AmalAdmin", "Amalgamma16");
+            //DB_MNG_FS = new SQL(@"sb-fsserv2\sbfsserv2", "FSDBMR", "AmalAdmin", "Amalgamma16");
         }
         public CAPA_INVContext(string conn) : base(conn)
         {

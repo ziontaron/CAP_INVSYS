@@ -40,10 +40,11 @@ FROM     InventoryEvent</CommandText>
           </QueryParameter>
         </QueryParameters>
         <CommandText>SELECT DISTINCT TicketCount.STK
-FROM         InventoryEvent INNER JOIN
-                      Ticket ON InventoryEvent.InventoryEventKey = Ticket.InventoryEventKey INNER JOIN
-                      TicketCount ON Ticket.TicketKey = TicketCount.TicketKey
-WHERE     (InventoryEvent.InventoryEventKey = @IE)</CommandText>
+FROM     InventoryEvent INNER JOIN
+                  Ticket ON InventoryEvent.InventoryEventKey = Ticket.InventoryEventKey INNER JOIN
+                  TicketCount ON Ticket.TicketKey = TicketCount.TicketKey
+WHERE  (InventoryEvent.InventoryEventKey = @IE)
+ORDER BY TicketCount.STK</CommandText>
       </Query>
       <Fields>
         <Field Name="STK">
@@ -62,6 +63,9 @@ WHERE     (InventoryEvent.InventoryEventKey = @IE)</CommandText>
           <QueryParameter Name="@IE">
             <Value>=Parameters!IE.Value</Value>
           </QueryParameter>
+          <QueryParameter Name="@Bin">
+            <Value>=Parameters!Bin.Value</Value>
+          </QueryParameter>
         </QueryParameters>
         <CommandText>SELECT Ticket.TicketCounter, RIGHT('0000000' + CAST(Ticket.TicketCounter AS NVARCHAR(10)), 5) AS TicketCounterStr, TicketCount.CounterInitials, TicketCount.CountedDate, (CASE WHEN TicketCount.CountedDate IS NULL 
                   THEN '' ELSE CONVERT(VARCHAR(10), TicketCount.CountedDate, 101) END) AS CountedDateStr, TicketCount.TicketKey, TicketCount.ItemNumber, TicketCount.ItemDescription, TicketCount.ItemRef, TicketCount.UM, 
@@ -71,7 +75,7 @@ FROM     Ticket INNER JOIN
                   TicketCount ON Ticket.TicketKey = TicketCount.TicketKey INNER JOIN
                   InventoryEvent ON Ticket.InventoryEventKey = InventoryEvent.InventoryEventKey INNER JOIN
                   InventoryEvent AS InventoryEvent_1 ON Ticket.InventoryEventKey = InventoryEvent_1.InventoryEventKey
-WHERE  (TicketCount.STK IN (@STK)) AND (InventoryEvent.InventoryEventKey = @IE)</CommandText>
+WHERE  (TicketCount.STK IN (@STK)) AND (InventoryEvent.InventoryEventKey = @IE) AND (TicketCount.BIN IN (@Bin))</CommandText>
       </Query>
       <Fields>
         <Field Name="TicketCounter">
@@ -161,6 +165,35 @@ WHERE  (TicketCount.STK IN (@STK)) AND (InventoryEvent.InventoryEventKey = @IE)<
         <Field Name="InventoryEventKey">
           <DataField>InventoryEventKey</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="Bin">
+      <Query>
+        <DataSourceName>InventoryEvent</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@IE">
+            <Value>=Parameters!IE.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@STK">
+            <Value>=Parameters!STK.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT DISTINCT TicketCount.BIN, TicketCount.STK
+FROM     InventoryEvent INNER JOIN
+                  Ticket ON InventoryEvent.InventoryEventKey = Ticket.InventoryEventKey INNER JOIN
+                  TicketCount ON Ticket.TicketKey = TicketCount.TicketKey
+WHERE  (InventoryEvent.InventoryEventKey = @IE) AND (TicketCount.STK IN (@STK))
+ORDER BY TicketCount.BIN</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="BIN">
+          <DataField>BIN</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="STK">
+          <DataField>STK</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
     </DataSet>
@@ -518,6 +551,7 @@ WHERE  (TicketCount.STK IN (@STK)) AND (InventoryEvent.InventoryEventKey = @IE)<
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -1343,7 +1377,9 @@ WHERE  (TicketCount.STK IN (@STK)) AND (InventoryEvent.InventoryEventKey = @IE)<
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>CountedDate</rd:DefaultName>
@@ -1967,6 +2003,18 @@ WHERE  (TicketCount.STK IN (@STK)) AND (InventoryEvent.InventoryEventKey = @IE)<
       </ValidValues>
       <MultiValue>true</MultiValue>
     </ReportParameter>
+    <ReportParameter Name="Bin">
+      <DataType>String</DataType>
+      <Prompt>BIn</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>Bin</DataSetName>
+          <ValueField>BIN</ValueField>
+          <LabelField>BIN</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
@@ -1982,6 +2030,11 @@ WHERE  (TicketCount.STK IN (@STK)) AND (InventoryEvent.InventoryEventKey = @IE)<
           <ColumnIndex>1</ColumnIndex>
           <RowIndex>0</RowIndex>
           <ParameterName>STK</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>2</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>Bin</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

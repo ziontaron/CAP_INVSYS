@@ -68,6 +68,7 @@
             this.b_NextTag = new System.Windows.Forms.Button();
             this.b_Prev = new System.Windows.Forms.Button();
             this.l_EventStatus = new System.Windows.Forms.Label();
+            this.b_MassiveVer = new System.Windows.Forms.Button();
             this.gb_TagInfo.SuspendLayout();
             this.gb_IC.SuspendLayout();
             this.SuspendLayout();
@@ -96,6 +97,7 @@
             this.gb_TagInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gb_TagInfo.Controls.Add(this.b_MassiveVer);
             this.gb_TagInfo.Controls.Add(this.chb_Blank);
             this.gb_TagInfo.Controls.Add(this.chb_Verified);
             this.gb_TagInfo.Controls.Add(this.dtp_CountedDate);
@@ -507,6 +509,16 @@
             this.l_EventStatus.TabIndex = 11;
             this.l_EventStatus.Text = "status";
             // 
+            // b_MassiveVer
+            // 
+            this.b_MassiveVer.Location = new System.Drawing.Point(645, 295);
+            this.b_MassiveVer.Name = "b_MassiveVer";
+            this.b_MassiveVer.Size = new System.Drawing.Size(173, 36);
+            this.b_MassiveVer.TabIndex = 33;
+            this.b_MassiveVer.Text = "Massive Verification";
+            this.b_MassiveVer.UseVisualStyleBackColor = true;
+            this.b_MassiveVer.Click += new System.EventHandler(this.b_MassiveVer_Click);
+            // 
             // f_CaptureTag
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -573,5 +585,6 @@
         private System.Windows.Forms.CheckBox chb_Verified;
         private System.Windows.Forms.CheckBox chb_Blank;
         private System.Windows.Forms.Label l_EventStatus;
+        private System.Windows.Forms.Button b_MassiveVer;
     }
 }
