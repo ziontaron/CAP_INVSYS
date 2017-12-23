@@ -74,7 +74,6 @@
             this.tb_UserPAssword.PasswordChar = '*';
             this.tb_UserPAssword.Size = new System.Drawing.Size(258, 22);
             this.tb_UserPAssword.TabIndex = 2;
-            this.tb_UserPAssword.Text = "capsonic";
             this.tb_UserPAssword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_UserPAssword_KeyDown);
             // 
             // label2
@@ -95,7 +94,6 @@
             this.tb_UserName.Name = "tb_UserName";
             this.tb_UserName.Size = new System.Drawing.Size(258, 22);
             this.tb_UserName.TabIndex = 1;
-            this.tb_UserName.Text = "Admin";
             this.tb_UserName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_UserName_KeyDown);
             // 
             // label1
