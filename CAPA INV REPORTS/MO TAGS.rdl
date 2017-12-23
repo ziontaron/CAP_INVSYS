@@ -4,7 +4,7 @@
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
     <DataSource Name="CAP_INV">
-      <DataSourceReference>CAPA_INV</DataSourceReference>
+      <DataSourceReference>CAPA_INV_SYS</DataSourceReference>
       <rd:SecurityType>None</rd:SecurityType>
       <rd:DataSourceID>388da8fc-9c69-4ed6-bab9-0d9d98777350</rd:DataSourceID>
     </DataSource>
@@ -543,7 +543,7 @@ FROM     InventoryEvent</CommandText>
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!MO_Ln.Value</Value>
+                                      <Value>=First(Fields!MO_Status.Value)</Value>
                                       <Style />
                                     </TextRun>
                                   </TextRuns>
@@ -828,7 +828,6 @@ FROM     InventoryEvent</CommandText>
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>InventoryEventName</rd:DefaultName>
-                              <Left>0in</Left>
                               <Height>0.21667in</Height>
                               <Width>3.50833in</Width>
                               <ZIndex>19</ZIndex>
@@ -1090,7 +1089,7 @@ FROM     InventoryEvent</CommandText>
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.14166in</Height>
+                  <Height>0.25833in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -1337,7 +1336,7 @@ FROM     InventoryEvent</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Qty Short</Value>
+                                  <Value>Qty Open</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -1369,7 +1368,7 @@ FROM     InventoryEvent</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Qty Open</Value>
+                                  <Value />
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -1628,7 +1627,7 @@ FROM     InventoryEvent</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Qty_Per.Value</Value>
+                                  <Value>=Fields!Qty_Per.Value/Fields!Order_Qty.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                   </Style>
@@ -1659,7 +1658,7 @@ FROM     InventoryEvent</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Qty_Per.Value*Fields!Order_Qty.Value</Value>
+                                  <Value>=Fields!Qty_Per.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                   </Style>
@@ -1721,7 +1720,7 @@ FROM     InventoryEvent</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=(Fields!Qty_Per.Value*Fields!Order_Qty.Value)-Fields!Issued_Qty.Value</Value>
+                                  <Value>=Fields!Qty_Per.Value-Fields!Issued_Qty.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                   </Style>
@@ -2574,7 +2573,7 @@ FROM     InventoryEvent</CommandText>
             <DataSetName>DS_MO_TAGS</DataSetName>
             <Top>0.13in</Top>
             <Left>0.11334in</Left>
-            <Height>2.4361in</Height>
+            <Height>2.55277in</Height>
             <Width>10.46112in</Width>
             <Style>
               <Border>
