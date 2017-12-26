@@ -160,7 +160,7 @@
             this.MinimizeBox = false;
             this.Name = "f_InventorySysFE";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Inventory System Front End";
+            this.Text = "Inventory System Front End Ver 1.1";
             this.gb_CountFunctions.ResumeLayout(false);
             this.gb_EventAdmin.ResumeLayout(false);
             this.gb_SysAdmin.ResumeLayout(false);

@@ -1392,7 +1392,7 @@ WHERE  (Ticket.TicketCounter &gt;= @CFrom) AND (Ticket.TicketCounter &lt;= @CTo)
                                     <Paragraph>
                                       <TextRuns>
                                         <TextRun>
-                                          <Value>=IIF(Fields!IC.Value.ToString()="I","[ X ]Shipping","[   ]Shipping" )</Value>
+                                          <Value>=IIF(Fields!IC.Value.ToString()="S","[ X ]Shipping","[   ]Shipping" )</Value>
                                           <Style>
                                             <FontSize>7pt</FontSize>
                                             <FontWeight>Bold</FontWeight>
@@ -2537,7 +2537,7 @@ WHERE  (Ticket.TicketCounter &gt;= @CFrom) AND (Ticket.TicketCounter &lt;= @CTo)
                                     <Paragraph>
                                       <TextRuns>
                                         <TextRun>
-                                          <Value>=IIF(Fields!IC.Value.ToString = "I", "[ X ]Shipping", "[   ]Shipping")</Value>
+                                          <Value>=IIF(Fields!IC.Value.ToString = "S", "[ X ]Shipping", "[   ]Shipping")</Value>
                                           <Style>
                                             <FontSize>7pt</FontSize>
                                             <FontWeight>Bold</FontWeight>
