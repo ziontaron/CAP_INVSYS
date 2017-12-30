@@ -34,6 +34,7 @@ namespace InventoryImplementation
             _table = new DataTable();
             #region Table Setup
             _table.Columns.Add("Tag Counter", typeof(int));
+            _table.Columns.Add("Counter Initials", typeof(string));
             _table.Columns.Add("Item Number", typeof(string));
             _table.Columns.Add("Item Description", typeof(string));
             _table.Columns.Add("Class", typeof(string));
@@ -81,8 +82,23 @@ namespace InventoryImplementation
             t.InventoryEventKey = x.ActiveEventId;
             T.Ticket = t;
             T.Verified = false;
-            L=x.LoadTags_List(T);
+            L = x.LoadTags_List(T);
             List2Table(L);
+            dgv_FilteredTags.DataSource = _table;
+            SetReadOnlyColumns();
+        }
+        private void LoadTags(string Range)
+        {
+            TicketCount T = new TicketCount();
+            Ticket t = new Ticket();
+            L = new List<TicketCount>();
+            SetUpTable();
+            t.InventoryEventKey = x.ActiveEventId;
+            T.Ticket = t;
+            T.Verified = false;
+            L = x.LoadTags_List(T,Range);
+            List2Table(L);
+            dgv_FilteredTags.DataSource = null;
             dgv_FilteredTags.DataSource = _table;
             SetReadOnlyColumns();
         }
@@ -92,6 +108,7 @@ namespace InventoryImplementation
             {
                 _table.Rows.Add(
                     _t.Ticket.TicketCounter
+                    , _t.CounterInitials
                     , _t.ItemNumber
                     , _t.ItemDescription
                     , _t.ItemRef
@@ -115,21 +132,31 @@ namespace InventoryImplementation
 
         private void b_RefreshList_Click(object sender, EventArgs e)
         {
-            LoadTags();
+            if (tb_TagFrom.Text != "" && tb_TagTo.Text != "")
+            {
+                string range = tb_TagFrom.Text + "," + tb_TagTo.Text;
+                LoadTags(range);
+                this.Text = "Massive Tag Verify " + L.Count.ToString() + " Tags Loaded";
+            }
+            else
+            {
+                MessageBox.Show("FROM or TO must be captured");
+            }
         }
 
         private void dgv_FilteredTags_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            int tagNo = (int)dgv_FilteredTags.SelectedRows[0].Cells["Tag Counter"].Value;
             int TagIndex = e.RowIndex;
-            L[TagIndex].Verified = (bool)dgv_FilteredTags.SelectedRows[0].Cells["Verified"].Value;
-            L[TagIndex].VoidTag = (bool)dgv_FilteredTags.SelectedRows[0].Cells["Void"].Value;
+            int tagNo = (int)dgv_FilteredTags.Rows[TagIndex].Cells["Tag Counter"].Value;
+           
+            L[TagIndex].Verified = (bool)dgv_FilteredTags.Rows[TagIndex].Cells["Verified"].Value;
+            L[TagIndex].VoidTag = (bool)dgv_FilteredTags.Rows[TagIndex].Cells["Void"].Value;
 
-            if (dgv_FilteredTags.SelectedRows[0].Cells["Item Number"].Value.ToString() == ""
-                && !(bool)dgv_FilteredTags.SelectedRows[0].Cells["Void"].Value)
+            if (dgv_FilteredTags.Rows[TagIndex].Cells["Item Number"].Value.ToString() == ""
+                && !(bool)dgv_FilteredTags.Rows[TagIndex].Cells["Void"].Value)
             {
                 MessageBox.Show("A blank Tag can not be Verified.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                dgv_FilteredTags.SelectedRows[0].Cells["Verified"].Value = false;
+                dgv_FilteredTags.Rows[TagIndex].Cells["Verified"].Value = false;
             }
             else
             {

@@ -83,9 +83,23 @@ namespace CAP_Inventory_System
             List<TicketCount> L = new List<TicketCount>();
             Ticket t = new Ticket();
             t.InventoryEventKey = ActiveEventId;
-            T.Ticket = t;            
+            T.Ticket = t;
 
             L = _ticketCountLogic.ReadByProp("Verified", T);
+            //for (int i = 0; i < L.Count; i++)
+            //{
+            //    L[i].Ticket = (Ticket) _ticketLogic.ReadbyId(L[i].TicketKey).Result;
+            //}
+            return L;
+        }
+        public List<TicketCount> LoadTags_List(TicketCount T, string Range)
+        {
+            List<TicketCount> L = new List<TicketCount>();
+            Ticket t = new Ticket();
+            t.InventoryEventKey = ActiveEventId;
+            T.Ticket = t;
+
+            L = _ticketCountLogic.ReadByProp("Verified", T, Range);
             //for (int i = 0; i < L.Count; i++)
             //{
             //    L[i].Ticket = (Ticket) _ticketLogic.ReadbyId(L[i].TicketKey).Result;

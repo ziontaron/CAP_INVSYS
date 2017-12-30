@@ -104,6 +104,10 @@ namespace InventoryImplementation
             {
                 l_TicketCounts.Text = stats.TicketCounts.ToString();
             }
+            if (l_TicketCounted.Text != stats.TicketCounted.ToString())
+            {
+                l_TicketCounted.Text = stats.TicketCounted.ToString();
+            }
             if (l_TicketBlanks.Text != stats.TicketBlank.ToString())
             {
                 l_TicketBlanks.Text = stats.TicketBlank.ToString();
@@ -116,11 +120,20 @@ namespace InventoryImplementation
             {
                 l_TicketVoid.Text = stats.TicketVoid.ToString();
             }
-            int Porcentage = stats.TicketCountedPorcentage;
-            if (pb_CountedTickets.Value != Porcentage)
+            if (l_MOTags.Text != stats.MOTags.ToString())
             {
+                l_MOTags.Text = stats.MOTags.ToString();
+            }
+            if (l_MOTagsCounted.Text != stats.MOTagsCounted.ToString())
+            {
+                l_MOTagsCounted.Text = stats.MOTagsCounted.ToString();
+            }
+            int Porcentage = stats.TicketCountedPorcentage;
+            if (pb_CountedTickets.Value != Porcentage||l_CountedTags.Text!=stats.TicketCounted.ToString())
+            {
+                l_CountedTags.Text = stats.TicketCounted.ToString();
                 pb_CountedTickets.Value = Porcentage;
-                gb_CountedTikets.Text = "Counted Tickets " + Porcentage.ToString() + "% : " + stats.TicketCounted.ToString() + "/" + stats.TicketCounts.ToString();
+                gb_CountedTikets.Text = "Inventory Event Progress " + Porcentage.ToString() + "% : " + stats.TotalTicketsCounted.ToString() + "/" + stats.TotalTickets.ToString();
             }
         }
         #endregion
@@ -369,5 +382,6 @@ namespace InventoryImplementation
                 rb_JZ_Tags.Checked = false;
             }
         }
+        
     }
 }

@@ -23,6 +23,14 @@ namespace InventoryImplementation
             x = IE;
             cb_InvEvent.Items.AddRange(_LoadEvents().ToArray());
             l_EventStatus.Text = "";
+            if (x.UserRole.Contains("Admin"))
+            {
+                cb_EditCountQty.Visible = true;
+            }
+            else
+            {
+                cb_EditCountQty.Visible = false;
+            }
         }
         #region Functions
         private List<string> _LoadEvents()
@@ -149,10 +157,10 @@ namespace InventoryImplementation
                             tb_STK.Enabled = true;
                             tb_BIN.Enabled = true;
 
-                            chb_OnHand.Checked = true;
-                            chb_Hold.Checked = false;
-                            chb_Inspection.Checked = false;
-                            chb_Shipping.Checked = false;
+                            //chb_OnHand.Checked = true;
+                            //chb_Hold.Checked = false;
+                            //chb_Inspection.Checked = false;
+                            //chb_Shipping.Checked = false;
 
                         }
                         else
@@ -302,7 +310,7 @@ namespace InventoryImplementation
                 _tag.CounterInitials = tb_CounterInitials.Text;
                 try
                 {
-                    _tag.CountQTY = Convert.ToInt32(tb_CountQty.Text);
+                    _tag.CountQTY = float.Parse(tb_CountQty.Text);
                 }
                 catch
                 {
@@ -310,7 +318,7 @@ namespace InventoryImplementation
                 }
                 try
                 {
-                    _tag.ReCountQTY = Convert.ToInt32(tb_ReCountQty.Text);
+                    _tag.ReCountQTY = float.Parse(tb_ReCountQty.Text);
                 }
                 catch
                 {
@@ -326,6 +334,7 @@ namespace InventoryImplementation
                 _tag.Stockroom = tb_STK.Text;
                 _tag.Bin = tb_BIN.Text;
                 
+
             }
             else
             {
@@ -333,7 +342,7 @@ namespace InventoryImplementation
                 _tag.CounterInitials = tb_CounterInitials.Text;
                 try
                 {
-                    _tag.CountQTY = Convert.ToInt32(tb_CountQty.Text);
+                    _tag.CountQTY = float.Parse(tb_CountQty.Text);
                 }
                 catch
                 {
@@ -341,7 +350,7 @@ namespace InventoryImplementation
                 }
                 try
                 {
-                    _tag.ReCountQTY = Convert.ToInt32(tb_ReCountQty.Text);
+                    _tag.ReCountQTY = float.Parse(tb_ReCountQty.Text);
                 }
                 catch
                 {
@@ -451,6 +460,7 @@ namespace InventoryImplementation
         {
             if (chb_OnHand.Checked)
             {
+                _tag.InventoryCategory = "O";
                 chb_OnHand.Checked = true;
                 chb_Inspection.Checked = false;
                 chb_Hold.Checked = false;
@@ -461,6 +471,7 @@ namespace InventoryImplementation
         {
             if (chb_Hold.Checked)
             {
+                _tag.InventoryCategory = "H";
                 chb_OnHand.Checked = false;
                 chb_Inspection.Checked = false;
                 chb_Hold.Checked = true;
@@ -471,6 +482,7 @@ namespace InventoryImplementation
         {
             if (chb_Inspection.Checked)
             {
+                _tag.InventoryCategory = "I";
                 chb_OnHand.Checked = false;
                 chb_Inspection.Checked = true;
                 chb_Hold.Checked = false;
@@ -481,6 +493,7 @@ namespace InventoryImplementation
         {
             if (chb_Shipping.Checked)
             {
+                _tag.InventoryCategory = "S";
                 chb_OnHand.Checked = false;
                 chb_Inspection.Checked = false;
                 chb_Hold.Checked = false;
@@ -519,10 +532,11 @@ namespace InventoryImplementation
                 tb_TagNo.SelectAll();
                 try
                 {
-                    _tag.CountQTY = Convert.ToInt32(tb_CountQty.Text);
+                    _tag.CountQTY = float.Parse(tb_CountQty.Text);
                 }
-                catch
+                catch(Exception ex)
                 {
+                    MessageBox.Show(ex.Message);
                     _tag.CountQTY = 0;
                 }
                 UpdateTag();
@@ -649,11 +663,14 @@ namespace InventoryImplementation
                 }
             }
         }
-
         private void b_MassiveVer_Click(object sender, EventArgs e)
         {
             f_MassiveTagVerify z = new InventoryImplementation.f_MassiveTagVerify(ref x);
             z.ShowDialog();
+        }
+        private void cb_EditCountQty_CheckedChanged(object sender, EventArgs e)
+        {
+            tb_CountQty.Enabled = cb_EditCountQty.Checked;
         }
     }
 }

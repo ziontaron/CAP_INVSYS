@@ -79,9 +79,44 @@ namespace CAP_Inventory_System.Logic
                             r.Ticket.InventoryEventKey == T.Ticket.InventoryEventKey
                             && r.Ticket.cat_TicketTypeKey == 1)
                             && r.Verified == T.Verified)
-                            .Include(t=> t.Ticket)
+                            .Include(t => t.Ticket)
                             .ToList();
-                            
+
+                            return List;
+                        }
+                    default:
+                        {
+                            break;
+                        }
+                }
+            }
+
+            return L;
+        }
+        public List<TicketCount> ReadByProp(string Property, TicketCount T, string Range)
+        {
+            List<TicketCount> L = new List<TicketCount>();
+            string[] _range = Range.Split(',');
+            int from = Convert.ToInt32(_range[0]);
+            int to = Convert.ToInt32(_range[1]);
+            using (CAPA_INVContext context = new CAPA_INVContext())
+            {
+                switch (Property)
+                {
+                    case "Verified":
+                        {
+                            List<TicketCount> List = new List<TicketCount>();
+                            List = context.TicketCounts
+                            .Where(r => (
+                            r.Ticket.InventoryEventKey == T.Ticket.InventoryEventKey
+                            && r.Ticket.cat_TicketTypeKey == 1
+                            && r.Verified == T.Verified
+                            && (r.CounterInitials != null && r.CounterInitials != "")
+                            && r.Ticket.TicketCounter >= from
+                            && r.Ticket.TicketCounter <= to
+                            ))
+                            .Include(t => t.Ticket)
+                            .ToList();
                             return List;
                         }
                     default:

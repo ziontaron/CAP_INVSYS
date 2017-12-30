@@ -179,16 +179,21 @@ namespace CAP_Inventory_System.Logic
             using (CAPA_INVContext context = new CAPA_INVContext())
             {
                 Stadisticts stats = new Stadisticts();
-                
-                stats.TicketCounts = context.TicketCounts.Where(r => (r.Ticket.InventoryEventKey == EventId)).Count();
+                int TicketCounts = context.TicketCounts.Where(r => (r.Ticket.InventoryEventKey == EventId)).Count();
+                int MoTags = context.MOTagHeaders.Where(r => (r.Ticket.InventoryEventKey == EventId)).Count();
+                int VoidCleanBlanks= context.TicketCounts.Where(r => (r.Ticket.InventoryEventKey == EventId)&&(r.VoidTag==true)&& (r.CounterInitials == null)).Count();
+                stats.TicketCounts = TicketCounts;
+                stats.MOTags = MoTags;
                 stats.TicketBlank = context.TicketCounts.Where(r => (r.BlankTag == true) && (r.Ticket.InventoryEventKey == EventId)).Count();
                 stats.TicketVerified = context.TicketCounts.Where(r => (r.Verified == true) && (r.Ticket.InventoryEventKey == EventId)).Count();
                 stats.TicketVoid = context.TicketCounts.Where(r => (r.VoidTag == true) && (r.Ticket.InventoryEventKey == EventId)).Count();
-                stats.TicketCounted = context.TicketCounts.Where(r => (r.CountQty > 0 || r.ReCountQty > 0) && (r.Ticket.InventoryEventKey == EventId)).Count();
-
-                if (stats.TicketCounts > 0)
+                int TicketCounted = context.TicketCounts.Where(r => (((r.CounterInitials != null) )&& (r.Ticket.InventoryEventKey == EventId))).Count();
+                int MoTagCounted = context.MOTagHeaders.Where(r => (r.CounterInitials != null) && (r.Ticket.InventoryEventKey == EventId)).Count();
+                stats.MOTagsCounted = MoTagCounted;
+                stats.TicketCounted = TicketCounted + VoidCleanBlanks;
+                if (stats.TotalTickets > 0)
                 {
-                    stats.TicketCountedPorcentage = (stats.TicketCounted *100)/ stats.TicketCounts;
+                    stats.TicketCountedPorcentage = (stats.TotalTicketsCounted * 100)/ stats.TotalTickets;
                 }
                 //Where(r => (r.TicketKey == Ticket_Id && r.Ticket.cat_TicketTypeKey == 1)).ToList();
                 //return List;

@@ -71,6 +71,7 @@
     <Compile Include="API\User API.cs" />
     <Compile Include="API\UserRole API.cs" />
     <Compile Include="API\V_FSTI_TransactionLogic API.cs" />
+    <Compile Include="DBViews\DB_VIEWS.cs" />
     <Compile Include="EF\CAPA_INVModel.cs" />
     <Compile Include="EF\cat_TicketType.cs" />
     <Compile Include="EF\cat_UserRole.cs" />

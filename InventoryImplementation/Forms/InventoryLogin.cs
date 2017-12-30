@@ -43,6 +43,8 @@ namespace InventoryImplementation
                 role = x.ReadUser(tb_UserName.Text, tb_UserPAssword.Text);
                 if (role != "")
                 {
+                    x.UserName = tb_UserName.Text;
+                    x.UserRole = role;
                     this.Close();
                 }
             }
@@ -60,7 +62,18 @@ namespace InventoryImplementation
         {
             if (e.KeyValue == 13)
             {
-                b_Access.Focus();
+                if (tb_UserName.Text != "" && tb_UserPAssword.Text != "")
+                {
+                    role = x.ReadUser(tb_UserName.Text, tb_UserPAssword.Text);
+                    if (role != "")
+                    {
+                        this.Close();
+                    }
+                }
+                else
+                {
+                    b_Access.Focus();
+                }
             }
         }
     }

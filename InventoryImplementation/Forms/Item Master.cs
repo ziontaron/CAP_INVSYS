@@ -124,6 +124,10 @@ namespace InventoryImplementation
                 this.Hide();
             }
         }
-        
+
+        private void dgv_ItemMaster_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

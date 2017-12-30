@@ -17,27 +17,16 @@
   <DataSets>
     <DataSet Name="Balance">
       <Query>
-        <DataSourceName>Local</DataSourceName>
+        <DataSourceName>Server</DataSourceName>
         <QueryParameters>
           <QueryParameter Name="@InventoryEvent">
             <Value>=Parameters!InventoryEvent.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>SELECT InventoryEvent.InventoryEventName, RIGHT('0000000' + CAST(Ticket.TicketCounter AS NVARCHAR(10)), 5) AS TicketCounterStr, Ticket.TicketCounter, TicketCount.CounterInitials, TicketCount.CountedDate, TicketCount.ItemNumber, 
-                  TicketCount.ItemDescription, TicketCount.ItemRef, TicketCount.UM, TicketCount.LotNumber, TicketCount.CountQTY, TicketCount.ReCountQty, TicketCount.InventoryQty, 
-                  (CASE WHEN (TicketCount.ReCountQty - TicketCount.InventoryQty) &gt; 0 THEN '+' WHEN (TicketCount.ReCountQty - TicketCount.InventoryQty) &lt; 0 THEN '-' ELSE '=' END) AS UpDown, (CASE WHEN (TicketCount.ReCountQty &gt; 0) 
-                  THEN CASE WHEN (TicketCount.ReCountQty - TicketCount.InventoryQty) &lt; 0 THEN ((TicketCount.ReCountQty - TicketCount.InventoryQty) * - 1) ELSE (TicketCount.ReCountQty - TicketCount.InventoryQty) 
-                  END WHEN (TicketCount.CountQTY &lt;&gt; 0) THEN CASE WHEN (TicketCount.CountQTY - TicketCount.InventoryQty) &lt; 0 THEN ((TicketCount.CountQTY - TicketCount.InventoryQty) * - 1) 
-                  ELSE (TicketCount.CountQTY - TicketCount.InventoryQty) END WHEN (TicketCount.CountQTY = 0) THEN TicketCount.InventoryQty ELSE 0 END) AS AbsBalance, (CASE WHEN (TicketCount.ReCountQty &gt; 0) 
-                  THEN TicketCount.ReCountQty - TicketCount.InventoryQty WHEN (TicketCount.CountQTY &lt;&gt; 0) THEN TicketCount.CountQTY - TicketCount.InventoryQty WHEN (TicketCount.CountQTY = 0) 
-                  THEN TicketCount.CountQTY - TicketCount.InventoryQty ELSE 0 END) AS Balance, TicketCount.STK, TicketCount.BIN, TicketCount.IC, TicketCount.Verified, TicketCount.BlankTag, TicketCount.VoidTag, 
-                  FS_ItemMaster.TotalRolledCost
-FROM     FS_ItemMaster INNER JOIN
-                  InventoryEvent INNER JOIN
-                  Ticket ON InventoryEvent.InventoryEventKey = Ticket.InventoryEventKey INNER JOIN
-                  TicketCount ON Ticket.TicketKey = TicketCount.TicketKey ON FS_ItemMaster.ItemNumber_FSKey = TicketCount.ItemNumber_FSKey
-WHERE  (InventoryEvent.InventoryEventKey = @InventoryEvent)
-ORDER BY Ticket.TicketCounter</CommandText>
+        <CommandText>SELECT InventoryEventName, TicketCounterStr, TicketCounter, CounterInitials, CountedDate, ItemNumber, ItemDescription, ItemRef, UM, LotNumber, CountQTY, ReCountQty, InventoryQty, UpDown, AbsBalance, Balance, STK, BIN, IC, Verified, 
+                  BlankTag, VoidTag, TotalRolledCost, InventoryEventKey
+FROM     V_FinanceRep
+WHERE  (InventoryEventKey = @InventoryEvent) AND (VoidTag = 0)</CommandText>
       </Query>
       <Fields>
         <Field Name="InventoryEventName">
@@ -132,6 +121,10 @@ ORDER BY Ticket.TicketCounter</CommandText>
           <DataField>TotalRolledCost</DataField>
           <rd:TypeName>System.Single</rd:TypeName>
         </Field>
+        <Field Name="InventoryEventKey">
+          <DataField>InventoryEventKey</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
       </Fields>
     </DataSet>
     <DataSet Name="InventoryEvent">
@@ -177,6 +170,12 @@ FROM     InventoryEvent</CommandText>
               <TablixColumns>
                 <TablixColumn>
                   <Width>0.75833in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.2in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.55in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1in</Width>
@@ -231,7 +230,7 @@ FROM     InventoryEvent</CommandText>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Tag Counter</Value>
+                                  <Value>Tag No</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -242,6 +241,72 @@ FROM     InventoryEvent</CommandText>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox21</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox4">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>B</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox4</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox2">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>C Initials</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox2</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -697,6 +762,68 @@ FROM     InventoryEvent</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
+                        <Textbox Name="CounterInitials1">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=IIF(Fields!BlankTag.Value,"B","")</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>CounterInitials1</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="CounterInitials">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!CounterInitials.Value</Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>CounterInitials</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
                         <Textbox Name="ItemNumber">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -1126,6 +1253,8 @@ FROM     InventoryEvent</CommandText>
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
+                <TablixMember />
+                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
@@ -1144,7 +1273,7 @@ FROM     InventoryEvent</CommandText>
             <DataSetName>Balance</DataSetName>
             <Top>0.02778in</Top>
             <Height>0.35in</Height>
-            <Width>11.25834in</Width>
+            <Width>12.00834in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1152,10 +1281,10 @@ FROM     InventoryEvent</CommandText>
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>0.5in</Height>
+        <Height>0.38333in</Height>
         <Style />
       </Body>
-      <Width>11.25834in</Width>
+      <Width>12.03334in</Width>
       <Page>
         <PageHeight>6in</PageHeight>
         <PageWidth>11in</PageWidth>

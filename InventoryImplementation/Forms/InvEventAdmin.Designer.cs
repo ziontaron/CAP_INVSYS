@@ -46,6 +46,8 @@
             this.b_nBlankTags = new System.Windows.Forms.Button();
             this.tb_NTags = new System.Windows.Forms.TextBox();
             this.gb_LoadTags = new System.Windows.Forms.GroupBox();
+            this.rb_EPDC_Tags = new System.Windows.Forms.RadioButton();
+            this.rb_JZ_Tags = new System.Windows.Forms.RadioButton();
             this.b_MOtagsFromSQL = new System.Windows.Forms.Button();
             this.b_MOtagsFromCSV = new System.Windows.Forms.Button();
             this.b_tagsFromCSV = new System.Windows.Forms.Button();
@@ -65,19 +67,26 @@
             this.tb_RefreshRateSecs = new System.Windows.Forms.TextBox();
             this.b_RefreshStats = new System.Windows.Forms.Button();
             this.gb_TicketCountStadistics = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.l_MOTagsCounted = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.l_MOTags = new System.Windows.Forms.Label();
+            this.l_CountedTags = new System.Windows.Forms.Label();
             this.l_TicketVoid = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.l_TicketVerified = new System.Windows.Forms.Label();
             this.gb_CountedTikets = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.pb_CountedTickets = new System.Windows.Forms.ProgressBar();
             this.label10 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.l_TicketBlanks = new System.Windows.Forms.Label();
             this.l_TicketCounts = new System.Windows.Forms.Label();
             this.t_RefreshStatsRate = new System.Windows.Forms.Timer(this.components);
-            this.rb_JZ_Tags = new System.Windows.Forms.RadioButton();
-            this.rb_EPDC_Tags = new System.Windows.Forms.RadioButton();
+            this.label16 = new System.Windows.Forms.Label();
+            this.l_TicketCounted = new System.Windows.Forms.Label();
             this.tb_EventAdmin.SuspendLayout();
             this.t_AdminEvent.SuspendLayout();
             this.gb_AdminEvent.SuspendLayout();
@@ -285,6 +294,32 @@
             this.gb_LoadTags.TabStop = false;
             this.gb_LoadTags.Text = "Load Tags";
             // 
+            // rb_EPDC_Tags
+            // 
+            this.rb_EPDC_Tags.AutoSize = true;
+            this.rb_EPDC_Tags.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_EPDC_Tags.Location = new System.Drawing.Point(22, 65);
+            this.rb_EPDC_Tags.Name = "rb_EPDC_Tags";
+            this.rb_EPDC_Tags.Size = new System.Drawing.Size(160, 21);
+            this.rb_EPDC_Tags.TabIndex = 15;
+            this.rb_EPDC_Tags.TabStop = true;
+            this.rb_EPDC_Tags.Text = "Ticket Tags EPDC";
+            this.rb_EPDC_Tags.UseVisualStyleBackColor = true;
+            this.rb_EPDC_Tags.CheckedChanged += new System.EventHandler(this.rb_EPDC_Tags_CheckedChanged);
+            // 
+            // rb_JZ_Tags
+            // 
+            this.rb_JZ_Tags.AutoSize = true;
+            this.rb_JZ_Tags.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_JZ_Tags.Location = new System.Drawing.Point(22, 37);
+            this.rb_JZ_Tags.Name = "rb_JZ_Tags";
+            this.rb_JZ_Tags.Size = new System.Drawing.Size(137, 21);
+            this.rb_JZ_Tags.TabIndex = 14;
+            this.rb_JZ_Tags.TabStop = true;
+            this.rb_JZ_Tags.Text = "Ticket Tags JZ";
+            this.rb_JZ_Tags.UseVisualStyleBackColor = true;
+            this.rb_JZ_Tags.CheckedChanged += new System.EventHandler(this.rb_JZ_Tags_CheckedChanged);
+            // 
             // b_MOtagsFromSQL
             // 
             this.b_MOtagsFromSQL.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -449,7 +484,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(431, 273);
+            this.label9.Location = new System.Drawing.Point(431, 371);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(199, 17);
             this.label9.TabIndex = 11;
@@ -457,7 +492,7 @@
             // 
             // tb_RefreshRateSecs
             // 
-            this.tb_RefreshRateSecs.Location = new System.Drawing.Point(648, 270);
+            this.tb_RefreshRateSecs.Location = new System.Drawing.Point(648, 368);
             this.tb_RefreshRateSecs.Name = "tb_RefreshRateSecs";
             this.tb_RefreshRateSecs.Size = new System.Drawing.Size(60, 22);
             this.tb_RefreshRateSecs.TabIndex = 10;
@@ -466,7 +501,7 @@
             // 
             // b_RefreshStats
             // 
-            this.b_RefreshStats.Location = new System.Drawing.Point(727, 262);
+            this.b_RefreshStats.Location = new System.Drawing.Point(727, 360);
             this.b_RefreshStats.Name = "b_RefreshStats";
             this.b_RefreshStats.Size = new System.Drawing.Size(118, 38);
             this.b_RefreshStats.TabIndex = 9;
@@ -478,6 +513,13 @@
             // 
             this.gb_TicketCountStadistics.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gb_TicketCountStadistics.Controls.Add(this.label16);
+            this.gb_TicketCountStadistics.Controls.Add(this.l_TicketCounted);
+            this.gb_TicketCountStadistics.Controls.Add(this.label15);
+            this.gb_TicketCountStadistics.Controls.Add(this.l_MOTagsCounted);
+            this.gb_TicketCountStadistics.Controls.Add(this.label11);
+            this.gb_TicketCountStadistics.Controls.Add(this.l_MOTags);
+            this.gb_TicketCountStadistics.Controls.Add(this.l_CountedTags);
             this.gb_TicketCountStadistics.Controls.Add(this.l_TicketVoid);
             this.gb_TicketCountStadistics.Controls.Add(this.label12);
             this.gb_TicketCountStadistics.Controls.Add(this.label5);
@@ -489,16 +531,66 @@
             this.gb_TicketCountStadistics.Controls.Add(this.l_TicketCounts);
             this.gb_TicketCountStadistics.Location = new System.Drawing.Point(18, 33);
             this.gb_TicketCountStadistics.Name = "gb_TicketCountStadistics";
-            this.gb_TicketCountStadistics.Size = new System.Drawing.Size(827, 223);
+            this.gb_TicketCountStadistics.Size = new System.Drawing.Size(827, 321);
             this.gb_TicketCountStadistics.TabIndex = 8;
             this.gb_TicketCountStadistics.TabStop = false;
             this.gb_TicketCountStadistics.Text = "Ticket Tag Counts Stadistics";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(30, 205);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(148, 17);
+            this.label15.TabIndex = 13;
+            this.label15.Text = "MO Tags Counted: ";
+            // 
+            // l_MOTagsCounted
+            // 
+            this.l_MOTagsCounted.AutoSize = true;
+            this.l_MOTagsCounted.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.l_MOTagsCounted.Location = new System.Drawing.Point(194, 205);
+            this.l_MOTagsCounted.Name = "l_MOTagsCounted";
+            this.l_MOTagsCounted.Size = new System.Drawing.Size(17, 17);
+            this.l_MOTagsCounted.TabIndex = 14;
+            this.l_MOTagsCounted.Text = "0";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(30, 174);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(130, 17);
+            this.label11.TabIndex = 11;
+            this.label11.Text = "MO Tag Counts: ";
+            // 
+            // l_MOTags
+            // 
+            this.l_MOTags.AutoSize = true;
+            this.l_MOTags.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.l_MOTags.Location = new System.Drawing.Point(194, 174);
+            this.l_MOTags.Name = "l_MOTags";
+            this.l_MOTags.Size = new System.Drawing.Size(17, 17);
+            this.l_MOTags.TabIndex = 12;
+            this.l_MOTags.Text = "0";
+            // 
+            // l_CountedTags
+            // 
+            this.l_CountedTags.AutoSize = true;
+            this.l_CountedTags.Location = new System.Drawing.Point(747, 35);
+            this.l_CountedTags.Name = "l_CountedTags";
+            this.l_CountedTags.Size = new System.Drawing.Size(54, 17);
+            this.l_CountedTags.TabIndex = 10;
+            this.l_CountedTags.Text = "label11";
+            this.l_CountedTags.Visible = false;
             // 
             // l_TicketVoid
             // 
             this.l_TicketVoid.AutoSize = true;
             this.l_TicketVoid.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.l_TicketVoid.Location = new System.Drawing.Point(183, 118);
+            this.l_TicketVoid.Location = new System.Drawing.Point(194, 145);
             this.l_TicketVoid.Name = "l_TicketVoid";
             this.l_TicketVoid.Size = new System.Drawing.Size(17, 17);
             this.l_TicketVoid.TabIndex = 9;
@@ -508,7 +600,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(27, 118);
+            this.label12.Location = new System.Drawing.Point(30, 145);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(132, 17);
             this.label12.TabIndex = 8;
@@ -518,7 +610,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(27, 35);
+            this.label5.Location = new System.Drawing.Point(30, 35);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(150, 17);
             this.label5.TabIndex = 2;
@@ -528,7 +620,7 @@
             // 
             this.l_TicketVerified.AutoSize = true;
             this.l_TicketVerified.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.l_TicketVerified.Location = new System.Drawing.Point(183, 89);
+            this.l_TicketVerified.Location = new System.Drawing.Point(194, 116);
             this.l_TicketVerified.Name = "l_TicketVerified";
             this.l_TicketVerified.Size = new System.Drawing.Size(17, 17);
             this.l_TicketVerified.TabIndex = 7;
@@ -538,14 +630,36 @@
             // 
             this.gb_CountedTikets.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gb_CountedTikets.Controls.Add(this.label13);
+            this.gb_CountedTikets.Controls.Add(this.label14);
             this.gb_CountedTikets.Controls.Add(this.pb_CountedTickets);
             this.gb_CountedTikets.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gb_CountedTikets.Location = new System.Drawing.Point(30, 149);
+            this.gb_CountedTikets.Location = new System.Drawing.Point(33, 239);
             this.gb_CountedTikets.Name = "gb_CountedTikets";
             this.gb_CountedTikets.Size = new System.Drawing.Size(771, 59);
             this.gb_CountedTikets.TabIndex = 1;
             this.gb_CountedTikets.TabStop = false;
-            this.gb_CountedTikets.Text = "Counted Tickets";
+            this.gb_CountedTikets.Text = "Iinventory Event Progress";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(0, -20);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(130, 17);
+            this.label13.TabIndex = 13;
+            this.label13.Text = "MO Tag Counts: ";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(156, -20);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(17, 17);
+            this.label14.TabIndex = 14;
+            this.label14.Text = "0";
             // 
             // pb_CountedTickets
             // 
@@ -559,7 +673,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(27, 89);
+            this.label10.Location = new System.Drawing.Point(30, 116);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(156, 17);
             this.label10.TabIndex = 6;
@@ -569,7 +683,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(27, 61);
+            this.label6.Location = new System.Drawing.Point(30, 61);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(140, 17);
             this.label6.TabIndex = 3;
@@ -579,7 +693,7 @@
             // 
             this.l_TicketBlanks.AutoSize = true;
             this.l_TicketBlanks.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.l_TicketBlanks.Location = new System.Drawing.Point(183, 61);
+            this.l_TicketBlanks.Location = new System.Drawing.Point(194, 61);
             this.l_TicketBlanks.Name = "l_TicketBlanks";
             this.l_TicketBlanks.Size = new System.Drawing.Size(17, 17);
             this.l_TicketBlanks.TabIndex = 5;
@@ -589,7 +703,7 @@
             // 
             this.l_TicketCounts.AutoSize = true;
             this.l_TicketCounts.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.l_TicketCounts.Location = new System.Drawing.Point(183, 35);
+            this.l_TicketCounts.Location = new System.Drawing.Point(194, 35);
             this.l_TicketCounts.Name = "l_TicketCounts";
             this.l_TicketCounts.Size = new System.Drawing.Size(17, 17);
             this.l_TicketCounts.TabIndex = 4;
@@ -601,31 +715,25 @@
             this.t_RefreshStatsRate.Interval = 10000;
             this.t_RefreshStatsRate.Tick += new System.EventHandler(this.t_RefreshStatsRate_Tick);
             // 
-            // rb_JZ_Tags
+            // label16
             // 
-            this.rb_JZ_Tags.AutoSize = true;
-            this.rb_JZ_Tags.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rb_JZ_Tags.Location = new System.Drawing.Point(22, 37);
-            this.rb_JZ_Tags.Name = "rb_JZ_Tags";
-            this.rb_JZ_Tags.Size = new System.Drawing.Size(137, 21);
-            this.rb_JZ_Tags.TabIndex = 14;
-            this.rb_JZ_Tags.TabStop = true;
-            this.rb_JZ_Tags.Text = "Ticket Tags JZ";
-            this.rb_JZ_Tags.UseVisualStyleBackColor = true;
-            this.rb_JZ_Tags.CheckedChanged += new System.EventHandler(this.rb_JZ_Tags_CheckedChanged);
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(30, 87);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(160, 17);
+            this.label16.TabIndex = 15;
+            this.label16.Text = "Ticket Tag Counted: ";
             // 
-            // rb_EPDC_Tags
+            // l_TicketCounted
             // 
-            this.rb_EPDC_Tags.AutoSize = true;
-            this.rb_EPDC_Tags.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rb_EPDC_Tags.Location = new System.Drawing.Point(22, 65);
-            this.rb_EPDC_Tags.Name = "rb_EPDC_Tags";
-            this.rb_EPDC_Tags.Size = new System.Drawing.Size(160, 21);
-            this.rb_EPDC_Tags.TabIndex = 15;
-            this.rb_EPDC_Tags.TabStop = true;
-            this.rb_EPDC_Tags.Text = "Ticket Tags EPDC";
-            this.rb_EPDC_Tags.UseVisualStyleBackColor = true;
-            this.rb_EPDC_Tags.CheckedChanged += new System.EventHandler(this.rb_EPDC_Tags_CheckedChanged);
+            this.l_TicketCounted.AutoSize = true;
+            this.l_TicketCounted.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.l_TicketCounted.Location = new System.Drawing.Point(194, 87);
+            this.l_TicketCounted.Name = "l_TicketCounted";
+            this.l_TicketCounted.Size = new System.Drawing.Size(17, 17);
+            this.l_TicketCounted.TabIndex = 16;
+            this.l_TicketCounted.Text = "0";
             // 
             // f_InvEventAdmin
             // 
@@ -651,6 +759,7 @@
             this.gb_TicketCountStadistics.ResumeLayout(false);
             this.gb_TicketCountStadistics.PerformLayout();
             this.gb_CountedTikets.ResumeLayout(false);
+            this.gb_CountedTikets.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -705,6 +814,15 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.RadioButton rb_EPDC_Tags;
         private System.Windows.Forms.RadioButton rb_JZ_Tags;
+        private System.Windows.Forms.Label l_CountedTags;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label l_MOTags;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label l_MOTagsCounted;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label l_TicketCounted;
     }
 }
 

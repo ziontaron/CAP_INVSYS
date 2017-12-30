@@ -128,6 +128,21 @@ namespace CAP_Inventory_System
 
             }
         }
+        public string UserName
+        {
+            get { return _userName; }
+            set { _userName = value; }
+        }
+        public string UserRole
+        {
+            get { return _userProfile; }
+            set { _userProfile = value; }
+        }
+        public string ErrorMessage { get { return _Response.ResponseDescription; } }
+        public bool ErrorOccour { get { return _Response.ErrorThrown; } }
+        public string ErrorType { get { return _Response.ErrorType; } }
+        public object Result { get { return _Response.Result; } }
+        public object AditinalData { get { return _Response.AdditionalData; } }
         #endregion
 
         private CAPA_INVContext context;
@@ -151,16 +166,10 @@ namespace CAP_Inventory_System
         #endregion
 
         #region Private Properties
+        private string _userName = "";
+        private string _userProfile = "";
         #endregion
-
-        #region Public Properties
-        public string ErrorMessage { get { return _Response.ResponseDescription; } }
-        public bool ErrorOccour { get { return _Response.ErrorThrown; } }
-        public string ErrorType { get { return _Response.ErrorType; } }
-        public object Result { get { return _Response.Result; } }
-        public object AditinalData { get { return _Response.AdditionalData; } }
-        #endregion
-
+        
         #region Private Functions
         #region EF Entity -> API Entity
         /// <summary>
