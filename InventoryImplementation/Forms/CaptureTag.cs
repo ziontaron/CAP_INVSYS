@@ -23,7 +23,7 @@ namespace InventoryImplementation
             x = IE;
             cb_InvEvent.Items.AddRange(_LoadEvents().ToArray());
             l_EventStatus.Text = "";
-            if (x.UserRole.Contains("Admin"))
+            if (x.UserProfile.Contains("Admin"))
             {
                 cb_EditCountQty.Visible = true;
             }
@@ -540,6 +540,7 @@ namespace InventoryImplementation
                     _tag.CountQTY = 0;
                 }
                 UpdateTag();
+                cb_EditCountQty.Checked = false;
             }
         }        
         private void tb_ItemNo_KeyDown(object sender, KeyEventArgs e)

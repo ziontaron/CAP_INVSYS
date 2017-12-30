@@ -26,7 +26,8 @@
         <CommandText>SELECT InventoryEventName, TicketCounterStr, TicketCounter, CounterInitials, CountedDate, ItemNumber, ItemDescription, ItemRef, UM, LotNumber, CountQTY, ReCountQty, InventoryQty, UpDown, AbsBalance, Balance, STK, BIN, IC, Verified, 
                   BlankTag, VoidTag, TotalRolledCost, InventoryEventKey
 FROM     V_FinanceRep
-WHERE  (InventoryEventKey = @InventoryEvent) AND (VoidTag = 0)</CommandText>
+WHERE  (InventoryEventKey = @InventoryEvent) AND (VoidTag = 0)
+ORDER BY TicketCounter</CommandText>
       </Query>
       <Fields>
         <Field Name="InventoryEventName">
@@ -129,7 +130,7 @@ WHERE  (InventoryEventKey = @InventoryEvent) AND (VoidTag = 0)</CommandText>
     </DataSet>
     <DataSet Name="InventoryEvent">
       <Query>
-        <DataSourceName>Local</DataSourceName>
+        <DataSourceName>Server</DataSourceName>
         <CommandText>SELECT *
 FROM     InventoryEvent</CommandText>
       </Query>
@@ -156,6 +157,14 @@ FROM     InventoryEvent</CommandText>
         </Field>
         <Field Name="Status">
           <DataField>Status</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="TicketCountTags">
+          <DataField>TicketCountTags</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="MOTags">
+          <DataField>MOTags</DataField>
           <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
       </Fields>
@@ -351,6 +360,7 @@ FROM     InventoryEvent</CommandText>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -619,6 +629,41 @@ FROM     InventoryEvent</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
+                        <Textbox Name="Textbox8">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox8</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
                         <Textbox Name="Textbox23">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -634,7 +679,7 @@ FROM     InventoryEvent</CommandText>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Left</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -650,10 +695,8 @@ FROM     InventoryEvent</CommandText>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <ColSpan>2</ColSpan>
                       </CellContents>
                     </TablixCell>
-                    <TablixCell />
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Textbox1">
@@ -693,6 +736,9 @@ FROM     InventoryEvent</CommandText>
                       <CellContents>
                         <Textbox Name="Textbox30">
                           <CanGrow>true</CanGrow>
+                          <UserSort>
+                            <SortExpression>=Fields!TotalRolledCost.Value*Fields!Balance.Value</SortExpression>
+                          </UserSort>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -851,6 +897,7 @@ FROM     InventoryEvent</CommandText>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>

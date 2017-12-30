@@ -21,6 +21,7 @@ namespace InventoryImplementation
         {
             InitializeComponent();
             login.ShowDialog();
+            x.UserProfile = login.role;
             switch (login.role)
             {
                 case "SysAdmin":

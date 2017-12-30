@@ -133,7 +133,7 @@ namespace CAP_Inventory_System
             get { return _userName; }
             set { _userName = value; }
         }
-        public string UserRole
+        public string UserProfile
         {
             get { return _userProfile; }
             set { _userProfile = value; }
@@ -166,8 +166,8 @@ namespace CAP_Inventory_System
         #endregion
 
         #region Private Properties
-        private string _userName = "";
-        private string _userProfile = "";
+        private string _userName="";
+        private string _userProfile="";
         #endregion
         
         #region Private Functions

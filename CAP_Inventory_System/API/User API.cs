@@ -38,6 +38,8 @@ namespace CAP_Inventory_System
             {
                 cat_UserRole _cat = new cat_UserRole { UserRoleKey = _user.UserRoleKey };
                 _cat = (cat_UserRole)_cat_UserRoleLogic.ReadbyId(_cat).Result;
+                _userName = _UserName;
+                _userProfile = _cat.UserRole;
                 return _cat.UserRole;
             }
             return UserRole;

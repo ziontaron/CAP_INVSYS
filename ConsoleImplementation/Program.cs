@@ -5,6 +5,7 @@ using System.Data;
 using CAP_Inventory_System;
 using Data_Base_MNG;
 using PANDA_TOOLS;
+using Data_Base_MNG;
 
 namespace ConsoleImplementation
 {
@@ -13,39 +14,43 @@ namespace ConsoleImplementation
         static void Main(string[] args)
         {
             Inventory_System_API x = new Inventory_System_API("RC IE");
+            SQL DB_MNG = new SQL("RSSERVER", "CAPA_INV", "inv_sys", "Capsonic2017!");
             //Inventory_System_API x = new Inventory_System_API("Otro");
             //Inventory_System_API x = new Inventory_System_API(4);
             //Inventory_System_API x = new Inventory_System_API();
             //x.CreateInventoryEvent("TEST", "Test");
 
+            string q = @"SELECT Ticket.TicketCounter, TicketCount.TagCountKey, TicketCount.CounterInitials, TicketCount.CountedDate, TicketCount.TicketKey, TicketCount.ItemNumber, TicketCount.ItemDescription, 
+                      TicketCount.ItemRef, TicketCount.UM, TicketCount.LotNumber, TicketCount.CountQTY, TicketCount.ReCountQty, TicketCount.InventoryQty, TicketCount.BIN, TicketCount.IC, TicketCount.Verified, 
+                      TicketCount.BlankTag, TicketCount.VoidTag, TicketCount.ItemNumber_FSKey, TicketCount.STK, FS_ItemMaster.FS_ItemMaster_Key
+                        FROM Ticket INNER JOIN
+                      TicketCount ON Ticket.TicketKey = TicketCount.TicketKey INNER JOIN
+                      FS_ItemMaster ON TicketCount.ItemNumber = FS_ItemMaster.ItemNumber
+                        WHERE(TicketCount.ItemNumber_FSKey = 0) AND(TicketCount.VoidTag = 0) OR
+                (TicketCount.ItemNumber_FSKey IS NULL)
+                      order by Ticket.TicketCounter";
 
-            DateTime start = DateTime.Now;
+            string _q = @"SELECT Ticket.TicketCounter, TicketCount.TagCountKey, TicketCount.CounterInitials, TicketCount.CountedDate, TicketCount.TicketKey, TicketCount.ItemNumber, TicketCount.ItemDescription, 
+                      TicketCount.ItemRef, TicketCount.UM, TicketCount.LotNumber, TicketCount.CountQTY, TicketCount.ReCountQty, TicketCount.InventoryQty, TicketCount.BIN, TicketCount.IC, TicketCount.Verified, 
+                      TicketCount.BlankTag, TicketCount.VoidTag, TicketCount.ItemNumber_FSKey, TicketCount.STK, FS_ItemMaster.FS_ItemMaster_Key, FS_ItemMaster.ItemNumber_FSKey AS FS_ItemM_CostKey
+                        FROM Ticket INNER JOIN
+                      TicketCount ON Ticket.TicketKey = TicketCount.TicketKey INNER JOIN
+                      FS_ItemMaster ON TicketCount.ItemNumber = FS_ItemMaster.ItemNumber
+                      WHERE TicketCount.ItemNumber_FSKey <> FS_ItemMaster.ItemNumber_FSKey";
+            
+            DataTable T= DB_MNG.Execute_Query(_q);
 
-            MOTagLine T = new MOTagLine
+            for (int i = 0; i < T.Rows.Count; i++)
             {
-                SeqNum = 1
-                , UM = "FT"
-                , Component_No = "05-543053"
-                , Component_Desc = "TAPE KAPTON 05-543053"
-                , Qty_Per = 8
-                , Issued_Qty = 16
-                , LooseCountQty = 1
-                , LooseReCountQty = 0
-                , MOTagID = 3
-                //, MOTagLineID
+                string update = @"UPDATE [CAPA_INV].[dbo].[TicketCount]
+                     SET [ItemNumber_FSKey] = " + T.Rows[i]["FS_ItemM_CostKey"].ToString() + " WHERE TagCountKey="+ T.Rows[i]["TagCountKey"].ToString();
 
-            };
-            //x.CreateMOTagLine(T);
+                DB_MNG.Execute_Command(update);
 
-            //load_MOtags_from_CSV(ref x);
-
-            Simulate_Capture(ref x, 5000);
-
-            DateTime stop = DateTime.Now;
-            int lat = TimeSpan.FromTicks(stop.Ticks - start.Ticks).Seconds;
-            Console.WriteLine("Finish Latency: "+lat.ToString()+" secs");
-            //Console.Read();
-
+            }
+            //TicketTag z = new TicketTag();
+            //int tag = 0;
+            //z = x.LoadTag(tag);
         }
         static void load_tags_from_CSV(ref Inventory_System_API x)
         {

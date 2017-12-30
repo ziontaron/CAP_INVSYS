@@ -1513,6 +1513,7 @@ namespace FS4Amalgamma
             //   0,   1,   2,  3,      4,  5,       6,  7,         8,  9,    10,     11
 
             string[] Fields_Array = FSTI_fields.Split(',');
+            string NEW_LOT = Fields_Array[10];
 
             MyINVA01.ItemNumber.Value = Fields_Array[0];
             MyINVA01.Stockroom.Value = Fields_Array[1];
@@ -1527,7 +1528,25 @@ namespace FS4Amalgamma
             MyINVA01.LotNumber.Value = Fields_Array[10];
             MyINVA01.Remark.Value = Fields_Array[11];
             #endregion
-                        
+
+            if (MyINVA01.LotNumber.Value != "")
+            {
+                string Lot_check_Q = @"SELECT FS_LotTrace.LotNumber FROM FS_Item INNER JOIN FS_LotTrace ON FS_Item.ItemKey = FS_LotTrace.ItemKey
+                WHERE(FS_LotTrace.LotNumber = '"+ NEW_LOT + "') AND(FS_Item.ItemNumber = '"+ Fields_Array[0] +"')";
+
+                string result = DBMNG_FS.Execute_Scalar(Lot_check_Q);
+
+                if (result != "")
+                {
+                    MyINVA01.LotNumberDefault.Value = NEW_LOT;
+                    MyINVA01.LotDescription.Value = NEW_LOT;
+                    MyINVA01.LotNumberAssignmentPolicy.Value = "C";
+                    MyINVA01.LotIdentifier.Value = "C";
+                    MyINVA01.FirstReceiptDate.Value = DateTime.Now.ToString("MMddYY");
+                    MyINVA01.ItemLotReceiptWindow.Value = "Y";
+                }
+            }
+
             #region Ejecucion
             CDFResponse = MyINVA01.GetString(TransactionStringFormat.fsCDF);
 

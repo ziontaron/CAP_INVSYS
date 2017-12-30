@@ -43,8 +43,6 @@ namespace InventoryImplementation
                 role = x.ReadUser(tb_UserName.Text, tb_UserPAssword.Text);
                 if (role != "")
                 {
-                    x.UserName = tb_UserName.Text;
-                    x.UserRole = role;
                     this.Close();
                 }
             }
