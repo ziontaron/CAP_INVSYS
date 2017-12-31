@@ -143,34 +143,41 @@ namespace Balance_Adjusments
                         //for (int j = 0; j < dgv_FSTI_T.Rows.Count; j++)
                         for (int j = 0; j < QTY_Transactions; j++)
                         {
-                            fields = dgv_FSTI_T.Rows[j].Cells["TransactionStringFields"].Value.ToString();
-                            user = "Inv Sys";
-                            if (!(bool)dgv_FSTI_T.Rows[j].Cells["TransactionProcessedYN"].Value)
+                            try
                             {
-                                if (FSTI.AmalgammaFSTI_INVA01(fields, user))
+                                fields = dgv_FSTI_T.Rows[j].Cells["TransactionStringFields"].Value.ToString();
+                                user = "Inv Sys";
+                                if (!(bool)dgv_FSTI_T.Rows[j].Cells["TransactionProcessedYN"].Value)
                                 {
-                                    DataLogger(ref rtb_FSTI_Log, LogType.success, "INVA01 - " + fields + " - Transaction was successfully processed.");
-                                    _FSTI_Tran = DGV2Entity(FSTI_T.Rows[j]);
-                                    Update_FSTI_Result(_FSTI_Tran, false);
-                                    LOGGER.WriteLogLine(TOOLS.Dataloger.Category.Info, "Tag: " + dgv_FSTI_T.Rows[j].Cells["TicketCounter"].Value.ToString() + " - " + _FSTI_Tran.FSResponse);
-                                }
-                                else
-                                {
-                                    DataLogger(ref rtb_FSTI_Log, LogType.error, "Transaction Failed Tag - " +
-                                        dgv_FSTI_T.Rows[j].Cells["TicketCounter"].Value.ToString() + " - " + FSTI.Trans_Error_Msg);
-                                    DataLogger(ref rtb_FSTI_Log, LogType.error, "  -" + dgv_FSTI_T.Rows[j].Cells["TransactionStringFields"].Value.ToString());
-                                    if (FSTI.DetailError.Count > 0)
+                                    if (FSTI.AmalgammaFSTI_INVA01(fields, user))
                                     {
-                                        DataLogger(ref rtb_FSTI_Log, LogType.error, ">Detail Error");
-                                        for (int i = 0; i < FSTI.DetailError.Count; i++)
-                                        {
-                                            DataLogger(ref rtb_FSTI_Log, LogType.error, "  -" + FSTI.DetailError[i].ToString());
-                                        }
+                                        DataLogger(ref rtb_FSTI_Log, LogType.success, "INVA01 - " + fields + " - Transaction was successfully processed.");
+                                        _FSTI_Tran = DGV2Entity(FSTI_T.Rows[j]);
+                                        Update_FSTI_Result(_FSTI_Tran, false);
+                                        LOGGER.WriteLogLine(TOOLS.Dataloger.Category.Info, "Tag: " + dgv_FSTI_T.Rows[j].Cells["TicketCounter"].Value.ToString() + " - " + _FSTI_Tran.FSResponse);
                                     }
-                                    _FSTI_Tran = DGV2Entity(FSTI_T.Rows[j]);
-                                    Update_FSTI_Result(_FSTI_Tran, true);
-                                    LOGGER.WriteLogLine(TOOLS.Dataloger.Category.Error, "Tag: " + dgv_FSTI_T.Rows[j].Cells["TicketCounter"].Value.ToString() + " - " + _FSTI_Tran.FSResponse);
+                                    else
+                                    {
+                                        DataLogger(ref rtb_FSTI_Log, LogType.error, "Transaction Failed Tag - " +
+                                            dgv_FSTI_T.Rows[j].Cells["TicketCounter"].Value.ToString() + " - " + FSTI.Trans_Error_Msg);
+                                        DataLogger(ref rtb_FSTI_Log, LogType.error, "  -" + dgv_FSTI_T.Rows[j].Cells["TransactionStringFields"].Value.ToString());
+                                        if (FSTI.DetailError.Count > 0)
+                                        {
+                                            DataLogger(ref rtb_FSTI_Log, LogType.error, ">Detail Error");
+                                            for (int i = 0; i < FSTI.DetailError.Count; i++)
+                                            {
+                                                DataLogger(ref rtb_FSTI_Log, LogType.error, "  -" + FSTI.DetailError[i].ToString());
+                                            }
+                                        }
+                                        _FSTI_Tran = DGV2Entity(FSTI_T.Rows[j]);
+                                        Update_FSTI_Result(_FSTI_Tran, true);
+                                        LOGGER.WriteLogLine(TOOLS.Dataloger.Category.Error, "Tag: " + dgv_FSTI_T.Rows[j].Cells["TicketCounter"].Value.ToString() + " - " + _FSTI_Tran.FSResponse);
+                                    }
                                 }
+                            }
+                            catch(Exception ex)
+                            {
+                                DataLogger(ref rtb_FSTI_Log, LogType.error, ex.Message);
                             }
                         }
                     }
