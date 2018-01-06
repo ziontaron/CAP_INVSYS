@@ -34,6 +34,7 @@
             this.cb_InvEvent = new System.Windows.Forms.ComboBox();
             this.tb_EventAdmin = new System.Windows.Forms.TabControl();
             this.t_AdminEvent = new System.Windows.Forms.TabPage();
+            this.b_LoadFSLM = new System.Windows.Forms.Button();
             this.b_LoadFSIM = new System.Windows.Forms.Button();
             this.b_CreateIE = new System.Windows.Forms.Button();
             this.gb_AdminEvent = new System.Windows.Forms.GroupBox();
@@ -67,6 +68,8 @@
             this.tb_RefreshRateSecs = new System.Windows.Forms.TextBox();
             this.b_RefreshStats = new System.Windows.Forms.Button();
             this.gb_TicketCountStadistics = new System.Windows.Forms.GroupBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.l_TicketCounted = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.l_MOTagsCounted = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -85,8 +88,6 @@
             this.l_TicketBlanks = new System.Windows.Forms.Label();
             this.l_TicketCounts = new System.Windows.Forms.Label();
             this.t_RefreshStatsRate = new System.Windows.Forms.Timer(this.components);
-            this.label16 = new System.Windows.Forms.Label();
-            this.l_TicketCounted = new System.Windows.Forms.Label();
             this.tb_EventAdmin.SuspendLayout();
             this.t_AdminEvent.SuspendLayout();
             this.gb_AdminEvent.SuspendLayout();
@@ -131,6 +132,7 @@
             // 
             // t_AdminEvent
             // 
+            this.t_AdminEvent.Controls.Add(this.b_LoadFSLM);
             this.t_AdminEvent.Controls.Add(this.b_LoadFSIM);
             this.t_AdminEvent.Controls.Add(this.b_CreateIE);
             this.t_AdminEvent.Controls.Add(this.gb_AdminEvent);
@@ -154,6 +156,18 @@
             this.t_AdminEvent.TabIndex = 0;
             this.t_AdminEvent.Text = "Admin an Event";
             this.t_AdminEvent.UseVisualStyleBackColor = true;
+            // 
+            // b_LoadFSLM
+            // 
+            this.b_LoadFSLM.Enabled = false;
+            this.b_LoadFSLM.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.b_LoadFSLM.Location = new System.Drawing.Point(710, 476);
+            this.b_LoadFSLM.Name = "b_LoadFSLM";
+            this.b_LoadFSLM.Size = new System.Drawing.Size(146, 77);
+            this.b_LoadFSLM.TabIndex = 24;
+            this.b_LoadFSLM.Text = "Load FS Location Master";
+            this.b_LoadFSLM.UseVisualStyleBackColor = true;
+            this.b_LoadFSLM.Click += new System.EventHandler(this.b_LoadFSLM_Click);
             // 
             // b_LoadFSIM
             // 
@@ -536,6 +550,26 @@
             this.gb_TicketCountStadistics.TabStop = false;
             this.gb_TicketCountStadistics.Text = "Ticket Tag Counts Stadistics";
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(30, 87);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(160, 17);
+            this.label16.TabIndex = 15;
+            this.label16.Text = "Ticket Tag Counted: ";
+            // 
+            // l_TicketCounted
+            // 
+            this.l_TicketCounted.AutoSize = true;
+            this.l_TicketCounted.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.l_TicketCounted.Location = new System.Drawing.Point(194, 87);
+            this.l_TicketCounted.Name = "l_TicketCounted";
+            this.l_TicketCounted.Size = new System.Drawing.Size(17, 17);
+            this.l_TicketCounted.TabIndex = 16;
+            this.l_TicketCounted.Text = "0";
+            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -715,26 +749,6 @@
             this.t_RefreshStatsRate.Interval = 10000;
             this.t_RefreshStatsRate.Tick += new System.EventHandler(this.t_RefreshStatsRate_Tick);
             // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(30, 87);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(160, 17);
-            this.label16.TabIndex = 15;
-            this.label16.Text = "Ticket Tag Counted: ";
-            // 
-            // l_TicketCounted
-            // 
-            this.l_TicketCounted.AutoSize = true;
-            this.l_TicketCounted.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.l_TicketCounted.Location = new System.Drawing.Point(194, 87);
-            this.l_TicketCounted.Name = "l_TicketCounted";
-            this.l_TicketCounted.Size = new System.Drawing.Size(17, 17);
-            this.l_TicketCounted.TabIndex = 16;
-            this.l_TicketCounted.Text = "0";
-            // 
             // f_InvEventAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -823,6 +837,7 @@
         private System.Windows.Forms.Label l_MOTagsCounted;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label l_TicketCounted;
+        private System.Windows.Forms.Button b_LoadFSLM;
     }
 }
 

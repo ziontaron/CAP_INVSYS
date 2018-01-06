@@ -128,7 +128,7 @@ namespace CAP_Inventory_System
 
             }
         }
-        public string UserName
+        public string User_Name
         {
             get { return _userName; }
             set { _userName = value; }
@@ -160,9 +160,11 @@ namespace CAP_Inventory_System
         cat_UserRoleLogic _cat_UserRoleLogic = new cat_UserRoleLogic();
         MOTagHeaderLogic _moTagHeaderLogic = new MOTagHeaderLogic();
         MOTagCountLogic _moTagCountLogic = new MOTagCountLogic();
+        FS_LocationMasterLogic _FS_LocationMasterLogic = new FS_LocationMasterLogic();
         FS_ItemMasterLogic _FS_ItemMasterLogic = new FS_ItemMasterLogic();
         FSTI_TransactionLogic _FSTI_TransactionLogic = new FSTI_TransactionLogic();
         V_FSTI_TransactionLogic _V_FSTI_TransactionLogic = new V_FSTI_TransactionLogic();
+
         #endregion
 
         #region Private Properties
@@ -298,6 +300,7 @@ namespace CAP_Inventory_System
             T.Ticket.TicketKey = _tag.TicketID;
             T.TagCountKey = _tag.TicketCountID;
             T.Ticket.InventoryEventKey = _tag.EventID;
+            T.CapturedBy = _tag.CapturedBy;
             
             return T;
         }

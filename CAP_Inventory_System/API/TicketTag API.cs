@@ -33,6 +33,7 @@ namespace CAP_Inventory_System
         public int TicketID { get; set; }
         public int TicketCountID { get; set; }
         public int EventID { get; set; }
+        public string CapturedBy { get; set; }
     }
     public static class TicketTagLogic
     {
@@ -50,6 +51,7 @@ namespace CAP_Inventory_System
             _tag.InventoryQuantity = float.Parse(r["InventoryQuantity"].ToString());
             _tag.LotNumber = r["LotNumber"].ToString();
             _tag.ItemNumber_FSKey= Convert.ToInt32(r["ItemKey"].ToString());
+            _tag.CapturedBy = r["CapturedBy"].ToString();
 
             return _tag;
         }

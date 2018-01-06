@@ -16,6 +16,8 @@ namespace InventoryImplementation
         TicketTag _tag = new TicketTag();
         int _tagNo = 0;
         bool Loading_data = false;
+        AutoCompleteStringCollection STK = new AutoCompleteStringCollection();
+        AutoCompleteStringCollection BIN = new AutoCompleteStringCollection();
 
         public f_CaptureTag(ref Inventory_System_API IE)
         {
@@ -31,6 +33,17 @@ namespace InventoryImplementation
             {
                 cb_EditCountQty.Visible = false;
             }
+
+            STK.AddRange(x.LoadAllSTK().ToArray());
+            tb_STK.AutoCompleteMode = AutoCompleteMode.Suggest;
+            tb_STK.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            tb_STK.AutoCompleteCustomSource = STK;
+
+            BIN.AddRange(x.LoadAllBIN().ToArray());
+            tb_BIN.AutoCompleteMode = AutoCompleteMode.Suggest;
+            tb_BIN.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            tb_BIN.AutoCompleteCustomSource = BIN;
+
         }
         #region Functions
         private List<string> _LoadEvents()
@@ -200,6 +213,7 @@ namespace InventoryImplementation
                         tb_BIN.Enabled = false;
                         tb_CountQty.Enabled = false;
                         tb_ReCountQty.Enabled = false;
+                        chb_Void.Enabled = true;
 
                     }
                     #endregion
@@ -303,8 +317,13 @@ namespace InventoryImplementation
         }
         private void BeforeToSave()
         {
+            if (_tag.ItemNumber_FSKey == 0 && !_tag.VoidTag)
+            {
+                CheckIM();
+            }
             _tag.VoidTag = chb_Void.Checked;
             _tag.Verified = chb_Verified.Checked;
+            _tag.CapturedBy = x.User_Name;
             if (_tag.BlankTag)
             {
                 _tag.CounterInitials = tb_CounterInitials.Text;
@@ -358,15 +377,28 @@ namespace InventoryImplementation
                 }
             }
         }
+        private void CheckIM()
+        {
+            if (!chb_Void.Checked)
+            {
+                f_Item_Master f_IM;
+                f_IM = new f_Item_Master(ref x, tb_ItemNo.Text);
+                f_IM.ShowDialog();
+                tb_ItemNo.Focus();
+                tb_ItemNo.Text = f_IM.PartNo;
+                LoadFSItemInfo(tb_ItemNo.Text);
+            }
+        }
         private void UpdateTag()
         {
-            BeforeToSave();
-            x.UpdateTag(_tag);
-            if (x.ErrorOccour)
-            {
-                MessageBox.Show(x.ErrorMessage);
-            }
-            LoadTagInfo(_tag);
+                BeforeToSave();
+                x.UpdateTag(_tag);
+                if (x.ErrorOccour)
+                {
+                    MessageBox.Show(x.ErrorMessage);
+                }
+                LoadTagInfo(_tag);
+           
         }
         private void LoadFSItemInfo(string PN)
         {
@@ -415,8 +447,20 @@ namespace InventoryImplementation
                     {
                         if (tb_TagNo.Text.Trim() != "")
                         {
-                            _tagNo = Convert.ToInt32(tb_TagNo.Text);
-                            _tag = x.LoadTag(_tagNo);
+
+                            //_tagNo = Convert.ToInt32(tb_TagNo.Text);
+                            try
+                            {
+                                _tagNo = Convert.ToInt32(tb_TagNo.Text);
+                            }
+                            catch
+                            {
+                                MessageBox.Show("Invalid Tag No entered", "ERROR");
+                                _tagNo = 0;
+                                tb_TagNo.Text = "0";
+                            }                        
+
+                        _tag = x.LoadTag(_tagNo);
                             if (_tag != null)
                             {
                                 LoadTagInfo(_tag);
@@ -534,28 +578,32 @@ namespace InventoryImplementation
                 {
                     _tag.CountQTY = float.Parse(tb_CountQty.Text);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                     _tag.CountQTY = 0;
                 }
-                UpdateTag();
-                cb_EditCountQty.Checked = false;
+
+                if (tb_CounterInitials.Text != "")
+                {
+                    UpdateTag();
+                    cb_EditCountQty.Checked = false;
+                }
+                else
+                {
+                    MessageBox.Show("Counter Initials need to be captured to save tag info.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }        
         private void tb_ItemNo_KeyDown(object sender, KeyEventArgs e)
         {
-            f_Item_Master f_IM; 
+            f_Item_Master f_IM;
             if (e.KeyValue == 13)
             {
                 LoadFSItemInfo(tb_ItemNo.Text);
                 if (tb_ItemDesc.Text == "")
                 {
-                    f_IM = new f_Item_Master(ref x,tb_ItemNo.Text);
-                    f_IM.ShowDialog();
-                    tb_ItemNo.Focus();
-                    tb_ItemNo.Text = f_IM.PartNo;
-                    LoadFSItemInfo(tb_ItemNo.Text);
+                    CheckIM();
                 }
                 else
                 {
@@ -637,10 +685,17 @@ namespace InventoryImplementation
         {
             if (e.KeyValue == 13)
             {
-                UpdateTag();
-                tb_TagNo.Focus();
-                tb_TagNo.SelectAll();
+                if (tb_CounterInitials.Text != "")
+                {
+                    UpdateTag();
+                    tb_TagNo.Focus();
+                    tb_TagNo.SelectAll();
 
+                }
+                else
+                {
+                    MessageBox.Show("Counter Initials need to be captured to save tag info.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
         private void chb_Void_CheckedChanged(object sender, EventArgs e)
@@ -660,7 +715,16 @@ namespace InventoryImplementation
                 }
                 else
                 {
+                    if (tb_CounterInitials.Text != "")
+                    {
                     UpdateTag();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Counter Initials need to be captured to save tag info.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+
                 }
             }
         }

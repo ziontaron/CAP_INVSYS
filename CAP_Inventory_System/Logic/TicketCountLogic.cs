@@ -237,6 +237,7 @@ namespace CAP_Inventory_System.Logic
         }
         private void UpdateEntity(ref TicketCount CE, TicketCount E)
         {
+            CE.CapturedBy = E.CapturedBy;
             if (E.VoidTag)
             {
                 CE.VoidTag = true;

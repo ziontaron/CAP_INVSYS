@@ -75,6 +75,7 @@
     <Compile Include="EF\CAPA_INVModel.cs" />
     <Compile Include="EF\cat_TicketType.cs" />
     <Compile Include="EF\cat_UserRole.cs" />
+    <Compile Include="EF\FS_LocationMaster.cs" />
     <Compile Include="EF\V_FSTI_Transaction.cs" />
     <Compile Include="EF\FS_ItemMaster.cs" />
     <Compile Include="EF\InventoryEvent.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Entities\cat_UserRole.cs" />
     <Compile Include="Entities\FSTI_Transactions.cs" />
     <Compile Include="Entities\FS_ItemMaster.cs" />
+    <Compile Include="Entities\FS_LocationMaster.cs" />
     <Compile Include="Entities\InventoryEvent.cs" />
     <Compile Include="Entities\MOTagCount.cs" />
     <Compile Include="Entities\MOTagHeader.cs" />
@@ -103,6 +105,7 @@
     <Compile Include="Logic\cat_UserRoleLogic.cs" />
     <Compile Include="Logic\FSTI_TransactionLogic.cs" />
     <Compile Include="Logic\FS_ItemMasterLogic.cs" />
+    <Compile Include="Logic\FS_LocationMasterLogic.cs" />
     <Compile Include="Logic\InventoryEventLogic.cs" />
     <Compile Include="Logic\MOTagCountLogic.cs" />
     <Compile Include="Logic\MOTagHeaderLogic.cs" />
@@ -218,6 +221,14 @@
     <Compile Include="Migrations\201712150253227_Flags for Ticket Counts and MO Tags.Designer.cs">
       <DependentUpon>201712150253227_Flags for Ticket Counts and MO Tags.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801051818024_CountedBy field added.cs" />
+    <Compile Include="Migrations\201801051818024_CountedBy field added.Designer.cs">
+      <DependentUpon>201801051818024_CountedBy field added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801052054086_Location Masster Table added.cs" />
+    <Compile Include="Migrations\201801052054086_Location Masster Table added.Designer.cs">
+      <DependentUpon>201801052054086_Location Masster Table added.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Reusable\BaseEntity.cs" />
     <Compile Include="Reusable\CommonResponse.cs" />
@@ -227,6 +238,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\FS_LocationMaster API.cs" />
     <None Include="App.Config">
       <SubType>Designer</SubType>
     </None>
@@ -316,6 +328,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712150253227_Flags for Ticket Counts and MO Tags.resx">
       <DependentUpon>201712150253227_Flags for Ticket Counts and MO Tags.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801051818024_CountedBy field added.resx">
+      <DependentUpon>201801051818024_CountedBy field added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801052054086_Location Masster Table added.resx">
+      <DependentUpon>201801052054086_Location Masster Table added.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -15,6 +15,7 @@ namespace InventoryImplementation
     {
         Inventory_System_API x = new Inventory_System_API();
         public string role { get; set; }
+        public string username { get; set; }
         public f_InventoryLogin()
         {
             InitializeComponent();
@@ -38,9 +39,9 @@ namespace InventoryImplementation
 
         private void b_Access_Click(object sender, EventArgs e)
         {
-            if (tb_UserName.Text != "" && tb_UserPAssword.Text!="")
+            if (tb_UserName.Text != "" && tb_UserPassword.Text!="")
             {
-                role = x.ReadUser(tb_UserName.Text, tb_UserPAssword.Text);
+                role = x.ReadUser(tb_UserName.Text, tb_UserPassword.Text);
                 if (role != "")
                 {
                     this.Close();
@@ -52,7 +53,7 @@ namespace InventoryImplementation
         {
             if (e.KeyValue == 13)
             {
-                tb_UserPAssword.Focus();
+                tb_UserPassword.Focus();
             }
         }
 
@@ -60,9 +61,9 @@ namespace InventoryImplementation
         {
             if (e.KeyValue == 13)
             {
-                if (tb_UserName.Text != "" && tb_UserPAssword.Text != "")
+                if (tb_UserName.Text != "" && tb_UserPassword.Text != "")
                 {
-                    role = x.ReadUser(tb_UserName.Text, tb_UserPAssword.Text);
+                    role = x.ReadUser(tb_UserName.Text, tb_UserPassword.Text);
                     if (role != "")
                     {
                         this.Close();
@@ -73,6 +74,11 @@ namespace InventoryImplementation
                     b_Access.Focus();
                 }
             }
+        }
+
+        private void f_InventoryLogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            username = tb_UserName.Text;
         }
     }
 }

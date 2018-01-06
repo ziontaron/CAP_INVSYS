@@ -13,8 +13,8 @@ namespace CAP_Inventory_System
         public SQL DB_MNG;
         public SQL DB_MNG_FS;
         //public CAPA_INVContext() : base("name=CAPA_INV")
-        public CAPA_INVContext() : base("name=CAPA_INVServer")
-        //public CAPA_INVContext() : base("name=CAPA_INVLocal")
+        //public CAPA_INVContext() : base("name=CAPA_INVServer")
+        public CAPA_INVContext() : base("name=CAPA_INVLocal")
         //public CAPA_INVContext() : base("name=CAPA_INVSandBox")
         {
             //string ConnStr = "";
@@ -39,6 +39,7 @@ namespace CAP_Inventory_System
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<FS_ItemMaster> FS_ItemMaster { get; set; }
         public virtual DbSet<FSTI_Transactions> FSTI_Transactions { get; set; }
+        public virtual DbSet<FS_LocationMaster> FS_LocationMaster { get; set; }
         #region Views
         public virtual DbSet<V_FSTI_Transaction> V_FSTI_Transaction { get; set; }
         #endregion

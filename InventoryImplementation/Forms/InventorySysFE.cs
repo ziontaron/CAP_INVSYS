@@ -22,6 +22,8 @@ namespace InventoryImplementation
             InitializeComponent();
             login.ShowDialog();
             x.UserProfile = login.role;
+            x.User_Name = login.username;
+            this.Text = "Inventory System Front End Ver 3.0";
             switch (login.role)
             {
                 case "SysAdmin":

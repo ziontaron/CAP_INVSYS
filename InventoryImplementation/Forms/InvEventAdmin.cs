@@ -382,6 +382,23 @@ namespace InventoryImplementation
                 rb_JZ_Tags.Checked = false;
             }
         }
-        
+
+        private void b_LoadFSLM_Click(object sender, EventArgs e)
+        {
+            string LocationMaster_Q = @"SELECT Stockroom, Bin FROM FS_InventoryLocation";
+
+            CAPA_INVContext context = new CAPA_INVContext();
+            SQL DBMNG = context.DB_MNG_FS;
+
+            DataTable Location_Master_T = DBMNG.Execute_Query(LocationMaster_Q);
+
+            for (int i = 0; i < Location_Master_T.Rows.Count; i++)
+            {
+                x.AddLocationtoLM(Location_Master_T.Rows[i]);
+            }
+
+            context.Dispose();
+            MessageBox.Show("FS Location Master has been Imported", "Location Master Import");
+        }
     }
 }

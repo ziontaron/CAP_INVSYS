@@ -55,9 +55,8 @@ namespace CAP_Inventory_System
         public bool VoidTag { get; set; }
         
         public int ItemNumber_FSKey { get; set; }
-
-        //[StringLength(10)]
-        //public string CountStatus { get; set; }
+        
+        public string CapturedBy { get; set; }
 
         public bool BlankTag { get; set; }
 
